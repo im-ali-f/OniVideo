@@ -26,7 +26,7 @@ class MainActivity : ComponentActivity() {
             NavHost(navController = navState, startDestination = "mainPage"){
                 composable(route="mainPage"){
                     Column {
-                        NavbarComp(navController = navState)
+                        NavbarComp(navController = navState,title="s", emptyMap())
                         MainComp(navController = navState)
                     }
 
