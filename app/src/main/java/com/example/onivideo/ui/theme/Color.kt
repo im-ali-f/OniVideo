@@ -12,3 +12,7 @@ val Pink40 = Color(0xFF7D5260)
 
 val navBrush1=Color(0xFFFE8607)
 val navBrush2=Color(0xFFFE0674)
+
+val mainBGC=Color(0xFF0A0B0F)
+val bottombarBGC=Color(0xFF222530)
+val bottombarContent=Color(0xFF9E9E9E)
