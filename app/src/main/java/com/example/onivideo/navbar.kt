@@ -31,7 +31,7 @@ import com.example.onivideo.ui.theme.navBrush1
 import com.example.onivideo.ui.theme.navBrush2
 
 @Composable
-fun NavbarComp(navController: NavController,title:String,accessMap:Map<String,String>){
+fun NavbarComp(navController: NavController,title:String,accessMap:Map<String,Boolean>){
     Row(modifier = Modifier
         .fillMaxWidth()
         .height(60.dp)
@@ -51,24 +51,31 @@ fun NavbarComp(navController: NavController,title:String,accessMap:Map<String,St
             .height(60.dp),
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically) {
+            if(accessMap["menu"]== true){
+                IconButton(onClick = { /* TODO */ }) {
+                    Icon(
+                        imageVector = Icons.Filled.Menu,
+                        contentDescription = null,
+                        modifier = Modifier.fillMaxSize(),
+                        tint = Color.White
+                    )
+                }
+            }
+
+            Text(modifier = Modifier.fillMaxHeight().padding(top=10.dp, start = 15.dp),text = "$title",color= Color.White,textAlign = TextAlign.Start, fontSize = 25.sp)
+        }
+        if(accessMap["search"]== true){
             IconButton(onClick = { /* TODO */ }) {
                 Icon(
-                    imageVector = Icons.Filled.Menu,
+                    imageVector = Icons.Filled.Search,
                     contentDescription = null,
                     modifier = Modifier.fillMaxSize(),
                     tint = Color.White
                 )
             }
-            Text(modifier = Modifier.fillMaxHeight().padding(top=10.dp, start = 15.dp),text = "test$title",color= Color.White,textAlign = TextAlign.Start, fontSize = 25.sp)
+
         }
-        IconButton(onClick = { /* TODO */ }) {
-            Icon(
-                imageVector = Icons.Filled.Search,
-                contentDescription = null,
-                modifier = Modifier.fillMaxSize(),
-                tint = Color.White
-            )
-        }
+
 
         }
 }

@@ -25,8 +25,13 @@ class MainActivity : ComponentActivity() {
            val navState= rememberNavController()
             NavHost(navController = navState, startDestination = "mainPage"){
                 composable(route="mainPage"){
-                    Column {
-                        NavbarComp(navController = navState,title="s", emptyMap())
+                    val access= mapOf<String,Boolean>(
+                        "menu" to true,
+                        "search" to true
+                    )
+
+                    Column(modifier = Modifier.fillMaxSize()) {
+                        NavbarComp(navController = navState,title="Home",access )
                         MainComp(navController = navState)
                     }
 
