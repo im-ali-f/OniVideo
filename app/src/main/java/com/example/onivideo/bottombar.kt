@@ -96,7 +96,7 @@ fun BottombarComp(navController: NavController){
                 btn2Color= bottombarContentSelected
                 btn3Color= bottombarContent
                 /*ToDo inja bayad navigate she*/
-                navController.navigate("mainPage2")
+
                                  },
                 Modifier
                     .fillMaxHeight()

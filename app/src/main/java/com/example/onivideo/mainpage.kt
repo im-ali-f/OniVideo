@@ -163,7 +163,7 @@ val videoList = arrayOf<Map<String, Any>>(
 @Composable
 fun MainComp(navController: NavController) {
     val screenWidth = LocalConfiguration.current.screenWidthDp
-
+    val screenHeight = LocalConfiguration.current.screenHeightDp
 
     if (screenWidth < 400) {
         LazyColumn(
@@ -272,6 +272,31 @@ fun MainComp(navController: NavController) {
                                     )
                                     .clickable { /*ToDo:navigate with id to specific videopage*/ }) {
                                     var img = it["img"] as Array<Int>
+                                    var premume = it["premume"] as Boolean
+
+
+                                    if (premume) {
+                                        Box(
+                                            modifier = Modifier
+                                                .align(Alignment.TopEnd)
+                                                .padding(9.dp)
+                                                .size(22.dp)
+                                                .clip(shape = RoundedCornerShape(100.dp))
+                                                .background(
+                                                    Brush.horizontalGradient(
+                                                        colors = listOf(navBrush1, navBrush2)
+                                                    )
+                                                ), contentAlignment = Alignment.Center
+                                        ) {
+
+                                            Icon(
+                                                painterResource(id = R.drawable.premume15),
+                                                "Small floating action button.",
+                                                tint = mainFontColor
+                                            )
+
+                                        }
+                                    }
                                     // Image(modifier = Modifier.padding(5.dp), contentScale = ContentScale.Fit,painter = painterResource(id = img[0] ) , contentDescription =null )
                                 }
                             }
@@ -314,6 +339,31 @@ fun MainComp(navController: NavController) {
                                     )
                                     .clickable { /*ToDo:navigate with id to specific videopage*/ }) {
                                     var img = it["img"] as Array<Int>
+                                    var premume = it["premume"] as Boolean
+
+
+                                    if (premume) {
+                                        Box(
+                                            modifier = Modifier
+                                                .align(Alignment.TopEnd)
+                                                .padding(9.dp)
+                                                .size(22.dp)
+                                                .clip(shape = RoundedCornerShape(100.dp))
+                                                .background(
+                                                    Brush.horizontalGradient(
+                                                        colors = listOf(navBrush1, navBrush2)
+                                                    )
+                                                ), contentAlignment = Alignment.Center
+                                        ) {
+
+                                            Icon(
+                                                painterResource(id = R.drawable.premume15),
+                                                "Small floating action button.",
+                                                tint = mainFontColor
+                                            )
+
+                                        }
+                                    }
                                     // Image(modifier = Modifier.padding(5.dp), contentScale = ContentScale.Fit,painter = painterResource(id = img[0] ) , contentDescription =null )
                                 }
                             }
@@ -357,6 +407,31 @@ fun MainComp(navController: NavController) {
                                     )
                                     .clickable { /*ToDo:navigate with id to specific videopage*/ }) {
                                     var img = it["img"] as Array<Int>
+                                    var premume = it["premume"] as Boolean
+
+
+                                    if (premume) {
+                                        Box(
+                                            modifier = Modifier
+                                                .align(Alignment.TopEnd)
+                                                .padding(9.dp)
+                                                .size(22.dp)
+                                                .clip(shape = RoundedCornerShape(100.dp))
+                                                .background(
+                                                    Brush.horizontalGradient(
+                                                        colors = listOf(navBrush1, navBrush2)
+                                                    )
+                                                ), contentAlignment = Alignment.Center
+                                        ) {
+
+                                            Icon(
+                                                painterResource(id = R.drawable.premume15),
+                                                "Small floating action button.",
+                                                tint = mainFontColor
+                                            )
+
+                                        }
+                                    }
                                     // Image(modifier = Modifier.padding(5.dp), contentScale = ContentScale.Fit,painter = painterResource(id = img[0] ) , contentDescription =null )
                                 }
                             }
@@ -366,7 +441,7 @@ fun MainComp(navController: NavController) {
             }
         }
     }
-        if (screenWidth > 400) {
+        if (screenHeight >800 && screenWidth >400) {
             LazyColumn(
                 Modifier
                     .fillMaxWidth()
@@ -472,6 +547,31 @@ fun MainComp(navController: NavController) {
                                         )
                                         .clickable { /*ToDo:navigate with id to specific videopage*/ }) {
                                         var img = it["img"] as Array<Int>
+                                        var premume = it["premume"] as Boolean
+
+
+                                        if (premume) {
+                                            Box(
+                                                modifier = Modifier
+                                                    .align(Alignment.TopEnd)
+                                                    .padding(9.dp)
+                                                    .size(22.dp)
+                                                    .clip(shape = RoundedCornerShape(100.dp))
+                                                    .background(
+                                                        Brush.horizontalGradient(
+                                                            colors = listOf(navBrush1, navBrush2)
+                                                        )
+                                                    ), contentAlignment = Alignment.Center
+                                            ) {
+
+                                                Icon(
+                                                    painterResource(id = R.drawable.premume15),
+                                                    "Small floating action button.",
+                                                    tint = mainFontColor
+                                                )
+
+                                            }
+                                        }
                                         // Image(modifier = Modifier.padding(5.dp), contentScale = ContentScale.Fit,painter = painterResource(id = img[0] ) , contentDescription =null )
                                     }
                                 }
@@ -514,6 +614,31 @@ fun MainComp(navController: NavController) {
                                         )
                                         .clickable { /*ToDo:navigate with id to specific videopage*/ }) {
                                         var img = it["img"] as Array<Int>
+                                        var premume = it["premume"] as Boolean
+
+
+                                        if (premume) {
+                                            Box(
+                                                modifier = Modifier
+                                                    .align(Alignment.TopEnd)
+                                                    .padding(9.dp)
+                                                    .size(22.dp)
+                                                    .clip(shape = RoundedCornerShape(100.dp))
+                                                    .background(
+                                                        Brush.horizontalGradient(
+                                                            colors = listOf(navBrush1, navBrush2)
+                                                        )
+                                                    ), contentAlignment = Alignment.Center
+                                            ) {
+
+                                                Icon(
+                                                    painterResource(id = R.drawable.premume15),
+                                                    "Small floating action button.",
+                                                    tint = mainFontColor
+                                                )
+
+                                            }
+                                        }
                                         // Image(modifier = Modifier.padding(5.dp), contentScale = ContentScale.Fit,painter = painterResource(id = img[0] ) , contentDescription =null )
                                     }
                                 }
@@ -557,6 +682,31 @@ fun MainComp(navController: NavController) {
                                         )
                                         .clickable { /*ToDo:navigate with id to specific videopage*/ }) {
                                         var img = it["img"] as Array<Int>
+                                        var premume = it["premume"] as Boolean
+
+
+                                        if (premume) {
+                                            Box(
+                                                modifier = Modifier
+                                                    .align(Alignment.TopEnd)
+                                                    .padding(9.dp)
+                                                    .size(22.dp)
+                                                    .clip(shape = RoundedCornerShape(100.dp))
+                                                    .background(
+                                                        Brush.horizontalGradient(
+                                                            colors = listOf(navBrush1, navBrush2)
+                                                        )
+                                                    ), contentAlignment = Alignment.Center
+                                            ) {
+
+                                                Icon(
+                                                    painterResource(id = R.drawable.premume15),
+                                                    "Small floating action button.",
+                                                    tint = mainFontColor
+                                                )
+
+                                            }
+                                        }
                                         // Image(modifier = Modifier.padding(5.dp), contentScale = ContentScale.Fit,painter = painterResource(id = img[0] ) , contentDescription =null )
                                     }
                                 }
@@ -566,5 +716,281 @@ fun MainComp(navController: NavController) {
                 }
             }
         }
+
+    if (screenHeight <800 && screenWidth >400) {
+        LazyColumn(
+            Modifier
+                .fillMaxWidth()
+                .fillMaxHeight(0.88f)
+        ) {
+
+            //row aval
+            item() {
+                LazyRow(
+                    Modifier
+                        .fillMaxWidth()
+                        .fillParentMaxHeight(0.3f)
+                ) {
+                    item {
+                        Spacer(modifier = Modifier.fillParentMaxWidth(0.08f))
+                    }
+                    items(videoList) {
+
+                        if (it["release"] as String != "") {
+                            Surface(
+                                shape = RoundedCornerShape(8.dp), modifier = Modifier
+                                    .fillMaxHeight()
+                                    .fillParentMaxWidth(0.85f)
+                                    .padding(10.dp, 0.dp, 10.dp, 10.dp)
+                            ) {
+                                Box(modifier = Modifier
+                                    .fillMaxSize()
+                                    .background(
+                                        Brush.horizontalGradient(
+                                            colors = listOf(brush1, brush2)
+                                        )
+                                    )
+                                    .clickable {
+                                        /*ToDo:navigate with id to specific videopage*/
+                                    }) {
+                                    var img = it["img"] as Array<Int>
+                                    var premume = it["premume"] as Boolean
+
+
+                                    if (premume) {
+                                        Box(
+                                            modifier = Modifier
+                                                .align(Alignment.TopEnd)
+                                                .padding(9.dp)
+                                                .size(30.dp)
+                                                .clip(shape = RoundedCornerShape(100.dp))
+                                                .background(
+                                                    Brush.horizontalGradient(
+                                                        colors = listOf(navBrush1, navBrush2)
+                                                    )
+                                                ), contentAlignment = Alignment.Center
+                                        ) {
+
+                                            Icon(
+                                                painterResource(id = R.drawable.premume),
+                                                "Small floating action button.",
+                                                tint = mainFontColor
+                                            )
+
+                                        }
+                                    }
+
+
+                                    //Image(contentScale = ContentScale.Fit,painter = painterResource(id = img[0] ) , contentDescription =null )
+                                }
+                            }
+
+                        }
+                    }
+                }
+            }
+            //row2
+            item {
+                Column(modifier = Modifier.fillMaxWidth()) {
+                    Text(
+                        modifier = Modifier.padding(start = 10.dp, bottom = 5.dp),
+                        text = "Recently Watched",
+                        fontSize = 20.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = mainFontColor
+                    )
+                    LazyRow(
+                        Modifier
+                            .fillMaxWidth()
+                            .fillParentMaxHeight(0.2f)
+                    ) {
+                        item {
+                            Spacer(modifier = Modifier.fillParentMaxWidth(0.015f))
+                        }
+                        items(videoList) {
+                            Surface(
+                                shape = RoundedCornerShape(8.dp), modifier = Modifier
+                                    .fillMaxHeight()
+                                    .fillParentMaxWidth(0.480f)
+                                    .padding(5.dp)
+                            ) {
+                                Box(modifier = Modifier
+                                    .fillMaxSize()
+                                    .background(
+                                        Brush.horizontalGradient(
+                                            colors = listOf(brush2, brush1)
+                                        )
+                                    )
+                                    .clickable { /*ToDo:navigate with id to specific videopage*/ }) {
+                                    var img = it["img"] as Array<Int>
+                                    var premume = it["premume"] as Boolean
+
+
+                                    if (premume) {
+                                        Box(
+                                            modifier = Modifier
+                                                .align(Alignment.TopEnd)
+                                                .padding(9.dp)
+                                                .size(22.dp)
+                                                .clip(shape = RoundedCornerShape(100.dp))
+                                                .background(
+                                                    Brush.horizontalGradient(
+                                                        colors = listOf(navBrush1, navBrush2)
+                                                    )
+                                                ), contentAlignment = Alignment.Center
+                                        ) {
+
+                                            Icon(
+                                                painterResource(id = R.drawable.premume15),
+                                                "Small floating action button.",
+                                                tint = mainFontColor
+                                            )
+
+                                        }
+                                    }
+                                    // Image(modifier = Modifier.padding(5.dp), contentScale = ContentScale.Fit,painter = painterResource(id = img[0] ) , contentDescription =null )
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            //row 3
+            item {
+                Column(modifier = Modifier.fillMaxWidth()) {
+                    Text(
+                        modifier = Modifier.padding(top=5.dp,start = 10.dp, bottom = 5.dp),
+                        text = "Upcoming Movies",
+                        fontSize = 20.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = mainFontColor
+                    )
+                    LazyRow(
+                        Modifier
+                            .fillMaxWidth()
+                            .fillParentMaxHeight(0.32f)
+                    ) {
+                        item {
+                            Spacer(modifier = Modifier.fillParentMaxWidth(0.015f))
+                        }
+                        items(videoList) {
+                            Surface(
+                                shape = RoundedCornerShape(8.dp), modifier = Modifier
+                                    .fillMaxHeight()
+                                    .fillParentMaxWidth(0.320f)
+                                    .padding(5.dp)
+                            ) {
+                                Box(modifier = Modifier
+                                    .fillMaxSize()
+                                    .background(
+                                        Brush.horizontalGradient(
+                                            colors = listOf(brush2, brush1)
+                                        )
+                                    )
+                                    .clickable { /*ToDo:navigate with id to specific videopage*/ }) {
+                                    var img = it["img"] as Array<Int>
+                                    var premume = it["premume"] as Boolean
+
+
+                                    if (premume) {
+                                        Box(
+                                            modifier = Modifier
+                                                .align(Alignment.TopEnd)
+                                                .padding(9.dp)
+                                                .size(22.dp)
+                                                .clip(shape = RoundedCornerShape(100.dp))
+                                                .background(
+                                                    Brush.horizontalGradient(
+                                                        colors = listOf(navBrush1, navBrush2)
+                                                    )
+                                                ), contentAlignment = Alignment.Center
+                                        ) {
+
+                                            Icon(
+                                                painterResource(id = R.drawable.premume15),
+                                                "Small floating action button.",
+                                                tint = mainFontColor
+                                            )
+
+                                        }
+                                    }
+                                    // Image(modifier = Modifier.padding(5.dp), contentScale = ContentScale.Fit,painter = painterResource(id = img[0] ) , contentDescription =null )
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+
+            //row4
+            item {
+                Column(modifier = Modifier.fillMaxWidth()) {
+                    Text(
+                        modifier = Modifier.padding(top=5.dp,start = 10.dp, bottom = 5.dp),
+                        text = "Upcomong Shows",
+                        fontSize = 20.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = mainFontColor
+                    )
+                    LazyRow(
+                        Modifier
+                            .fillMaxWidth()
+                            .fillParentMaxHeight(0.2f)
+                    ) {
+                        item {
+                            Spacer(modifier = Modifier.fillParentMaxWidth(0.015f))
+                        }
+                        items(videoList) {
+                            Surface(
+                                shape = RoundedCornerShape(8.dp), modifier = Modifier
+                                    .fillMaxHeight()
+                                    .fillParentMaxWidth(0.480f)
+                                    .padding(5.dp)
+                            ) {
+                                Box(modifier = Modifier
+                                    .fillMaxSize()
+                                    .background(
+                                        Brush.horizontalGradient(
+                                            colors = listOf(brush2, brush1)
+                                        )
+                                    )
+                                    .clickable { /*ToDo:navigate with id to specific videopage*/ }) {
+                                    var img = it["img"] as Array<Int>
+                                    var premume = it["premume"] as Boolean
+
+
+                                    if (premume) {
+                                        Box(
+                                            modifier = Modifier
+                                                .align(Alignment.TopEnd)
+                                                .padding(9.dp)
+                                                .size(22.dp)
+                                                .clip(shape = RoundedCornerShape(100.dp))
+                                                .background(
+                                                    Brush.horizontalGradient(
+                                                        colors = listOf(navBrush1, navBrush2)
+                                                    )
+                                                ), contentAlignment = Alignment.Center
+                                        ) {
+
+                                            Icon(
+                                                painterResource(id = R.drawable.premume15),
+                                                "Small floating action button.",
+                                                tint = mainFontColor
+                                            )
+
+                                        }
+                                    }
+                                    // Image(modifier = Modifier.padding(5.dp), contentScale = ContentScale.Fit,painter = painterResource(id = img[0] ) , contentDescription =null )
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 
 }
