@@ -50,32 +50,32 @@ import java.io.ObjectInputStream
 
 
 //static contents
-val videoList= arrayOf<Map<String, Any>>(
+val videoList = arrayOf<Map<String, Any>>(
     mapOf(
         "id" to 1,
         "name" to "The Video 1",
         "poster" to R.drawable.poster,
-        "img" to arrayOf(R.drawable.mimg,R.drawable.mimg,R.drawable.mimg,R.drawable.mimg,) ,
-        "genre" to arrayOf("Horror","Comedy","Action"),
+        "img" to arrayOf(R.drawable.mimg, R.drawable.mimg, R.drawable.mimg, R.drawable.mimg),
+        "genre" to arrayOf("Horror", "Comedy", "Action"),
         "language" to "English",
         "release" to "1/1/2022",
         "type" to "series",
-        "actors" to arrayOf("ali","mmd","javad","mina","mona","arman","armin"),
+        "actors" to arrayOf("ali", "mmd", "javad", "mina", "mona", "arman", "armin"),
         "description" to "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
         "IMDB" to "9/10",
         "premume" to false,
-        
+
         ),
     mapOf(
         "id" to 2,
         "name" to "The Video abcd efg 222",
         "poster" to R.drawable.poster,
-        "img" to arrayOf(R.drawable.mimg,R.drawable.mimg,R.drawable.mimg,R.drawable.mimg,) ,
-        "genre" to arrayOf("Horror","Comedy","Western"),
+        "img" to arrayOf(R.drawable.mimg, R.drawable.mimg, R.drawable.mimg, R.drawable.mimg),
+        "genre" to arrayOf("Horror", "Comedy", "Western"),
         "language" to "English/US",
         "release" to "11/10/1990",
         "type" to "movie",
-        "actors" to arrayOf("ali","mmd","javad","mina","mona","arman","armin"),
+        "actors" to arrayOf("ali", "mmd", "javad", "mina", "mona", "arman", "armin"),
         "description" to "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
         "IMDB" to "10/10",
         "premume" to false,
@@ -85,12 +85,12 @@ val videoList= arrayOf<Map<String, Any>>(
         "id" to 3,
         "name" to "The 3",
         "poster" to R.drawable.poster,
-        "img" to arrayOf(R.drawable.mimg,R.drawable.mimg,R.drawable.mimg,R.drawable.mimg,) ,
-        "genre" to arrayOf("Action","Romantic","Western"),
+        "img" to arrayOf(R.drawable.mimg, R.drawable.mimg, R.drawable.mimg, R.drawable.mimg),
+        "genre" to arrayOf("Action", "Romantic", "Western"),
         "language" to "English",
         "release" to "10/1/2024",
         "type" to "series",
-        "actors" to arrayOf("javad","armin"),
+        "actors" to arrayOf("javad", "armin"),
         "description" to "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
         "IMDB" to "5/10",
         "premume" to false,
@@ -100,12 +100,12 @@ val videoList= arrayOf<Map<String, Any>>(
         "id" to 4,
         "name" to "The Video 4",
         "poster" to R.drawable.poster,
-        "img" to arrayOf(R.drawable.mimg,R.drawable.mimg,R.drawable.mimg,R.drawable.mimg,) ,
-        "genre" to arrayOf("Horror","Comedy","Action"),
+        "img" to arrayOf(R.drawable.mimg, R.drawable.mimg, R.drawable.mimg, R.drawable.mimg),
+        "genre" to arrayOf("Horror", "Comedy", "Action"),
         "language" to "English",
         "release" to "1/1/2011",
         "type" to "movie",
-        "actors" to arrayOf("ali","mmd","javad","mina","mona","arman","armin"),
+        "actors" to arrayOf("ali", "mmd", "javad", "mina", "mona", "arman", "armin"),
         "description" to "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
         "IMDB" to "9/10",
         "premume" to true,
@@ -115,8 +115,8 @@ val videoList= arrayOf<Map<String, Any>>(
         "id" to 5,
         "name" to "The film of 5",
         "poster" to R.drawable.poster,
-        "img" to arrayOf(R.drawable.mimg,R.drawable.mimg,R.drawable.mimg,R.drawable.mimg,) ,
-        "genre" to arrayOf("Horror","Comedy","Action"),
+        "img" to arrayOf(R.drawable.mimg, R.drawable.mimg, R.drawable.mimg, R.drawable.mimg),
+        "genre" to arrayOf("Horror", "Comedy", "Action"),
         "language" to "English",
         "release" to "",
         "type" to "series",
@@ -130,12 +130,12 @@ val videoList= arrayOf<Map<String, Any>>(
         "id" to 6,
         "name" to "The Video 6",
         "poster" to R.drawable.poster,
-        "img" to arrayOf(R.drawable.mimg,R.drawable.mimg,R.drawable.mimg,R.drawable.mimg,) ,
-        "genre" to arrayOf("Horror","Comedy","Action"),
+        "img" to arrayOf(R.drawable.mimg, R.drawable.mimg, R.drawable.mimg, R.drawable.mimg),
+        "genre" to arrayOf("Horror", "Comedy", "Action"),
         "language" to "English",
         "release" to "",
         "type" to "series",
-        "actors" to arrayOf("mina","mona","arman","armin"),
+        "actors" to arrayOf("mina", "mona", "arman", "armin"),
         "description" to "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
         "IMDB" to "n/10",
         "premume" to true,
@@ -145,12 +145,12 @@ val videoList= arrayOf<Map<String, Any>>(
         "id" to 7,
         "name" to "The Video 7",
         "poster" to R.drawable.poster,
-        "img" to arrayOf(R.drawable.mimg,R.drawable.mimg,R.drawable.mimg,R.drawable.mimg,) ,
-        "genre" to arrayOf("Horror","Comedy","Action"),
+        "img" to arrayOf(R.drawable.mimg, R.drawable.mimg, R.drawable.mimg, R.drawable.mimg),
+        "genre" to arrayOf("Horror", "Comedy", "Action"),
         "language" to "English",
         "release" to "",
         "type" to "series",
-        "actors" to arrayOf("ali","mmd","javad","mina","mona","arman","armin"),
+        "actors" to arrayOf("ali", "mmd", "javad", "mina", "mona", "arman", "armin"),
         "description" to "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
         "IMDB" to "n/10",
         "premume" to false,
@@ -160,17 +160,17 @@ val videoList= arrayOf<Map<String, Any>>(
     )
 
 
-
 @Composable
-fun MainComp(navController: NavController){
+fun MainComp(navController: NavController) {
     val screenWidth = LocalConfiguration.current.screenWidthDp
-    LazyColumn(
-        Modifier
-            .fillMaxWidth()
-            .fillMaxHeight(0.855f)){
 
 
-        if(screenWidth<400) {
+    if (screenWidth < 400) {
+        LazyColumn(
+            Modifier
+                .fillMaxWidth()
+                .fillMaxHeight(0.855f)
+        ) {
             //row aval
             item() {
                 LazyRow(
@@ -199,14 +199,15 @@ fun MainComp(navController: NavController){
                                         )
                                     )
                                     .clickable {
-                                    /*ToDo:navigate with id to specific videopage*/
+                                        /*ToDo:navigate with id to specific videopage*/
                                     }) {
-                                        var img = it["img"] as Array<Int>
-                                        var premume = it["premume"] as Boolean
+                                    var img = it["img"] as Array<Int>
+                                    var premume = it["premume"] as Boolean
 
 
-                                        if(premume){
-                                            Box(modifier = Modifier
+                                    if (premume) {
+                                        Box(
+                                            modifier = Modifier
                                                 .align(Alignment.TopEnd)
                                                 .padding(9.dp)
                                                 .size(30.dp)
@@ -215,18 +216,20 @@ fun MainComp(navController: NavController){
                                                     Brush.horizontalGradient(
                                                         colors = listOf(navBrush1, navBrush2)
                                                     )
-                                                ), contentAlignment = Alignment.Center){
+                                                ), contentAlignment = Alignment.Center
+                                        ) {
 
-                                                Icon(painterResource(id = R.drawable.premume),
-                                                    "Small floating action button.",
-                                                    tint = mainFontColor)
+                                            Icon(
+                                                painterResource(id = R.drawable.premume),
+                                                "Small floating action button.",
+                                                tint = mainFontColor
+                                            )
 
-                                            }
                                         }
+                                    }
 
 
-
-                                     //Image(contentScale = ContentScale.Fit,painter = painterResource(id = img[0] ) , contentDescription =null )
+                                    //Image(contentScale = ContentScale.Fit,painter = painterResource(id = img[0] ) , contentDescription =null )
                                 }
                             }
 
@@ -363,4 +366,205 @@ fun MainComp(navController: NavController){
             }
         }
     }
+        if (screenWidth > 400) {
+            LazyColumn(
+                Modifier
+                    .fillMaxWidth()
+                    .fillMaxHeight(0.9f)
+            ) {
+
+                //row aval
+                item() {
+                    LazyRow(
+                        Modifier
+                            .fillMaxWidth()
+                            .fillParentMaxHeight(0.25f)
+                    ) {
+                        item {
+                            Spacer(modifier = Modifier.fillParentMaxWidth(0.08f))
+                        }
+                        items(videoList) {
+
+                            if (it["release"] as String != "") {
+                                Surface(
+                                    shape = RoundedCornerShape(8.dp), modifier = Modifier
+                                        .fillMaxHeight()
+                                        .fillParentMaxWidth(0.85f)
+                                        .padding(10.dp, 0.dp, 10.dp, 10.dp)
+                                ) {
+                                    Box(modifier = Modifier
+                                        .fillMaxSize()
+                                        .background(
+                                            Brush.horizontalGradient(
+                                                colors = listOf(brush1, brush2)
+                                            )
+                                        )
+                                        .clickable {
+                                            /*ToDo:navigate with id to specific videopage*/
+                                        }) {
+                                        var img = it["img"] as Array<Int>
+                                        var premume = it["premume"] as Boolean
+
+
+                                        if (premume) {
+                                            Box(
+                                                modifier = Modifier
+                                                    .align(Alignment.TopEnd)
+                                                    .padding(9.dp)
+                                                    .size(30.dp)
+                                                    .clip(shape = RoundedCornerShape(100.dp))
+                                                    .background(
+                                                        Brush.horizontalGradient(
+                                                            colors = listOf(navBrush1, navBrush2)
+                                                        )
+                                                    ), contentAlignment = Alignment.Center
+                                            ) {
+
+                                                Icon(
+                                                    painterResource(id = R.drawable.premume),
+                                                    "Small floating action button.",
+                                                    tint = mainFontColor
+                                                )
+
+                                            }
+                                        }
+
+
+                                        //Image(contentScale = ContentScale.Fit,painter = painterResource(id = img[0] ) , contentDescription =null )
+                                    }
+                                }
+
+                            }
+                        }
+                    }
+                }
+                //row2
+                item {
+                    Column(modifier = Modifier.fillMaxWidth()) {
+                        Text(
+                            modifier = Modifier.padding(start = 10.dp, bottom = 5.dp),
+                            text = "Recently Watched",
+                            fontSize = 20.sp,
+                            fontWeight = FontWeight.Bold,
+                            color = mainFontColor
+                        )
+                        LazyRow(
+                            Modifier
+                                .fillMaxWidth()
+                                .fillParentMaxHeight(0.17f)
+                        ) {
+                            item {
+                                Spacer(modifier = Modifier.fillParentMaxWidth(0.015f))
+                            }
+                            items(videoList) {
+                                Surface(
+                                    shape = RoundedCornerShape(8.dp), modifier = Modifier
+                                        .fillMaxHeight()
+                                        .fillParentMaxWidth(0.480f)
+                                        .padding(5.dp)
+                                ) {
+                                    Box(modifier = Modifier
+                                        .fillMaxSize()
+                                        .background(
+                                            Brush.horizontalGradient(
+                                                colors = listOf(brush2, brush1)
+                                            )
+                                        )
+                                        .clickable { /*ToDo:navigate with id to specific videopage*/ }) {
+                                        var img = it["img"] as Array<Int>
+                                        // Image(modifier = Modifier.padding(5.dp), contentScale = ContentScale.Fit,painter = painterResource(id = img[0] ) , contentDescription =null )
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                //row 3
+                item {
+                    Column(modifier = Modifier.fillMaxWidth()) {
+                        Text(
+                            modifier = Modifier.padding(top=5.dp,start = 10.dp, bottom = 5.dp),
+                            text = "Upcoming Movies",
+                            fontSize = 20.sp,
+                            fontWeight = FontWeight.Bold,
+                            color = mainFontColor
+                        )
+                        LazyRow(
+                            Modifier
+                                .fillMaxWidth()
+                                .fillParentMaxHeight(0.26f)
+                        ) {
+                            item {
+                                Spacer(modifier = Modifier.fillParentMaxWidth(0.015f))
+                            }
+                            items(videoList) {
+                                Surface(
+                                    shape = RoundedCornerShape(8.dp), modifier = Modifier
+                                        .fillMaxHeight()
+                                        .fillParentMaxWidth(0.320f)
+                                        .padding(5.dp)
+                                ) {
+                                    Box(modifier = Modifier
+                                        .fillMaxSize()
+                                        .background(
+                                            Brush.horizontalGradient(
+                                                colors = listOf(brush2, brush1)
+                                            )
+                                        )
+                                        .clickable { /*ToDo:navigate with id to specific videopage*/ }) {
+                                        var img = it["img"] as Array<Int>
+                                        // Image(modifier = Modifier.padding(5.dp), contentScale = ContentScale.Fit,painter = painterResource(id = img[0] ) , contentDescription =null )
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+
+                //row4
+                item {
+                    Column(modifier = Modifier.fillMaxWidth()) {
+                        Text(
+                            modifier = Modifier.padding(top=5.dp,start = 10.dp, bottom = 5.dp),
+                            text = "Upcomong Shows",
+                            fontSize = 20.sp,
+                            fontWeight = FontWeight.Bold,
+                            color = mainFontColor
+                        )
+                        LazyRow(
+                            Modifier
+                                .fillMaxWidth()
+                                .fillParentMaxHeight(0.17f)
+                        ) {
+                            item {
+                                Spacer(modifier = Modifier.fillParentMaxWidth(0.015f))
+                            }
+                            items(videoList) {
+                                Surface(
+                                    shape = RoundedCornerShape(8.dp), modifier = Modifier
+                                        .fillMaxHeight()
+                                        .fillParentMaxWidth(0.480f)
+                                        .padding(5.dp)
+                                ) {
+                                    Box(modifier = Modifier
+                                        .fillMaxSize()
+                                        .background(
+                                            Brush.horizontalGradient(
+                                                colors = listOf(brush2, brush1)
+                                            )
+                                        )
+                                        .clickable { /*ToDo:navigate with id to specific videopage*/ }) {
+                                        var img = it["img"] as Array<Int>
+                                        // Image(modifier = Modifier.padding(5.dp), contentScale = ContentScale.Fit,painter = painterResource(id = img[0] ) , contentDescription =null )
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
 }
