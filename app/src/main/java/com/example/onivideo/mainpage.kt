@@ -19,15 +19,23 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.FloatingActionButtonDefaults
+import androidx.compose.material.icons.Icons
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.SmallFloatingActionButton
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -150,78 +158,209 @@ val videoList= arrayOf<Map<String, Any>>(
         ),
 
     )
+
+
+
 @Composable
 fun MainComp(navController: NavController){
+    val screenWidth = LocalConfiguration.current.screenWidthDp
     LazyColumn(
         Modifier
             .fillMaxWidth()
             .fillMaxHeight(0.855f)){
 
-        //row aval
-        item(){
-            LazyRow(
-                Modifier
-                    .fillMaxWidth()
-                    .height(185.dp)
-                    .padding(top = 10.dp)){
-                item { 
-                    Spacer(modifier = Modifier.fillParentMaxWidth(0.05f))
-                }
-                items(videoList){
 
-                    if(it["release"] as String != ""){
-                        Surface(shape = RoundedCornerShape(10.dp), modifier = Modifier
-                            .fillMaxHeight()
-                            .fillParentMaxWidth(0.9f)
-                            .padding(5.dp)) {
-                            Box(modifier = Modifier
-                                .fillMaxSize()
-                                .background(
-                                    Brush.horizontalGradient(
-                                        colors = listOf(brush1, brush2)
+        if(screenWidth<400) {
+            //row aval
+            item() {
+                LazyRow(
+                    Modifier
+                        .fillMaxWidth()
+                        .fillParentMaxHeight(0.38f)
+                        .padding(top = 10.dp)
+                ) {
+                    item {
+                        Spacer(modifier = Modifier.fillParentMaxWidth(0.08f))
+                    }
+                    items(videoList) {
+
+                        if (it["release"] as String != "") {
+                            Surface(
+                                shape = RoundedCornerShape(8.dp), modifier = Modifier
+                                    .fillMaxHeight()
+                                    .fillParentMaxWidth(0.85f)
+                                    .padding(10.dp)
+                            ) {
+                                Box(modifier = Modifier
+                                    .fillMaxSize()
+                                    .background(
+                                        Brush.horizontalGradient(
+                                            colors = listOf(brush1, brush2)
+                                        )
                                     )
-                                )
-                                .clickable { /*ToDo:navigate with id to specific videopage*/ }) {
-                                var img = it["img"] as Array<Int>
-                                // Image(modifier = Modifier.padding(5.dp), contentScale = ContentScale.Fit,painter = painterResource(id = img[0] ) , contentDescription =null )
+                                    .clickable {
+                                    /*ToDo:navigate with id to specific videopage*/
+                                    }) {
+                                        var img = it["img"] as Array<Int>
+                                        var premume = it["premume"] as Boolean
+
+
+                                        if(premume){
+                                            Box(modifier = Modifier
+                                                .align(Alignment.TopEnd)
+                                                .padding(9.dp)
+                                                .size(30.dp)
+                                                .clip(shape = RoundedCornerShape(100.dp))
+                                                .background(
+                                                    Brush.horizontalGradient(
+                                                        colors = listOf(navBrush1, navBrush2)
+                                                    )
+                                                ), contentAlignment = Alignment.Center){
+
+                                                Icon(painterResource(id = R.drawable.premume),
+                                                    "Small floating action button.",
+                                                    tint = mainFontColor)
+
+                                            }
+                                        }
+
+
+
+                                     //Image(contentScale = ContentScale.Fit,painter = painterResource(id = img[0] ) , contentDescription =null )
+                                }
+                            }
+
+                        }
+                    }
+                }
+            }
+            //row2
+            item {
+                Column(modifier = Modifier.fillMaxWidth()) {
+                    Spacer(modifier = Modifier.fillParentMaxHeight(0.03f))
+                    Text(
+                        modifier = Modifier.padding(10.dp),
+                        text = "Recently Watched",
+                        fontSize = 20.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = mainFontColor
+                    )
+                    LazyRow(
+                        Modifier
+                            .fillMaxWidth()
+                            .fillParentMaxHeight(0.235f)
+                    ) {
+                        item {
+                            Spacer(modifier = Modifier.fillParentMaxWidth(0.015f))
+                        }
+                        items(videoList) {
+                            Surface(
+                                shape = RoundedCornerShape(8.dp), modifier = Modifier
+                                    .fillMaxHeight()
+                                    .fillParentMaxWidth(0.480f)
+                                    .padding(5.dp)
+                            ) {
+                                Box(modifier = Modifier
+                                    .fillMaxSize()
+                                    .background(
+                                        Brush.horizontalGradient(
+                                            colors = listOf(brush2, brush1)
+                                        )
+                                    )
+                                    .clickable { /*ToDo:navigate with id to specific videopage*/ }) {
+                                    var img = it["img"] as Array<Int>
+                                    // Image(modifier = Modifier.padding(5.dp), contentScale = ContentScale.Fit,painter = painterResource(id = img[0] ) , contentDescription =null )
+                                }
                             }
                         }
+                    }
+                }
+            }
 
+            //row 3
+            item {
+                Column(modifier = Modifier.fillMaxWidth()) {
+                    Text(
+                        modifier = Modifier.padding(10.dp),
+                        text = "Upcoming Movies",
+                        fontSize = 20.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = mainFontColor
+                    )
+                    LazyRow(
+                        Modifier
+                            .fillMaxWidth()
+                            .fillParentMaxHeight(0.355f)
+                    ) {
+                        item {
+                            Spacer(modifier = Modifier.fillParentMaxWidth(0.015f))
+                        }
+                        items(videoList) {
+                            Surface(
+                                shape = RoundedCornerShape(8.dp), modifier = Modifier
+                                    .fillMaxHeight()
+                                    .fillParentMaxWidth(0.320f)
+                                    .padding(5.dp)
+                            ) {
+                                Box(modifier = Modifier
+                                    .fillMaxSize()
+                                    .background(
+                                        Brush.horizontalGradient(
+                                            colors = listOf(brush2, brush1)
+                                        )
+                                    )
+                                    .clickable { /*ToDo:navigate with id to specific videopage*/ }) {
+                                    var img = it["img"] as Array<Int>
+                                    // Image(modifier = Modifier.padding(5.dp), contentScale = ContentScale.Fit,painter = painterResource(id = img[0] ) , contentDescription =null )
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+
+            //row4
+            item {
+                Column(modifier = Modifier.fillMaxWidth()) {
+                    Text(
+                        modifier = Modifier.padding(10.dp),
+                        text = "Upcomong Shows",
+                        fontSize = 20.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = mainFontColor
+                    )
+                    LazyRow(
+                        Modifier
+                            .fillMaxWidth()
+                            .fillParentMaxHeight(0.235f)
+                    ) {
+                        item {
+                            Spacer(modifier = Modifier.fillParentMaxWidth(0.015f))
+                        }
+                        items(videoList) {
+                            Surface(
+                                shape = RoundedCornerShape(8.dp), modifier = Modifier
+                                    .fillMaxHeight()
+                                    .fillParentMaxWidth(0.480f)
+                                    .padding(5.dp)
+                            ) {
+                                Box(modifier = Modifier
+                                    .fillMaxSize()
+                                    .background(
+                                        Brush.horizontalGradient(
+                                            colors = listOf(brush2, brush1)
+                                        )
+                                    )
+                                    .clickable { /*ToDo:navigate with id to specific videopage*/ }) {
+                                    var img = it["img"] as Array<Int>
+                                    // Image(modifier = Modifier.padding(5.dp), contentScale = ContentScale.Fit,painter = painterResource(id = img[0] ) , contentDescription =null )
+                                }
+                            }
+                        }
                     }
                 }
             }
         }
-        //row2
-        item {
-            Column(modifier = Modifier.fillMaxWidth()) {
-                Spacer(modifier = Modifier.fillParentMaxHeight(0.05f))
-                Text(modifier = Modifier.padding(5.dp), text = "Recently Watched", fontSize = 20.sp, fontWeight = FontWeight.Bold, color = mainFontColor)
-                LazyRow(Modifier
-                    .fillMaxWidth()
-                    .height(100.dp)){
-                    item {
-                        Spacer(modifier = Modifier.fillParentMaxWidth(0.01f))
-                    }
-                    items(videoList){
-                        Surface(shape = RoundedCornerShape(10.dp), modifier = Modifier
-                            .fillMaxHeight()
-                            .fillParentMaxWidth(0.485f)
-                            .padding(5.dp)) {
-                            Box(modifier = Modifier
-                                .fillMaxSize()
-                                .background(
-                                    Brush.horizontalGradient(
-                                        colors = listOf(brush2, brush1)
-                                    )
-                                )
-                                .clickable { /*ToDo:navigate with id to specific videopage*/ }) {
-                                var img = it["img"] as Array<Int>
-                                // Image(modifier = Modifier.padding(5.dp), contentScale = ContentScale.Fit,painter = painterResource(id = img[0] ) , contentDescription =null )
-                            }
-                        }
-                    }
-                }
-            }
-            }
     }
 }
