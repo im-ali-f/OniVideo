@@ -56,16 +56,17 @@ class MainActivity : ComponentActivity() {
                         title="Home"
                         MainComp(navController = navState)
                     }
-                    /*
-                    composable(route="mainPage2"){
+
+
+                    composable(route="watchlistPage"){
                         access= mapOf<String,Boolean>(
                             "menu" to true,
-                            "search" to false
+                            "search" to true
                         )
-                        title="hhhhh"
-                        MainComp(navController = navState)
+                        title="My Watchlist"
+                        WatchListComp(navController = navState)
                     }
-                       */
+
 
                 }
                 BottombarComp(navController = navState)
