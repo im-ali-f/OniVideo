@@ -3,9 +3,13 @@ package com.example.onivideo
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -35,42 +39,69 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
 
-           val navState= rememberNavController()
-            Column(modifier = Modifier
-                .fillMaxSize()
-                .background(mainBGC), verticalArrangement = Arrangement.SpaceBetween) {
-                var access by remember{
-                    mutableStateOf(mapOf<String,Boolean>("menu" to true, "search" to true)) }
-                    var title by remember {
-                        mutableStateOf("Home")
-                    }
-                    NavbarComp(navController = navState,title=title, accessMap = access )
+            val navState = rememberNavController()
+            Column(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .background(mainBGC),
+                verticalArrangement = Arrangement.SpaceBetween
+            ) {
+                var access by remember {
+                    mutableStateOf(mapOf<String, Boolean>("menu" to true, "search" to true))
+                }
+                var title by remember {
+                    mutableStateOf("Home")
+                }
 
-                // nav
-                NavHost(navController = navState, startDestination = "mainPage"){
-                    composable(route="mainPage"){
-                        access= mapOf<String,Boolean>(
-                            "menu" to true,
-                            "search" to true
-                        )
-                        title="Home"
-                        MainComp(navController = navState)
-                    }
+                Column(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .fillMaxHeight(0.9f),
+                ) {
+                    NavbarComp(navController = navState, title = title, accessMap = access)
+
+                    // nav
+                    NavHost(
+                        navController = navState,
+                        startDestination = "mainPage",
+                        //popEnterTransition ={ fadeIn(animationSpec = tween(8700)) } ,
+                        //popExitTransition = { fadeOut(animationSpec = tween(8700)) }
+                        ) {
+
+                        composable(route = "mainPage") {
+                            access = mapOf<String, Boolean>(
+                                "bar" to true, "menu" to true, "search" to true
+                            )
+                            title = "Home"
+                            MainComp(navController = navState)
+                        }
 
 
-                    composable(route="watchlistPage"){
-                        access= mapOf<String,Boolean>(
-                            "menu" to true,
-                            "search" to true
-                        )
-                        title="My Watchlist"
-                        WatchListComp(navController = navState)
+                        composable(route = "watchlistPage") {
+                            access = mapOf<String, Boolean>(
+                                "bar" to true, "menu" to true, "search" to true
+                            )
+                            title = "My Watchlist"
+                            WatchListComp(navController = navState)
+                        }
+
+                        composable(route = "accountPage") {
+                            access = mapOf<String, Boolean>(
+                                "bar" to false, "menu" to false, "search" to false
+                            )
+                            title = "account"
+                            AccountComp(navController = navState)
+                        }
                     }
 
 
                 }
+
+
                 BottombarComp(navController = navState)
             }
+
+
         }
     }
 }

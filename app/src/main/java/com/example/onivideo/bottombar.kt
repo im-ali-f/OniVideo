@@ -120,7 +120,9 @@ fun BottombarComp(navController: NavController){
                 btn1Color= bottombarContent
                 btn2Color= bottombarContent
                 btn3Color= bottombarContentSelected
-                /*ToDo inja bayad navigate she*/ },
+                /*ToDo inja bayad navigate she*/
+                navController.navigate("accountPage")
+                                 },
                 Modifier
                     .fillMaxHeight()
                     .width(80.dp)) {

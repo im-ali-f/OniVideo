@@ -169,7 +169,7 @@ fun MainComp(navController: NavController) {
         LazyColumn(
             Modifier
                 .fillMaxWidth()
-                .fillMaxHeight(0.855f)
+                .fillMaxHeight()
         ) {
             //row aval
             item() {
@@ -445,7 +445,7 @@ fun MainComp(navController: NavController) {
             LazyColumn(
                 Modifier
                     .fillMaxWidth()
-                    .fillMaxHeight(0.9f)
+                    .fillMaxHeight()
             ) {
 
                 //row aval
@@ -721,7 +721,7 @@ fun MainComp(navController: NavController) {
         LazyColumn(
             Modifier
                 .fillMaxWidth()
-                .fillMaxHeight(0.88f)
+                .fillMaxHeight()
         ) {
 
             //row aval

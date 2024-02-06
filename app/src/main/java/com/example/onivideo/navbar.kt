@@ -32,50 +32,61 @@ import com.example.onivideo.ui.theme.navBrush2
 
 @Composable
 fun NavbarComp(navController: NavController,title:String,accessMap:Map<String,Boolean>){
-    Row(modifier = Modifier
-        .fillMaxWidth()
-        .height(60.dp)
-        .background(
-            Brush.horizontalGradient(
-                colors = listOf(
-                    navBrush1, navBrush2
+    if(accessMap["bar"] == true) {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(60.dp)
+                .background(
+                    Brush.horizontalGradient(
+                        colors = listOf(
+                            navBrush1, navBrush2
+                        )
+                    )
                 )
-            )
-        )
-        .padding(start = 10.dp, end = 10.dp),
-        horizontalArrangement = Arrangement.SpaceBetween,
-        verticalAlignment = Alignment.CenterVertically
-        //
-    ) {
-        Row(modifier = Modifier
-            .height(60.dp),
+                .padding(start = 10.dp, end = 10.dp),
             horizontalArrangement = Arrangement.SpaceBetween,
-            verticalAlignment = Alignment.CenterVertically) {
-            if(accessMap["menu"]== true){
+            verticalAlignment = Alignment.CenterVertically
+            //
+        ) {
+            Row(
+                modifier = Modifier
+                    .height(60.dp),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                if (accessMap["menu"] == true) {
+                    IconButton(onClick = { /* TODO */ }) {
+                        Icon(
+                            imageVector = Icons.Filled.Menu,
+                            contentDescription = null,
+                            modifier = Modifier.fillMaxSize(),
+                            tint = Color.White
+                        )
+                    }
+                }
+
+                Text(
+                    modifier = Modifier.fillMaxHeight().padding(top = 10.dp, start = 15.dp),
+                    text = "$title",
+                    color = Color.White,
+                    textAlign = TextAlign.Start,
+                    fontSize = 25.sp
+                )
+            }
+            if (accessMap["search"] == true) {
                 IconButton(onClick = { /* TODO */ }) {
                     Icon(
-                        imageVector = Icons.Filled.Menu,
+                        imageVector = Icons.Filled.Search,
                         contentDescription = null,
                         modifier = Modifier.fillMaxSize(),
                         tint = Color.White
                     )
                 }
+
             }
 
-            Text(modifier = Modifier.fillMaxHeight().padding(top=10.dp, start = 15.dp),text = "$title",color= Color.White,textAlign = TextAlign.Start, fontSize = 25.sp)
-        }
-        if(accessMap["search"]== true){
-            IconButton(onClick = { /* TODO */ }) {
-                Icon(
-                    imageVector = Icons.Filled.Search,
-                    contentDescription = null,
-                    modifier = Modifier.fillMaxSize(),
-                    tint = Color.White
-                )
-            }
 
         }
-
-
-        }
+    }
 }

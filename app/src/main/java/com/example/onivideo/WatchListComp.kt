@@ -154,13 +154,11 @@ val watchList = arrayOf<Map<String, Any>>(
 
 @Composable
 fun WatchListComp(navController: NavController){
-    val screenWidth = LocalConfiguration.current.screenWidthDp
-    val screenHeight = LocalConfiguration.current.screenHeightDp
 
         LazyVerticalStaggeredGrid(
             modifier = Modifier
                 .fillMaxWidth()
-                .fillMaxHeight(0.855f),
+                .fillMaxHeight(),
 
             columns = StaggeredGridCells.Fixed(2),
             content = {
