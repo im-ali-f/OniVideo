@@ -38,6 +38,7 @@ import androidx.core.graphics.convertTo
 import androidx.navigation.NavController
 import com.example.onivideo.ui.theme.bottombarBGC
 import com.example.onivideo.ui.theme.bottombarContent
+import com.example.onivideo.ui.theme.bottombarContentSelected
 
 @Composable
 fun BottombarComp(navController: NavController){
@@ -52,7 +53,7 @@ fun BottombarComp(navController: NavController){
 
             // color for chosen menu
             var btn1Color by remember {
-                mutableStateOf(bottombarContent)
+                mutableStateOf(bottombarContentSelected)
             }
             var btn2Color by remember {
                 mutableStateOf(bottombarContent)
@@ -65,14 +66,16 @@ fun BottombarComp(navController: NavController){
             }
 
             IconButton(onClick = {
-                btn4Color=bottombarContent
-                btn1Color= Color.White
+                btn4Color= bottombarContent
+                btn1Color= bottombarContentSelected
                 btn2Color= bottombarContent
                 btn3Color= bottombarContent
-                /*ToDo inja bayad navigate she*/ },
+                /*ToDo inja bayad navigate she*/
+                navController.navigate("mainPage")
+                                 },
                 Modifier
                     .fillMaxHeight()
-                    .width(60.dp)) {
+                    .width(80.dp)) {
                 Column(horizontalAlignment = Alignment.CenterHorizontally) {
                     Icon(
                         imageVector = Icons.TwoTone.Home,
@@ -90,12 +93,14 @@ fun BottombarComp(navController: NavController){
             IconButton(onClick = {
                 btn4Color= bottombarContent
                 btn1Color= bottombarContent
-                btn2Color= Color.White
+                btn2Color= bottombarContentSelected
                 btn3Color= bottombarContent
-                /*ToDo inja bayad navigate she*/ },
+                /*ToDo inja bayad navigate she*/
+                navController.navigate("mainPage2")
+                                 },
                 Modifier
                     .fillMaxHeight()
-                    .width(60.dp)) {
+                    .width(80.dp)) {
                 Column(horizontalAlignment = Alignment.CenterHorizontally) {
                     Icon(
                         painterResource(id =R.drawable.list),
@@ -103,7 +108,7 @@ fun BottombarComp(navController: NavController){
                         Modifier.size(30.dp),
                         tint = btn2Color
                     )
-                    Text(text = "Home", fontSize = 15.sp, color = btn2Color)
+                    Text(text = "Watchlist", fontSize = 15.sp, color = btn2Color)
                 }
 
             }
@@ -113,11 +118,11 @@ fun BottombarComp(navController: NavController){
                 btn4Color= bottombarContent
                 btn1Color= bottombarContent
                 btn2Color= bottombarContent
-                btn3Color= Color.White
+                btn3Color= bottombarContentSelected
                 /*ToDo inja bayad navigate she*/ },
                 Modifier
                     .fillMaxHeight()
-                    .width(60.dp)) {
+                    .width(80.dp)) {
                 Column (horizontalAlignment = Alignment.CenterHorizontally){
                     Icon(
                         imageVector = Icons.TwoTone.AccountCircle,
@@ -125,21 +130,21 @@ fun BottombarComp(navController: NavController){
                         Modifier.size(30.dp),
                         tint = btn3Color
                     )
-                    Text(text = "Home", fontSize = 15.sp, color = btn3Color)
+                    Text(text = "Account", fontSize = 15.sp, color = btn3Color)
                 }
 
             }
 
 
             IconButton(onClick = {
-                btn4Color=Color.White
+                btn4Color= bottombarContentSelected
                 btn1Color= bottombarContent
                 btn2Color= bottombarContent
                 btn3Color= bottombarContent
                                  /*ToDo inja bayad navigate she*/},
                 Modifier
                     .fillMaxHeight()
-                    .width(60.dp)) {
+                    .width(80.dp)) {
                 Column(horizontalAlignment = Alignment.CenterHorizontally) {
                     Icon(
                         imageVector = Icons.TwoTone.Settings,
@@ -147,7 +152,7 @@ fun BottombarComp(navController: NavController){
                         Modifier.size(30.dp),
                         tint = btn4Color
                     )
-                    Text(text = "Home", fontSize = 15.sp, color = btn4Color)
+                    Text(text = "Settings", fontSize = 15.sp, color = btn4Color)
                 }
 
             }

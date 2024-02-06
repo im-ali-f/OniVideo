@@ -15,6 +15,10 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
@@ -30,22 +34,41 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            //nav
-           val navState= rememberNavController()
-            NavHost(navController = navState, startDestination = "mainPage"){
-                composable(route="mainPage"){
-                    val access= mapOf<String,Boolean>(
-                        "menu" to true,
-                        "search" to true
-                    )
 
-                    Column(modifier = Modifier.fillMaxSize().background(mainBGC), verticalArrangement = Arrangement.SpaceBetween) {
-                        NavbarComp(navController = navState,title="Home",access )
-                        MainComp(navController = navState)
-                        BottombarComp(navController = navState)
+           val navState= rememberNavController()
+            Column(modifier = Modifier
+                .fillMaxSize()
+                .background(mainBGC), verticalArrangement = Arrangement.SpaceBetween) {
+                var access by remember{
+                    mutableStateOf(mapOf<String,Boolean>("menu" to true, "search" to true)) }
+                    var title by remember {
+                        mutableStateOf("Home")
                     }
+                    NavbarComp(navController = navState,title=title, accessMap = access )
+
+                // nav
+                NavHost(navController = navState, startDestination = "mainPage"){
+                    composable(route="mainPage"){
+                        access= mapOf<String,Boolean>(
+                            "menu" to true,
+                            "search" to true
+                        )
+                        title="Home"
+                        MainComp(navController = navState)
+                    }
+                    /*
+                    composable(route="mainPage2"){
+                        access= mapOf<String,Boolean>(
+                            "menu" to true,
+                            "search" to false
+                        )
+                        title="hhhhh"
+                        MainComp(navController = navState)
+                    }
+                       */
 
                 }
+                BottombarComp(navController = navState)
             }
         }
     }
