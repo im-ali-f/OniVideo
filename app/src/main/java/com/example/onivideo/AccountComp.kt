@@ -22,8 +22,13 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Close
+import androidx.compose.material.icons.twotone.Close
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -59,10 +64,14 @@ import coil.decode.ImageDecoderDecoder
 import com.example.onivideo.ui.theme.accCircleTempColor
 import com.example.onivideo.ui.theme.accSectionsInnerColor
 import com.example.onivideo.ui.theme.accSectionsOuterColor
+import com.example.onivideo.ui.theme.closePopupColor
+import com.example.onivideo.ui.theme.mainBGC
 import com.example.onivideo.ui.theme.mainFontColor
 import com.example.onivideo.ui.theme.navBrush1
 import com.example.onivideo.ui.theme.navBrush2
+import com.example.onivideo.ui.theme.popupSectionColor
 import com.example.onivideo.ui.theme.secondaryFontColor
+import com.example.onivideo.ui.theme.seperatorColor
 import java.nio.file.WatchEvent
 
 
@@ -77,14 +86,121 @@ fun AccountComp(navController: NavController) {
     var popup by remember {
         mutableStateOf(false)
     }
+
     @Composable
-    fun SubscriptionComp(){
+    fun SubscriptionComp() {
         //main column
 
-        Popup{
-            Box(modifier = Modifier
-                .fillMaxSize()
-                .background(Color.Blue) ) {
+        Popup {
+            Column(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .background(mainBGC)
+            ) {
+
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(10.dp), horizontalArrangement = Arrangement.End
+                ) {
+                    IconButton(
+                        onClick = { popup = false }, modifier = Modifier
+                            .clip(shape = RoundedCornerShape(100))
+                            .background(
+                                Color.White
+                            )
+                            .size(30.dp)
+
+                    ) {
+                        Icon(
+                            imageVector = Icons.TwoTone.Close,
+                            contentDescription = "close popup",
+                            tint = closePopupColor
+                        )
+
+                    }
+
+                }
+
+
+                //texts
+                Column(
+                    Modifier
+                        .fillMaxWidth()
+                        .padding(10.dp),
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    verticalArrangement = Arrangement.SpaceBetween
+                ) {
+                    Text(
+                        text = "Subscription Plan",
+                        fontSize = 25.sp,
+                        fontWeight = FontWeight(900),
+                        color = mainFontColor
+                    )
+
+                    Spacer(modifier = Modifier
+                        .fillMaxWidth()
+                        .height(15.dp))
+
+                    Text(
+                        text = "Full access to all free and premume content",
+                        fontSize = 15.sp,
+                        fontWeight = FontWeight(500),
+                        color = secondaryFontColor
+                    )
+                    Text(
+                        text = "with download also. choose plan based on your",
+                        fontSize = 15.sp,
+                        fontWeight = FontWeight(500),
+                        color = secondaryFontColor
+                    )
+                    Text(
+                        text = "usage. Below there are plam name,price and",
+                        fontSize = 15.sp,
+                        fontWeight = FontWeight(500),
+                        color = secondaryFontColor
+                    )
+                    Text(
+                        text = "validity days. for explose select free plan",
+                        fontSize = 15.sp,
+                        fontWeight = FontWeight(500),
+                        color = secondaryFontColor
+                    )
+                }
+
+                //plan section
+                val scrollState = rememberScrollState()
+                Column(
+                    Modifier
+                        .fillMaxSize()
+                        .clip(RoundedCornerShape(topStart = 30.dp, topEnd = 30.dp))
+                        .background(popupSectionColor)) {
+
+                    //p1
+                    Box(contentAlignment = Alignment.Center,modifier = Modifier
+                        .fillMaxWidth()
+                        .fillMaxHeight(0.14f)
+                        .padding(15.dp)){
+                        Text(
+                            text = "Select Your Subscription Plan",
+                            fontSize = 17.sp,
+                            fontWeight = FontWeight(600),
+                            color = mainFontColor
+                        )
+                    }
+                    Box(modifier = Modifier
+                        .fillMaxWidth()
+                        .height(1.5.dp)
+                        .background(seperatorColor))
+
+                    //plans list
+
+                    Column(modifier = Modifier.fillMaxWidth().height(240.dp).background(Color.Red).verticalScroll(scrollState)) {
+
+                    }
+
+
+                }
 
             }
         }
@@ -96,7 +212,6 @@ fun AccountComp(navController: NavController) {
     if (popup) {
         SubscriptionComp()
     }
-
 
 
     //now acc comp
@@ -558,7 +673,7 @@ fun AccountComp(navController: NavController) {
                             //row 3
 
                             Button(
-                                onClick = { popup = true},
+                                onClick = { popup = true },
                                 modifier = Modifier
                                     .fillMaxWidth()
                                     .clip(shape = RoundedCornerShape(4.dp))
