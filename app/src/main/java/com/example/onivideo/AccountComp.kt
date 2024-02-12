@@ -99,6 +99,11 @@ fun AccountComp(navController: NavController) {
         mutableStateOf(false)
     }
 
+    var payPopup by remember {
+        mutableStateOf(false)
+    }
+
+
     @Composable
     fun SubscriptionComp() {
         //main column
@@ -307,7 +312,7 @@ fun AccountComp(navController: NavController) {
                     Box(modifier = Modifier.fillMaxWidth().padding(10.dp)){
 
                         Button(
-                            onClick = { /*TODO: */ },
+                            onClick = { payPopup = true },
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .clip(shape = RoundedCornerShape(4.dp))
@@ -341,11 +346,111 @@ fun AccountComp(navController: NavController) {
     }
 
 
+
     if (popup) {
         SubscriptionComp()
     }
+    @Composable
+    fun PayComp(){
+        Popup {
+            Column(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .background(mainBGC)
+            ) {
+
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(10.dp), horizontalArrangement = Arrangement.End
+                ) {
+                    IconButton(
+                        onClick = { payPopup = false }, modifier = Modifier
+                            .clip(shape = RoundedCornerShape(100))
+                            .background(
+                                Color.White
+                            )
+                            .size(30.dp)
+
+                    ) {
+                        Icon(
+                            imageVector = Icons.TwoTone.Close,
+                            contentDescription = "close popup",
+                            tint = closePopupColor
+                        )
+
+                    }
+
+                }
+
+                //sec 1
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(85.dp)
+                        .padding(start = 10.dp, end = 10.dp)
+                        .clip(shape = RoundedCornerShape(5.dp))
+                        .background(popupInnerSectionColor)
+                        .selectable(
+                            selected = true,
+                            onClick = {},
+                            role = Role.RadioButton
+                        )
+                ) {
+                    RadioButton(modifier = Modifier.fillMaxHeight(),
+                        colors = RadioButtonDefaults.colors(
+                            selectedColor = radioButtonColor,
+                            unselectedColor = Color.White
+                        ),
+                        selected = true, onClick = {})
 
 
+                    Column(Modifier.fillMaxHeight(), verticalArrangement = Arrangement.Center) {
+                        var price = "10.00"
+
+                        var time = "7 Day(s)"
+
+                        Text(
+                            text = buildAnnotatedString {
+
+                                withStyle(style = SpanStyle(fontSize = 32.sp,
+                                    fontWeight = FontWeight(900),
+                                    color = mainFontColor)){
+                                    append(price)
+                                }
+
+                                withStyle(style = SpanStyle(fontSize = 16.sp,
+                                    fontWeight = FontWeight(700),
+                                    color = mainFontColor)){
+                                    append("   USD / For "+time)
+                                }
+                            },
+
+                            )
+                        Text(
+                            text = "Basic" + " Plan",
+                            fontSize = 16.sp,
+                            fontWeight = FontWeight(500),
+                            color = mainFontColor
+                        )
+                    }
+                }
+
+
+                //sec 2
+
+
+
+
+
+                //sec3
+            }
+        }
+    }
+
+    if (payPopup){
+        PayComp()
+    }
     //now acc comp
     if (screenWidth < 400) {
         val scrollState = rememberScrollState()
