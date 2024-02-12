@@ -40,6 +40,9 @@ class MainActivity : ComponentActivity() {
         setContent {
 
             val navState = rememberNavController()
+            var bottomBar by remember {
+                mutableStateOf(true)
+            }
             Column(
                 modifier = Modifier
                     .fillMaxSize()
@@ -63,7 +66,7 @@ class MainActivity : ComponentActivity() {
                     // nav
                     NavHost(
                         navController = navState,
-                        startDestination = "settingPage",
+                        startDestination = "accountPage",
                         //popEnterTransition ={ fadeIn(animationSpec = tween(8700)) } ,
                         //popExitTransition = { fadeOut(animationSpec = tween(8700)) }
                         ) {
@@ -73,6 +76,7 @@ class MainActivity : ComponentActivity() {
                                 "bar" to true, "menu" to true, "search" to true
                             )
                             title = "Home"
+                            bottomBar=true
                             MainComp(navController = navState)
                         }
 
@@ -82,6 +86,7 @@ class MainActivity : ComponentActivity() {
                                 "bar" to true, "menu" to true, "search" to true
                             )
                             title = "My Watchlist"
+                            bottomBar=true
                             WatchListComp(navController = navState)
                         }
 
@@ -90,6 +95,7 @@ class MainActivity : ComponentActivity() {
                                 "bar" to false, "menu" to false, "search" to false
                             )
                             title = "account"
+                            bottomBar=true
                             AccountComp(navController = navState)
                         }
                         composable(route = "settingPage") {
@@ -97,19 +103,28 @@ class MainActivity : ComponentActivity() {
                                 "bar" to true, "menu" to true, "search" to true
                             )
                             title = "Settings"
+                            bottomBar=true
                             SettingComp(navController = navState)
                         }
+
+
+
+
                     }
 
 
                 }
 
+                if(bottomBar){
+                    BottombarComp(navController = navState)
+                }
 
-                BottombarComp(navController = navState)
             }
 
 
         }
     }
 }
+
+
 

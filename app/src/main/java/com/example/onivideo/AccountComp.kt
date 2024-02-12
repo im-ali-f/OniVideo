@@ -28,7 +28,10 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -47,6 +50,7 @@ import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.viewinterop.AndroidView
+import androidx.compose.ui.window.Popup
 import androidx.navigation.NavController
 import coil.ImageLoader
 import coil.compose.rememberAsyncImagePainter
@@ -68,7 +72,35 @@ fun AccountComp(navController: NavController) {
     val screenWidth = LocalConfiguration.current.screenWidthDp
     val screenHeight = LocalConfiguration.current.screenHeightDp
 
-    if(screenWidth<400){
+
+    //pop up
+    var popup by remember {
+        mutableStateOf(false)
+    }
+    @Composable
+    fun SubscriptionComp(){
+        //main column
+
+        Popup{
+            Box(modifier = Modifier
+                .fillMaxSize()
+                .background(Color.Blue) ) {
+
+            }
+        }
+
+
+    }
+
+
+    if (popup) {
+        SubscriptionComp()
+    }
+
+
+
+    //now acc comp
+    if (screenWidth < 400) {
         val scrollState = rememberScrollState()
         Column(
             modifier = Modifier
@@ -161,14 +193,14 @@ fun AccountComp(navController: NavController) {
                         Column(
                             Modifier
                                 .fillMaxSize()
-                                .padding(10.dp)
-                            , verticalArrangement = Arrangement.SpaceBetween) {
+                                .padding(10.dp), verticalArrangement = Arrangement.SpaceBetween
+                        ) {
                             Column {
                                 //row 1
                                 Row(
                                     Modifier
-                                        .fillMaxWidth()
-                                    , verticalAlignment = Alignment.CenterVertically
+                                        .fillMaxWidth(),
+                                    verticalAlignment = Alignment.CenterVertically
                                 ) {
                                     Text(
                                         text = "Current Plan : ", fontSize = 15.sp,
@@ -194,7 +226,8 @@ fun AccountComp(navController: NavController) {
 
                                 Text(
                                     modifier = Modifier.fillMaxWidth(),
-                                    text = "Subscription expires on january,  20 , 2024", fontSize = 14.sp,
+                                    text = "Subscription expires on january,  20 , 2024",
+                                    fontSize = 14.sp,
                                     color = mainFontColor,
                                     letterSpacing = 1.sp,
                                     fontWeight = FontWeight(400)
@@ -203,20 +236,26 @@ fun AccountComp(navController: NavController) {
 
 
                             //row 3
-
-                            Button(onClick = { /*TODO: nav to upgrade */ }, modifier = Modifier
-                                .fillMaxWidth()
-                                .clip(shape = RoundedCornerShape(4.dp))
-                                .background(
-                                    Brush.horizontalGradient(
-                                        colors = listOf(navBrush1, navBrush2)
+                            Button(
+                                onClick = { popup = true },
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .clip(shape = RoundedCornerShape(4.dp))
+                                    .background(
+                                        Brush.horizontalGradient(
+                                            colors = listOf(navBrush1, navBrush2)
+                                        )
                                     )
-                                )
-                                .height(35.dp), shape = RoundedCornerShape(6.dp), colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent)) {
-                                Text(text = "Upgrade Plan",textAlign = TextAlign.Center,
+                                    .height(35.dp),
+                                shape = RoundedCornerShape(6.dp),
+                                colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent)
+                            ) {
+                                Text(
+                                    text = "Upgrade Plan", textAlign = TextAlign.Center,
                                     color = mainFontColor,
                                     fontSize = 13.sp,
-                                    fontWeight = FontWeight(900))
+                                    fontWeight = FontWeight(900)
+                                )
                             }
 
                         }
@@ -268,78 +307,106 @@ fun AccountComp(navController: NavController) {
                         Column(
                             Modifier
                                 .fillMaxSize()
-                                .padding(10.dp)
-                            , verticalArrangement = Arrangement.SpaceBetween) {
+                                .padding(10.dp), verticalArrangement = Arrangement.SpaceBetween
+                        ) {
 
 
-                            Column(Modifier.fillMaxHeight(0.8f).padding(bottom = 15.dp), verticalArrangement = Arrangement.SpaceBetween) {
+                            Column(
+                                Modifier
+                                    .fillMaxHeight(0.8f)
+                                    .padding(bottom = 15.dp),
+                                verticalArrangement = Arrangement.SpaceBetween
+                            ) {
                                 //button
-                                Button(onClick = { /*TODO: */ }, modifier = Modifier
-                                    .fillMaxWidth()
-                                    .clip(shape = RoundedCornerShape(4.dp))
-                                    .background(accSectionsOuterColor)
-                                    .height(35.dp)
-                                    , shape = RoundedCornerShape(6.dp), colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent), contentPadding = PaddingValues(start=10.dp)
+                                Button(
+                                    onClick = { /*TODO: */ },
+                                    modifier = Modifier
+                                        .fillMaxWidth()
+                                        .clip(shape = RoundedCornerShape(4.dp))
+                                        .background(accSectionsOuterColor)
+                                        .height(35.dp),
+                                    shape = RoundedCornerShape(6.dp),
+                                    colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent),
+                                    contentPadding = PaddingValues(start = 10.dp)
                                 ) {
-                                    Box(Modifier.fillMaxWidth()){
-                                        Text(text = "Dashboard",textAlign = TextAlign.Center,
+                                    Box(Modifier.fillMaxWidth()) {
+                                        Text(
+                                            text = "Dashboard", textAlign = TextAlign.Center,
                                             color = mainFontColor,
                                             fontSize = 13.sp,
-                                            fontWeight = FontWeight(600))
+                                            fontWeight = FontWeight(600)
+                                        )
                                     }
 
                                 }
                                 //button
-                                Button(onClick = { /*TODO: */ }, modifier = Modifier
-                                    .fillMaxWidth()
-                                    .clip(shape = RoundedCornerShape(4.dp))
-                                    .background(accSectionsOuterColor)
-                                    .height(35.dp)
-                                    , shape = RoundedCornerShape(6.dp), colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent), contentPadding = PaddingValues(start=10.dp)
+                                Button(
+                                    onClick = { /*TODO: */ },
+                                    modifier = Modifier
+                                        .fillMaxWidth()
+                                        .clip(shape = RoundedCornerShape(4.dp))
+                                        .background(accSectionsOuterColor)
+                                        .height(35.dp),
+                                    shape = RoundedCornerShape(6.dp),
+                                    colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent),
+                                    contentPadding = PaddingValues(start = 10.dp)
                                 ) {
-                                    Box(Modifier.fillMaxWidth()){
-                                        Text(text = "Edit Profile",textAlign = TextAlign.Center,
+                                    Box(Modifier.fillMaxWidth()) {
+                                        Text(
+                                            text = "Edit Profile", textAlign = TextAlign.Center,
                                             color = mainFontColor,
                                             fontSize = 13.sp,
-                                            fontWeight = FontWeight(600))
+                                            fontWeight = FontWeight(600)
+                                        )
                                     }
 
                                 }
                                 //button
-                                Button(onClick = { /*TODO: */ }, modifier = Modifier
-                                    .fillMaxWidth()
-                                    .clip(shape = RoundedCornerShape(4.dp))
-                                    .background(accSectionsOuterColor)
-                                    .height(35.dp)
-                                    , shape = RoundedCornerShape(6.dp), colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent), contentPadding = PaddingValues(start=10.dp)
+                                Button(
+                                    onClick = { /*TODO: */ },
+                                    modifier = Modifier
+                                        .fillMaxWidth()
+                                        .clip(shape = RoundedCornerShape(4.dp))
+                                        .background(accSectionsOuterColor)
+                                        .height(35.dp),
+                                    shape = RoundedCornerShape(6.dp),
+                                    colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent),
+                                    contentPadding = PaddingValues(start = 10.dp)
                                 ) {
-                                    Box(Modifier.fillMaxWidth()){
-                                        Text(text = "Delete Account",textAlign = TextAlign.Center,
+                                    Box(Modifier.fillMaxWidth()) {
+                                        Text(
+                                            text = "Delete Account", textAlign = TextAlign.Center,
                                             color = mainFontColor,
                                             fontSize = 13.sp,
-                                            fontWeight = FontWeight(600))
+                                            fontWeight = FontWeight(600)
+                                        )
                                     }
 
                                 }
                             }
 
 
-
-
                             //last btn
-                            Button(onClick = { /*TODO: nav to upgrade */ }, modifier = Modifier
-                                .fillMaxWidth()
-                                .clip(shape = RoundedCornerShape(4.dp))
-                                .background(
-                                    Brush.horizontalGradient(
-                                        colors = listOf(navBrush1, navBrush2)
+                            Button(
+                                onClick = { /*TODO: nav to upgrade */ },
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .clip(shape = RoundedCornerShape(4.dp))
+                                    .background(
+                                        Brush.horizontalGradient(
+                                            colors = listOf(navBrush1, navBrush2)
+                                        )
                                     )
-                                )
-                                .height(35.dp), shape = RoundedCornerShape(6.dp), colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent)) {
-                                Text(text = "Logout",textAlign = TextAlign.Center,
+                                    .height(35.dp),
+                                shape = RoundedCornerShape(6.dp),
+                                colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent)
+                            ) {
+                                Text(
+                                    text = "Logout", textAlign = TextAlign.Center,
                                     color = mainFontColor,
                                     fontSize = 13.sp,
-                                    fontWeight = FontWeight(900))
+                                    fontWeight = FontWeight(900)
+                                )
                             }
 
                         }
@@ -353,8 +420,7 @@ fun AccountComp(navController: NavController) {
         }
 
 
-    }
-    else{
+    } else {
         val scrollState = rememberScrollState()
         Column(
             modifier = Modifier
@@ -447,14 +513,14 @@ fun AccountComp(navController: NavController) {
                         Column(
                             Modifier
                                 .fillMaxSize()
-                                .padding(10.dp)
-                            , verticalArrangement = Arrangement.SpaceBetween) {
+                                .padding(10.dp), verticalArrangement = Arrangement.SpaceBetween
+                        ) {
                             Column {
                                 //row 1
                                 Row(
                                     Modifier
-                                        .fillMaxWidth()
-                                    , verticalAlignment = Alignment.CenterVertically
+                                        .fillMaxWidth(),
+                                    verticalAlignment = Alignment.CenterVertically
                                 ) {
                                     Text(
                                         text = "Current Plan : ", fontSize = 18.sp,
@@ -480,7 +546,8 @@ fun AccountComp(navController: NavController) {
 
                                 Text(
                                     modifier = Modifier.fillMaxWidth(),
-                                    text = "Subscription expires on january, 20 ,2024", fontSize = 15.sp,
+                                    text = "Subscription expires on january, 20 ,2024",
+                                    fontSize = 15.sp,
                                     color = mainFontColor,
                                     letterSpacing = 1.sp,
                                     fontWeight = FontWeight(400)
@@ -490,19 +557,26 @@ fun AccountComp(navController: NavController) {
 
                             //row 3
 
-                            Button(onClick = { /*TODO: nav to upgrade */ }, modifier = Modifier
-                                .fillMaxWidth()
-                                .clip(shape = RoundedCornerShape(4.dp))
-                                .background(
-                                    Brush.horizontalGradient(
-                                        colors = listOf(navBrush1, navBrush2)
+                            Button(
+                                onClick = { popup = true},
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .clip(shape = RoundedCornerShape(4.dp))
+                                    .background(
+                                        Brush.horizontalGradient(
+                                            colors = listOf(navBrush1, navBrush2)
+                                        )
                                     )
-                                )
-                                .height(45.dp), shape = RoundedCornerShape(6.dp), colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent)) {
-                                Text(text = "Upgrade Plan",textAlign = TextAlign.Center,
+                                    .height(45.dp),
+                                shape = RoundedCornerShape(6.dp),
+                                colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent)
+                            ) {
+                                Text(
+                                    text = "Upgrade Plan", textAlign = TextAlign.Center,
                                     color = mainFontColor,
                                     fontSize = 16.sp,
-                                    fontWeight = FontWeight(900))
+                                    fontWeight = FontWeight(900)
+                                )
                             }
 
                         }
@@ -554,78 +628,106 @@ fun AccountComp(navController: NavController) {
                         Column(
                             Modifier
                                 .fillMaxSize()
-                                .padding(10.dp)
-                            , verticalArrangement = Arrangement.SpaceBetween) {
+                                .padding(10.dp), verticalArrangement = Arrangement.SpaceBetween
+                        ) {
 
 
-                            Column(Modifier.fillMaxHeight(0.8f).padding(bottom = 15.dp), verticalArrangement = Arrangement.SpaceBetween) {
+                            Column(
+                                Modifier
+                                    .fillMaxHeight(0.8f)
+                                    .padding(bottom = 15.dp),
+                                verticalArrangement = Arrangement.SpaceBetween
+                            ) {
                                 //button
-                                Button(onClick = { /*TODO: */ }, modifier = Modifier
-                                    .fillMaxWidth()
-                                    .clip(shape = RoundedCornerShape(4.dp))
-                                    .background(accSectionsOuterColor)
-                                    .height(45.dp)
-                                    , shape = RoundedCornerShape(6.dp), colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent), contentPadding = PaddingValues(start=10.dp)
+                                Button(
+                                    onClick = { /*TODO: */ },
+                                    modifier = Modifier
+                                        .fillMaxWidth()
+                                        .clip(shape = RoundedCornerShape(4.dp))
+                                        .background(accSectionsOuterColor)
+                                        .height(45.dp),
+                                    shape = RoundedCornerShape(6.dp),
+                                    colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent),
+                                    contentPadding = PaddingValues(start = 10.dp)
                                 ) {
-                                    Box(Modifier.fillMaxWidth()){
-                                        Text(text = "Dashboard",textAlign = TextAlign.Center,
+                                    Box(Modifier.fillMaxWidth()) {
+                                        Text(
+                                            text = "Dashboard", textAlign = TextAlign.Center,
                                             color = mainFontColor,
                                             fontSize = 16.sp,
-                                            fontWeight = FontWeight(600))
+                                            fontWeight = FontWeight(600)
+                                        )
                                     }
 
                                 }
                                 //button
-                                Button(onClick = { /*TODO: */ }, modifier = Modifier
-                                    .fillMaxWidth()
-                                    .clip(shape = RoundedCornerShape(4.dp))
-                                    .background(accSectionsOuterColor)
-                                    .height(45.dp)
-                                    , shape = RoundedCornerShape(6.dp), colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent), contentPadding = PaddingValues(start=10.dp)
+                                Button(
+                                    onClick = { /*TODO: */ },
+                                    modifier = Modifier
+                                        .fillMaxWidth()
+                                        .clip(shape = RoundedCornerShape(4.dp))
+                                        .background(accSectionsOuterColor)
+                                        .height(45.dp),
+                                    shape = RoundedCornerShape(6.dp),
+                                    colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent),
+                                    contentPadding = PaddingValues(start = 10.dp)
                                 ) {
-                                    Box(Modifier.fillMaxWidth()){
-                                        Text(text = "Edit Profile",textAlign = TextAlign.Center,
+                                    Box(Modifier.fillMaxWidth()) {
+                                        Text(
+                                            text = "Edit Profile", textAlign = TextAlign.Center,
                                             color = mainFontColor,
                                             fontSize = 16.sp,
-                                            fontWeight = FontWeight(600))
+                                            fontWeight = FontWeight(600)
+                                        )
                                     }
 
                                 }
                                 //button
-                                Button(onClick = { /*TODO: */ }, modifier = Modifier
-                                    .fillMaxWidth()
-                                    .clip(shape = RoundedCornerShape(4.dp))
-                                    .background(accSectionsOuterColor)
-                                    .height(45.dp)
-                                    , shape = RoundedCornerShape(6.dp), colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent), contentPadding = PaddingValues(start=10.dp)
+                                Button(
+                                    onClick = { /*TODO: */ },
+                                    modifier = Modifier
+                                        .fillMaxWidth()
+                                        .clip(shape = RoundedCornerShape(4.dp))
+                                        .background(accSectionsOuterColor)
+                                        .height(45.dp),
+                                    shape = RoundedCornerShape(6.dp),
+                                    colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent),
+                                    contentPadding = PaddingValues(start = 10.dp)
                                 ) {
-                                    Box(Modifier.fillMaxWidth()){
-                                        Text(text = "Delete Account",textAlign = TextAlign.Center,
+                                    Box(Modifier.fillMaxWidth()) {
+                                        Text(
+                                            text = "Delete Account", textAlign = TextAlign.Center,
                                             color = mainFontColor,
                                             fontSize = 16.sp,
-                                            fontWeight = FontWeight(600))
+                                            fontWeight = FontWeight(600)
+                                        )
                                     }
 
                                 }
                             }
 
 
-
-
                             //last btn
-                            Button(onClick = { /*TODO: nav to upgrade */ }, modifier = Modifier
-                                .fillMaxWidth()
-                                .clip(shape = RoundedCornerShape(4.dp))
-                                .background(
-                                    Brush.horizontalGradient(
-                                        colors = listOf(navBrush1, navBrush2)
+                            Button(
+                                onClick = { /*TODO: nav to upgrade */ },
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .clip(shape = RoundedCornerShape(4.dp))
+                                    .background(
+                                        Brush.horizontalGradient(
+                                            colors = listOf(navBrush1, navBrush2)
+                                        )
                                     )
-                                )
-                                .height(45.dp), shape = RoundedCornerShape(6.dp), colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent)) {
-                                Text(text = "Logout",textAlign = TextAlign.Center,
+                                    .height(45.dp),
+                                shape = RoundedCornerShape(6.dp),
+                                colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent)
+                            ) {
+                                Text(
+                                    text = "Logout", textAlign = TextAlign.Center,
                                     color = mainFontColor,
                                     fontSize = 16.sp,
-                                    fontWeight = FontWeight(900))
+                                    fontWeight = FontWeight(900)
+                                )
                             }
 
                         }
@@ -640,6 +742,9 @@ fun AccountComp(navController: NavController) {
     }
 
 
-
-
 }
+
+
+
+
+
