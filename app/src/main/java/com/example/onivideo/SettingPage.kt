@@ -150,4 +150,118 @@ fun SettingComp(navController: NavController){
 
         }
     }
+    else{
+        Column(modifier = Modifier.fillMaxSize()) {
+
+            Spacer(modifier = Modifier.height(20.dp))
+            Box(modifier = Modifier
+                .fillMaxWidth()
+                .height(1.dp)
+                .background(color = seperatorColor))
+
+            Row (
+                Modifier
+                    .fillMaxWidth()
+                    .padding(start = 10.dp, end = 10.dp, top = 8.dp, bottom = 8.dp), horizontalArrangement = Arrangement.SpaceBetween, verticalAlignment = Alignment.CenterVertically){
+                Text(text = "Enable Push Notification",color= mainFontColor, fontSize = 20.sp, fontWeight = FontWeight(600))
+                var switchState by remember {
+                    mutableStateOf(true)
+                }
+                Switch(checked = switchState, onCheckedChange = {new -> switchState=new},
+                    colors = SwitchDefaults.colors(
+                        checkedThumbColor = switchThumbColor ,
+                        checkedTrackColor = switchTrackColor,
+
+                        ))
+            }
+
+            Box(modifier = Modifier
+                .fillMaxWidth()
+                .height(1.dp)
+                .background(color = seperatorColor))
+
+            Button(onClick = { /*TODO*/ },
+                modifier = Modifier.fillMaxWidth()
+                , colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent),
+                contentPadding = PaddingValues(17.dp)
+            ) {
+                Box(modifier = Modifier.fillMaxWidth()){
+                    Text(text = "About",color= mainFontColor, fontSize = 20.sp, fontWeight = FontWeight(600))
+                }
+            }
+
+            Box(modifier = Modifier
+                .fillMaxWidth()
+                .height(1.5.dp)
+                .background(color = seperatorColor))
+
+
+            Button(onClick = { /*TODO*/ },
+                modifier = Modifier.fillMaxWidth()
+                , colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent),
+                contentPadding = PaddingValues(17.dp)
+            ) {
+                Box(modifier = Modifier.fillMaxWidth()){
+                    Text(text = "Privacy Policy",color= mainFontColor, fontSize = 20.sp, fontWeight = FontWeight(600))
+                }
+            }
+
+            Box(modifier = Modifier
+                .fillMaxWidth()
+                .height(1.5.dp)
+                .background(color = seperatorColor))
+
+
+            Button(onClick = { /*TODO*/ },
+                modifier = Modifier.fillMaxWidth()
+                , colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent),
+                contentPadding = PaddingValues(17.dp)
+            ) {
+                Box(modifier = Modifier.fillMaxWidth()){
+                    Text(text = "Rate App",color= mainFontColor, fontSize = 20.sp, fontWeight = FontWeight(600))
+                }
+            }
+
+            Box(modifier = Modifier
+                .fillMaxWidth()
+                .height(1.5.dp)
+                .background(color = seperatorColor))
+
+
+            Button(onClick = { /*TODO*/ },
+                modifier = Modifier.fillMaxWidth()
+                , colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent),
+                contentPadding = PaddingValues(17.dp)
+            ) {
+                Box(modifier = Modifier.fillMaxWidth()){
+                    Text(text = "Share App",color= mainFontColor, fontSize = 20.sp, fontWeight = FontWeight(600))
+                }
+            }
+
+            Box(modifier = Modifier
+                .fillMaxWidth()
+                .height(1.dp)
+                .background(color = seperatorColor))
+
+
+            Button(onClick = { /*TODO*/ },
+                modifier = Modifier.fillMaxWidth()
+                , colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent),
+                contentPadding = PaddingValues(17.dp)
+            ) {
+                Box(modifier = Modifier.fillMaxWidth()){
+                    Text(text = "More App",color= mainFontColor, fontSize = 20.sp, fontWeight = FontWeight(600))
+                }
+            }
+
+            Box(modifier = Modifier
+                .fillMaxWidth()
+                .height(1.5.dp)
+                .background(color = seperatorColor))
+
+        }
+
+
+
+    }
 }
