@@ -22,3 +22,10 @@ val brush1=Color(0xFF5E5E5E)
 val brush2=Color(0xFFA4A358)
 
 val mainFontColor= Color(0xFFE8E8E8)
+val secondaryFontColor= Color(0xFF909091)
+
+val accCircleTempColor=Color(0xFF489FFA)
+val accSectionsOuterColor= Color(0xFF282C38)
+val accSectionsInnerColor= Color(0xFF1E212B)
+
+
