@@ -23,6 +23,8 @@ val brush2=Color(0xFFA4A358)
 
 val mainFontColor= Color(0xFFE8E8E8)
 val secondaryFontColor= Color(0xFF909091)
+val redFontColor= Color(0xFFE51A62)
+
 
 val accCircleTempColor=Color(0xFF489FFA)
 val accSectionsOuterColor= Color(0xFF282C38)
@@ -31,7 +33,7 @@ val closePopupColor= Color(0xFFFF183E)
 val popupSectionColor= Color(0xFF1E212B)
 val popupInnerSectionColor= Color(0xFF263139)
 val radioButtonColor= Color(0xFFFE1A63)
-
+val popupPaymentColor= Color(0xFF15161B)
 
 
 val seperatorColor = Color(0xFF2C2E33)

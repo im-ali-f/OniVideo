@@ -6,6 +6,7 @@ import android.os.Build.VERSION.SDK_INT
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.gestures.scrollable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -79,8 +80,10 @@ import com.example.onivideo.ui.theme.mainFontColor
 import com.example.onivideo.ui.theme.navBrush1
 import com.example.onivideo.ui.theme.navBrush2
 import com.example.onivideo.ui.theme.popupInnerSectionColor
+import com.example.onivideo.ui.theme.popupPaymentColor
 import com.example.onivideo.ui.theme.popupSectionColor
 import com.example.onivideo.ui.theme.radioButtonColor
+import com.example.onivideo.ui.theme.redFontColor
 import com.example.onivideo.ui.theme.secondaryFontColor
 import com.example.onivideo.ui.theme.seperatorColor
 import kotlinx.coroutines.selects.select
@@ -96,11 +99,11 @@ fun AccountComp(navController: NavController) {
 
     //pop up
     var popup by remember {
-        mutableStateOf(false)
+        mutableStateOf(true)
     }
 
     var payPopup by remember {
-        mutableStateOf(false)
+        mutableStateOf(true)
     }
 
 
@@ -309,16 +312,20 @@ fun AccountComp(navController: NavController) {
                         }
 
                     }
-                    Box(modifier = Modifier.fillMaxWidth().padding(10.dp)){
+                    Box(modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(10.dp)){
 
                         Button(
                             onClick = { payPopup = true },
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .clip(shape = RoundedCornerShape(4.dp))
-                                .background( Brush.horizontalGradient(
-                                    colors = listOf(navBrush1, navBrush2)
-                                ))
+                                .background(
+                                    Brush.horizontalGradient(
+                                        colors = listOf(navBrush1, navBrush2)
+                                    )
+                                )
                                 .height(50.dp),
                             shape = RoundedCornerShape(6.dp),
                             colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent),
@@ -382,68 +389,321 @@ fun AccountComp(navController: NavController) {
                     }
 
                 }
-
-                //sec 1
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(85.dp)
-                        .padding(start = 10.dp, end = 10.dp)
-                        .clip(shape = RoundedCornerShape(5.dp))
-                        .background(popupInnerSectionColor)
-                        .selectable(
-                            selected = true,
-                            onClick = {},
-                            role = Role.RadioButton
-                        )
-                ) {
-                    RadioButton(modifier = Modifier.fillMaxHeight(),
-                        colors = RadioButtonDefaults.colors(
-                            selectedColor = radioButtonColor,
-                            unselectedColor = Color.White
-                        ),
-                        selected = true, onClick = {})
-
-
-                    Column(Modifier.fillMaxHeight(), verticalArrangement = Arrangement.Center) {
-                        var price = "10.00"
-
-                        var time = "7 Day(s)"
-
-                        Text(
-                            text = buildAnnotatedString {
-
-                                withStyle(style = SpanStyle(fontSize = 32.sp,
-                                    fontWeight = FontWeight(900),
-                                    color = mainFontColor)){
-                                    append(price)
-                                }
-
-                                withStyle(style = SpanStyle(fontSize = 16.sp,
-                                    fontWeight = FontWeight(700),
-                                    color = mainFontColor)){
-                                    append("   USD / For "+time)
-                                }
-                            },
-
+                //main column( hame injan joz close)
+                var scrollSt= rememberScrollState()
+                Column(modifier = Modifier
+                    .fillMaxSize()
+                    .verticalScroll(scrollSt)) {
+                    //sec 1
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(85.dp)
+                            .padding(start = 10.dp, end = 10.dp)
+                            .clip(shape = RoundedCornerShape(5.dp))
+                            .background(popupInnerSectionColor)
+                            .selectable(
+                                selected = true,
+                                onClick = {},
+                                role = Role.RadioButton
                             )
-                        Text(
-                            text = "Basic" + " Plan",
-                            fontSize = 16.sp,
-                            fontWeight = FontWeight(500),
-                            color = mainFontColor
-                        )
+                    ) {
+                        RadioButton(modifier = Modifier.fillMaxHeight(),
+                            colors = RadioButtonDefaults.colors(
+                                selectedColor = radioButtonColor,
+                                unselectedColor = Color.White
+                            ),
+                            selected = true, onClick = {})
+
+
+                        Column(Modifier.fillMaxHeight(), verticalArrangement = Arrangement.Center) {
+                            var price = "10.00"
+
+                            var time = "7 Day(s)"
+
+                            Text(
+                                text = buildAnnotatedString {
+
+                                    withStyle(style = SpanStyle(fontSize = 32.sp,
+                                        fontWeight = FontWeight(900),
+                                        color = mainFontColor)){
+                                        append(price)
+                                    }
+
+                                    withStyle(style = SpanStyle(fontSize = 16.sp,
+                                        fontWeight = FontWeight(700),
+                                        color = mainFontColor)){
+                                        append("   USD / For "+time)
+                                    }
+                                },
+
+                                )
+                            Text(
+                                text = "Basic" + " Plan",
+                                fontSize = 16.sp,
+                                fontWeight = FontWeight(500),
+                                color = mainFontColor
+                            )
+                        }
                     }
+
+
+                    //sec 2
+                    Box(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(230.dp)//change
+                            .padding(10.dp, 15.dp, 10.dp, 5.dp)
+
+                    ) {
+                        Column(
+                            Modifier
+                                .fillMaxSize()
+                                .clip(RoundedCornerShape(10.dp))
+                        ) {
+                            Box(
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .fillMaxHeight(0.25f)
+                                    .background(accSectionsOuterColor), contentAlignment = Alignment.Center
+                            ) {
+                                Text(
+                                    text = "User Information", fontSize = 16.sp,
+                                    color = mainFontColor,
+                                    fontWeight = FontWeight.Bold
+                                )
+
+                            }
+                            Spacer(
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .height(1.dp)
+                            )
+                            Box(
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .fillMaxHeight()
+                                    .background(accSectionsInnerColor)
+                            ) {
+
+                                Column(
+                                    Modifier
+                                        .fillMaxSize()
+                                        .padding(10.dp), verticalArrangement = Arrangement.SpaceBetween
+                                ) {
+                                    Column {
+                                        //row 1
+                                        Row(
+                                            Modifier
+                                                .fillMaxWidth(),
+                                            verticalAlignment = Alignment.CenterVertically
+                                        ) {
+                                            Text(
+                                                text = "You have selected:- ", fontSize = 15.sp,
+                                                color = mainFontColor,
+                                                fontWeight = FontWeight.Bold
+                                            )
+                                            Box(
+                                                modifier = Modifier
+                                                    .size(70.dp, 27.dp)
+                                                    .clip(RoundedCornerShape(4.dp))
+                                                    .background(accSectionsOuterColor),
+                                                contentAlignment = Alignment.Center
+                                            ) {
+                                                Text(
+                                                    text = "Basic Plan", fontSize = 13.sp,
+                                                    textAlign = TextAlign.Center,
+                                                    color = mainFontColor,
+                                                    fontWeight = FontWeight(600)
+                                                )
+                                            }
+                                        }
+                                        //row2
+
+                                        Text(text =buildAnnotatedString {
+
+                                            withStyle(style = SpanStyle(fontSize = 14.sp,
+                                                color = mainFontColor,
+                                                letterSpacing = 0.6.sp,
+                                                fontWeight = FontWeight(400))){
+                                                append("You are logged in as ")
+                                            }
+
+                                            withStyle(style = SpanStyle(fontSize = 14.sp,
+                                                color = redFontColor,
+                                                letterSpacing = 0.6.sp,
+                                                fontWeight = FontWeight(400))){
+                                                append("sample@gmail.com")
+                                            }
+
+                                            withStyle(style = SpanStyle(fontSize = 14.sp,
+                                                color = mainFontColor,
+                                                letterSpacing = 0.6.sp,
+                                                fontWeight = FontWeight(400))){
+                                                append(". if you would like to use Diffrent account for this subscription,")
+                                            }
+                                            withStyle(style = SpanStyle(fontSize = 14.sp,
+                                                color = redFontColor,
+                                                letterSpacing = 0.6.sp,
+                                                fontWeight = FontWeight(400))){
+                                                append(" Logout ")
+                                            }
+                                            withStyle(style = SpanStyle(fontSize = 14.sp,
+                                                color = mainFontColor,
+                                                letterSpacing = 0.6.sp,
+                                                fontWeight = FontWeight(400))){
+                                                append("Now.")
+                                            }
+                                        })
+                                    }
+
+
+                                    //row 3
+                                    Button(
+                                        onClick = { popup = true },
+                                        modifier = Modifier
+                                            .fillMaxWidth()
+                                            .clip(shape = RoundedCornerShape(4.dp))
+                                            .background(
+                                                Brush.horizontalGradient(
+                                                    colors = listOf(navBrush1, navBrush2)
+                                                )
+                                            )
+                                            .height(40.dp),
+                                        shape = RoundedCornerShape(6.dp),
+                                        colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent)
+                                    ) {
+                                        Text(
+                                            text = "Change Plan", textAlign = TextAlign.Center,
+                                            color = mainFontColor,
+                                            fontSize = 19.sp,
+                                            fontWeight = FontWeight(500)
+                                        )
+                                    }
+
+                                }
+
+                            }
+                        }
+
+                    }
+
+
+
+
+                    //sec3
+                    Box(modifier = Modifier.fillMaxWidth()){
+                        Text(modifier = Modifier
+                            .fillMaxWidth()
+                            .clickable { /*todo:copun popup*/ },text = "I have copon code", fontSize = 16.sp, fontWeight = FontWeight(600), color = redFontColor, textAlign = TextAlign.Center,)
+
+                    }
+
+
+                    //sec4
+                    var innerScrollState= rememberScrollState()
+                    Box(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(10.dp, 15.dp, 10.dp, 5.dp)
+
+
+                    ) {
+                        Column(
+                            Modifier
+                                .fillMaxSize()
+                                .clip(RoundedCornerShape(10.dp))
+                        ) {
+                            Box(
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .height(50.dp)
+                                    .background(accSectionsOuterColor), contentAlignment = Alignment.Center
+                            ) {
+                                Text(
+                                    text = "Payment Option", fontSize = 16.sp,
+                                    color = mainFontColor,
+                                    fontWeight = FontWeight.Bold
+                                )
+
+                            }
+                            Spacer(
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .height(1.dp)
+                            )
+                            Box(
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .fillMaxHeight()
+                                    .background(accSectionsInnerColor)
+                            ) {
+
+                                Column(
+                                    Modifier
+                                        .fillMaxSize()
+                                        .padding(10.dp), verticalArrangement = Arrangement.SpaceBetween
+                                ) {
+
+                                    //radio buttons ...
+
+
+
+                                    val radioList = listOf<String>("Paypal", "Stipe", "Razorpay", "Paystack","Instamojo")
+                                    var (selectedItem, selected) = remember {
+                                        mutableStateOf("")
+                                    }
+                                        radioList.forEach { item ->
+                                            Row(
+                                                modifier = Modifier
+                                                    .fillMaxWidth()
+                                                    .height(40.dp)
+                                                    .clip(shape = RoundedCornerShape(5.dp))
+                                                    .background(popupPaymentColor)
+                                                    .selectable(
+                                                        selected = (selectedItem == item),
+                                                        onClick = { selected(item) },
+                                                        role = Role.RadioButton
+                                                    )
+                                            ) {
+                                                RadioButton(modifier = Modifier.fillMaxHeight(),
+                                                    colors = RadioButtonDefaults.colors(
+                                                        selectedColor = radioButtonColor,
+                                                        unselectedColor = mainFontColor
+                                                    ),
+                                                    selected = (selectedItem == item), onClick = { selected(item) })
+
+
+                                                Column(Modifier.fillMaxHeight(), verticalArrangement = Arrangement.Center) {
+                                                    Text(
+                                                        text = item,
+                                                        fontSize = 16.sp,
+                                                        fontWeight = FontWeight(500),
+                                                        color = mainFontColor
+                                                    )
+                                                }
+                                            }
+                                            Spacer(modifier = Modifier
+                                                .fillMaxWidth()
+                                                .height(10.dp))
+                                        }
+
+
+
+
+
+                                    //end radio
+                                }
+
+                            }
+                        }
+
+                    }
+
+
+                    //end
                 }
 
-
-                //sec 2
-
-
-
-
-
-                //sec3
             }
         }
     }
