@@ -20,6 +20,8 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.selection.selectable
+import androidx.compose.foundation.selection.selectableGroup
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
@@ -29,6 +31,8 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.RadioButton
+import androidx.compose.material3.RadioButtonDefaults
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -49,8 +53,13 @@ import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.text.AnnotatedString
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -69,9 +78,12 @@ import com.example.onivideo.ui.theme.mainBGC
 import com.example.onivideo.ui.theme.mainFontColor
 import com.example.onivideo.ui.theme.navBrush1
 import com.example.onivideo.ui.theme.navBrush2
+import com.example.onivideo.ui.theme.popupInnerSectionColor
 import com.example.onivideo.ui.theme.popupSectionColor
+import com.example.onivideo.ui.theme.radioButtonColor
 import com.example.onivideo.ui.theme.secondaryFontColor
 import com.example.onivideo.ui.theme.seperatorColor
+import kotlinx.coroutines.selects.select
 import java.nio.file.WatchEvent
 
 
@@ -138,9 +150,11 @@ fun AccountComp(navController: NavController) {
                         color = mainFontColor
                     )
 
-                    Spacer(modifier = Modifier
-                        .fillMaxWidth()
-                        .height(15.dp))
+                    Spacer(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(15.dp)
+                    )
 
                     Text(
                         text = "Full access to all free and premume content",
@@ -174,33 +188,151 @@ fun AccountComp(navController: NavController) {
                     Modifier
                         .fillMaxSize()
                         .clip(RoundedCornerShape(topStart = 30.dp, topEnd = 30.dp))
-                        .background(popupSectionColor)) {
+                        .background(popupSectionColor),
+                    verticalArrangement = Arrangement.SpaceBetween
+                ) {
+
 
                     //p1
-                    Box(contentAlignment = Alignment.Center,modifier = Modifier
-                        .fillMaxWidth()
-                        .fillMaxHeight(0.14f)
-                        .padding(15.dp)){
-                        Text(
-                            text = "Select Your Subscription Plan",
-                            fontSize = 17.sp,
-                            fontWeight = FontWeight(600),
-                            color = mainFontColor
+                    Column {
+                        Box(
+                            contentAlignment = Alignment.Center, modifier = Modifier
+                                .fillMaxWidth()
+                                .fillMaxHeight(0.14f)
+                                .padding(15.dp)
+                        ) {
+                            Text(
+                                text = "Select Your Subscription Plan",
+                                fontSize = 17.sp,
+                                fontWeight = FontWeight(600),
+                                color = mainFontColor
+                            )
+                        }
+                        Box(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .height(1.5.dp)
+                                .background(seperatorColor)
                         )
                     }
-                    Box(modifier = Modifier
-                        .fillMaxWidth()
-                        .height(1.5.dp)
-                        .background(seperatorColor))
+
 
                     //plans list
 
-                    Column(modifier = Modifier.fillMaxWidth().height(240.dp).background(Color.Red).verticalScroll(scrollState)) {
+                    val radioList = listOf<String>("Basic", "Premume", "Platinum", "Free")
+                    var (selectedItem, selected) = remember {
+                        mutableStateOf(radioList[0])
+                    }
+                    var height= if(screenWidth <400)0.77f else 0.85f
+                    Column(
+                        modifier = Modifier
+                            .selectableGroup()
+                            .fillMaxWidth()
+                            .fillMaxHeight(height)
+                            .verticalScroll(scrollState)
+                            .padding(10.dp, 10.dp, 10.dp, 0.dp),
+
+                    ) {
+
+                        radioList.forEach { item ->
+                            Row(
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .height(85.dp)
+                                    .clip(shape = RoundedCornerShape(5.dp))
+                                    .background(popupInnerSectionColor)
+                                    .selectable(
+                                        selected = (selectedItem == item),
+                                        onClick = { selected(item) },
+                                        role = Role.RadioButton
+                                    )
+                            ) {
+                                RadioButton(modifier = Modifier.fillMaxHeight(),
+                                    colors = RadioButtonDefaults.colors(
+                                    selectedColor = radioButtonColor,
+                                    unselectedColor = Color.White
+                                ),
+                                    selected = (selectedItem == item), onClick = { selected(item) })
+
+
+                                Column(Modifier.fillMaxHeight(), verticalArrangement = Arrangement.Center) {
+                                    var price = when(item){
+                                        "Basic" -> "10.00"
+                                        "Premume" -> "29.99"
+                                        "Platinum" -> "99.00"
+                                        "Free" -> "0.00"
+                                        else -> ""
+
+                                    }
+
+                                    var time = when(item){
+                                        "Basic" -> "7 Day(s)"
+                                        "Premume" -> "1 Month(s)"
+                                        "Platinum" -> "1 Year(s)"
+                                        "Free" -> "1 Day(s)"
+                                        else -> ""
+
+                                    }
+                                    Text(
+                                        text = buildAnnotatedString {
+
+                                            withStyle(style = SpanStyle(fontSize = 32.sp,
+                                                fontWeight = FontWeight(900),
+                                                color = mainFontColor)){
+                                                append(price)
+                                            }
+
+                                            withStyle(style = SpanStyle(fontSize = 16.sp,
+                                                fontWeight = FontWeight(700),
+                                                color = mainFontColor)){
+                                                append("   USD / For "+time)
+                                            }
+                                        },
+
+                                    )
+                                    Text(
+                                        text = item + " Plan",
+                                        fontSize = 16.sp,
+                                        fontWeight = FontWeight(500),
+                                        color = mainFontColor
+                                    )
+                                }
+                            }
+                            Spacer(modifier = Modifier
+                                .fillMaxWidth()
+                                .height(10.dp))
+                        }
+
+                    }
+                    Box(modifier = Modifier.fillMaxWidth().padding(10.dp)){
+
+                        Button(
+                            onClick = { /*TODO: */ },
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .clip(shape = RoundedCornerShape(4.dp))
+                                .background( Brush.horizontalGradient(
+                                    colors = listOf(navBrush1, navBrush2)
+                                ))
+                                .height(50.dp),
+                            shape = RoundedCornerShape(6.dp),
+                            colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent),
+                            contentPadding = PaddingValues(start = 10.dp)
+                        ) {
+                            Text(
+                                text = "PROCEED", textAlign = TextAlign.Center,
+                                color = mainFontColor,
+                                fontSize = 17.sp,
+                                fontWeight = FontWeight(600)
+                            )
+                        }
 
                     }
 
-
                 }
+
+                //button
+
 
             }
         }
