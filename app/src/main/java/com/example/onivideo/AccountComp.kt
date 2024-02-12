@@ -20,6 +20,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.selection.selectableGroup
@@ -36,6 +37,8 @@ import androidx.compose.material3.RadioButton
 import androidx.compose.material3.RadioButtonDefaults
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.getValue
@@ -66,6 +69,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.compose.ui.window.Popup
+import androidx.compose.ui.window.PopupProperties
+import androidx.compose.ui.window.SecureFlagPolicy
 import androidx.navigation.NavController
 import coil.ImageLoader
 import coil.compose.rememberAsyncImagePainter
@@ -79,6 +84,7 @@ import com.example.onivideo.ui.theme.mainBGC
 import com.example.onivideo.ui.theme.mainFontColor
 import com.example.onivideo.ui.theme.navBrush1
 import com.example.onivideo.ui.theme.navBrush2
+import com.example.onivideo.ui.theme.popupCoponBGCalpha
 import com.example.onivideo.ui.theme.popupInnerSectionColor
 import com.example.onivideo.ui.theme.popupPaymentColor
 import com.example.onivideo.ui.theme.popupSectionColor
@@ -103,6 +109,10 @@ fun AccountComp(navController: NavController) {
     }
 
     var payPopup by remember {
+        mutableStateOf(true)
+    }
+
+    var popupCopon by remember {
         mutableStateOf(true)
     }
 
@@ -231,7 +241,7 @@ fun AccountComp(navController: NavController) {
                     var (selectedItem, selected) = remember {
                         mutableStateOf(radioList[0])
                     }
-                    var height= if(screenWidth <400)0.77f else 0.85f
+                    var height = if (screenWidth < 400) 0.77f else 0.85f
                     Column(
                         modifier = Modifier
                             .selectableGroup()
@@ -240,7 +250,7 @@ fun AccountComp(navController: NavController) {
                             .verticalScroll(scrollState)
                             .padding(10.dp, 10.dp, 10.dp, 0.dp),
 
-                    ) {
+                        ) {
 
                         radioList.forEach { item ->
                             Row(
@@ -257,14 +267,17 @@ fun AccountComp(navController: NavController) {
                             ) {
                                 RadioButton(modifier = Modifier.fillMaxHeight(),
                                     colors = RadioButtonDefaults.colors(
-                                    selectedColor = radioButtonColor,
-                                    unselectedColor = Color.White
-                                ),
+                                        selectedColor = radioButtonColor,
+                                        unselectedColor = Color.White
+                                    ),
                                     selected = (selectedItem == item), onClick = { selected(item) })
 
 
-                                Column(Modifier.fillMaxHeight(), verticalArrangement = Arrangement.Center) {
-                                    var price = when(item){
+                                Column(
+                                    Modifier.fillMaxHeight(),
+                                    verticalArrangement = Arrangement.Center
+                                ) {
+                                    var price = when (item) {
                                         "Basic" -> "10.00"
                                         "Premume" -> "29.99"
                                         "Platinum" -> "99.00"
@@ -273,7 +286,7 @@ fun AccountComp(navController: NavController) {
 
                                     }
 
-                                    var time = when(item){
+                                    var time = when (item) {
                                         "Basic" -> "7 Day(s)"
                                         "Premume" -> "1 Month(s)"
                                         "Platinum" -> "1 Year(s)"
@@ -284,20 +297,28 @@ fun AccountComp(navController: NavController) {
                                     Text(
                                         text = buildAnnotatedString {
 
-                                            withStyle(style = SpanStyle(fontSize = 32.sp,
-                                                fontWeight = FontWeight(900),
-                                                color = mainFontColor)){
+                                            withStyle(
+                                                style = SpanStyle(
+                                                    fontSize = 32.sp,
+                                                    fontWeight = FontWeight(900),
+                                                    color = mainFontColor
+                                                )
+                                            ) {
                                                 append(price)
                                             }
 
-                                            withStyle(style = SpanStyle(fontSize = 16.sp,
-                                                fontWeight = FontWeight(700),
-                                                color = mainFontColor)){
-                                                append("   USD / For "+time)
+                                            withStyle(
+                                                style = SpanStyle(
+                                                    fontSize = 16.sp,
+                                                    fontWeight = FontWeight(700),
+                                                    color = mainFontColor
+                                                )
+                                            ) {
+                                                append("   USD / For " + time)
                                             }
                                         },
 
-                                    )
+                                        )
                                     Text(
                                         text = item + " Plan",
                                         fontSize = 16.sp,
@@ -306,15 +327,19 @@ fun AccountComp(navController: NavController) {
                                     )
                                 }
                             }
-                            Spacer(modifier = Modifier
-                                .fillMaxWidth()
-                                .height(10.dp))
+                            Spacer(
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .height(10.dp)
+                            )
                         }
 
                     }
-                    Box(modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(10.dp)){
+                    Box(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(10.dp)
+                    ) {
 
                         Button(
                             onClick = { payPopup = true },
@@ -358,7 +383,7 @@ fun AccountComp(navController: NavController) {
         SubscriptionComp()
     }
     @Composable
-    fun PayComp(){
+    fun PayComp() {
         Popup {
             Column(
                 modifier = Modifier
@@ -390,10 +415,12 @@ fun AccountComp(navController: NavController) {
 
                 }
                 //main column( hame injan joz close)
-                var scrollSt= rememberScrollState()
-                Column(modifier = Modifier
-                    .fillMaxSize()
-                    .verticalScroll(scrollSt)) {
+                var scrollSt = rememberScrollState()
+                Column(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .verticalScroll(scrollSt)
+                ) {
                     //sec 1
                     Row(
                         modifier = Modifier
@@ -424,16 +451,24 @@ fun AccountComp(navController: NavController) {
                             Text(
                                 text = buildAnnotatedString {
 
-                                    withStyle(style = SpanStyle(fontSize = 32.sp,
-                                        fontWeight = FontWeight(900),
-                                        color = mainFontColor)){
+                                    withStyle(
+                                        style = SpanStyle(
+                                            fontSize = 32.sp,
+                                            fontWeight = FontWeight(900),
+                                            color = mainFontColor
+                                        )
+                                    ) {
                                         append(price)
                                     }
 
-                                    withStyle(style = SpanStyle(fontSize = 16.sp,
-                                        fontWeight = FontWeight(700),
-                                        color = mainFontColor)){
-                                        append("   USD / For "+time)
+                                    withStyle(
+                                        style = SpanStyle(
+                                            fontSize = 16.sp,
+                                            fontWeight = FontWeight(700),
+                                            color = mainFontColor
+                                        )
+                                    ) {
+                                        append("   USD / For " + time)
                                     }
                                 },
 
@@ -465,7 +500,8 @@ fun AccountComp(navController: NavController) {
                                 modifier = Modifier
                                     .fillMaxWidth()
                                     .fillMaxHeight(0.25f)
-                                    .background(accSectionsOuterColor), contentAlignment = Alignment.Center
+                                    .background(accSectionsOuterColor),
+                                contentAlignment = Alignment.Center
                             ) {
                                 Text(
                                     text = "User Information", fontSize = 16.sp,
@@ -489,7 +525,8 @@ fun AccountComp(navController: NavController) {
                                 Column(
                                     Modifier
                                         .fillMaxSize()
-                                        .padding(10.dp), verticalArrangement = Arrangement.SpaceBetween
+                                        .padding(10.dp),
+                                    verticalArrangement = Arrangement.SpaceBetween
                                 ) {
                                     Column {
                                         //row 1
@@ -520,38 +557,58 @@ fun AccountComp(navController: NavController) {
                                         }
                                         //row2
 
-                                        Text(text =buildAnnotatedString {
+                                        Text(text = buildAnnotatedString {
 
-                                            withStyle(style = SpanStyle(fontSize = 14.sp,
-                                                color = mainFontColor,
-                                                letterSpacing = 0.6.sp,
-                                                fontWeight = FontWeight(400))){
+                                            withStyle(
+                                                style = SpanStyle(
+                                                    fontSize = 14.sp,
+                                                    color = mainFontColor,
+                                                    letterSpacing = 0.6.sp,
+                                                    fontWeight = FontWeight(400)
+                                                )
+                                            ) {
                                                 append("You are logged in as ")
                                             }
 
-                                            withStyle(style = SpanStyle(fontSize = 14.sp,
-                                                color = redFontColor,
-                                                letterSpacing = 0.6.sp,
-                                                fontWeight = FontWeight(400))){
+                                            withStyle(
+                                                style = SpanStyle(
+                                                    fontSize = 14.sp,
+                                                    color = redFontColor,
+                                                    letterSpacing = 0.6.sp,
+                                                    fontWeight = FontWeight(400)
+                                                )
+                                            ) {
                                                 append("sample@gmail.com")
                                             }
 
-                                            withStyle(style = SpanStyle(fontSize = 14.sp,
-                                                color = mainFontColor,
-                                                letterSpacing = 0.6.sp,
-                                                fontWeight = FontWeight(400))){
+                                            withStyle(
+                                                style = SpanStyle(
+                                                    fontSize = 14.sp,
+                                                    color = mainFontColor,
+                                                    letterSpacing = 0.6.sp,
+                                                    fontWeight = FontWeight(400)
+                                                )
+                                            ) {
                                                 append(". if you would like to use Diffrent account for this subscription,")
                                             }
-                                            withStyle(style = SpanStyle(fontSize = 14.sp,
-                                                color = redFontColor,
-                                                letterSpacing = 0.6.sp,
-                                                fontWeight = FontWeight(400))){
+                                            withStyle(
+                                                style = SpanStyle(
+                                                    fontSize = 14.sp,
+                                                    color = redFontColor,
+                                                    letterSpacing = 0.6.sp,
+                                                    fontWeight = FontWeight(400)
+                                                )
+                                            ) {
                                                 append(" Logout ")
                                             }
-                                            withStyle(style = SpanStyle(fontSize = 14.sp,
-                                                color = mainFontColor,
-                                                letterSpacing = 0.6.sp,
-                                                fontWeight = FontWeight(400))){
+                                            withStyle(
+                                                style = SpanStyle(
+                                                    fontSize = 14.sp,
+                                                    color = mainFontColor,
+                                                    letterSpacing = 0.6.sp,
+                                                    fontWeight = FontWeight(400)
+                                                )
+                                            ) {
                                                 append("Now.")
                                             }
                                         })
@@ -569,7 +626,7 @@ fun AccountComp(navController: NavController) {
                                                     colors = listOf(navBrush1, navBrush2)
                                                 )
                                             )
-                                            .height(40.dp),
+                                            .height(45.dp),
                                         shape = RoundedCornerShape(6.dp),
                                         colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent)
                                     ) {
@@ -589,19 +646,23 @@ fun AccountComp(navController: NavController) {
                     }
 
 
-
-
                     //sec3
-                    Box(modifier = Modifier.fillMaxWidth()){
-                        Text(modifier = Modifier
-                            .fillMaxWidth()
-                            .clickable { /*todo:copun popup*/ },text = "I have copon code", fontSize = 16.sp, fontWeight = FontWeight(600), color = redFontColor, textAlign = TextAlign.Center,)
+                    Box(modifier = Modifier.fillMaxWidth(), contentAlignment = Alignment.Center) {
+                        Text(
+                            modifier = Modifier
+                                .clickable { popupCopon = true },
+                            text = "I have copon code",
+                            fontSize = 16.sp,
+                            fontWeight = FontWeight(600),
+                            color = redFontColor,
+                            textAlign = TextAlign.Center,
+                        )
 
                     }
 
 
                     //sec4
-                    var innerScrollState= rememberScrollState()
+                    var innerScrollState = rememberScrollState()
                     Box(
                         modifier = Modifier
                             .fillMaxWidth()
@@ -618,7 +679,8 @@ fun AccountComp(navController: NavController) {
                                 modifier = Modifier
                                     .fillMaxWidth()
                                     .height(50.dp)
-                                    .background(accSectionsOuterColor), contentAlignment = Alignment.Center
+                                    .background(accSectionsOuterColor),
+                                contentAlignment = Alignment.Center
                             ) {
                                 Text(
                                     text = "Payment Option", fontSize = 16.sp,
@@ -642,54 +704,63 @@ fun AccountComp(navController: NavController) {
                                 Column(
                                     Modifier
                                         .fillMaxSize()
-                                        .padding(10.dp), verticalArrangement = Arrangement.SpaceBetween
+                                        .padding(10.dp),
+                                    verticalArrangement = Arrangement.SpaceBetween
                                 ) {
 
                                     //radio buttons ...
 
 
-
-                                    val radioList = listOf<String>("Paypal", "Stipe", "Razorpay", "Paystack","Instamojo")
+                                    val radioList = listOf<String>(
+                                        "Paypal",
+                                        "Stipe",
+                                        "Razorpay",
+                                        "Paystack",
+                                        "Instamojo"
+                                    )
                                     var (selectedItem, selected) = remember {
                                         mutableStateOf("")
                                     }
-                                        radioList.forEach { item ->
-                                            Row(
-                                                modifier = Modifier
-                                                    .fillMaxWidth()
-                                                    .height(40.dp)
-                                                    .clip(shape = RoundedCornerShape(5.dp))
-                                                    .background(popupPaymentColor)
-                                                    .selectable(
-                                                        selected = (selectedItem == item),
-                                                        onClick = { selected(item) },
-                                                        role = Role.RadioButton
-                                                    )
-                                            ) {
-                                                RadioButton(modifier = Modifier.fillMaxHeight(),
-                                                    colors = RadioButtonDefaults.colors(
-                                                        selectedColor = radioButtonColor,
-                                                        unselectedColor = mainFontColor
-                                                    ),
-                                                    selected = (selectedItem == item), onClick = { selected(item) })
-
-
-                                                Column(Modifier.fillMaxHeight(), verticalArrangement = Arrangement.Center) {
-                                                    Text(
-                                                        text = item,
-                                                        fontSize = 16.sp,
-                                                        fontWeight = FontWeight(500),
-                                                        color = mainFontColor
-                                                    )
-                                                }
-                                            }
-                                            Spacer(modifier = Modifier
+                                    radioList.forEach { item ->
+                                        Row(
+                                            modifier = Modifier
                                                 .fillMaxWidth()
-                                                .height(10.dp))
+                                                .height(45.dp)
+                                                .clip(shape = RoundedCornerShape(5.dp))
+                                                .background(popupPaymentColor)
+                                                .selectable(
+                                                    selected = (selectedItem == item),
+                                                    onClick = { selected(item) },
+                                                    role = Role.RadioButton
+                                                )
+                                        ) {
+                                            RadioButton(modifier = Modifier.fillMaxHeight(),
+                                                colors = RadioButtonDefaults.colors(
+                                                    selectedColor = radioButtonColor,
+                                                    unselectedColor = mainFontColor
+                                                ),
+                                                selected = (selectedItem == item),
+                                                onClick = { selected(item) })
+
+
+                                            Column(
+                                                Modifier.fillMaxHeight(),
+                                                verticalArrangement = Arrangement.Center
+                                            ) {
+                                                Text(
+                                                    text = item,
+                                                    fontSize = 16.sp,
+                                                    fontWeight = FontWeight(500),
+                                                    color = mainFontColor
+                                                )
+                                            }
                                         }
-
-
-
+                                        Spacer(
+                                            modifier = Modifier
+                                                .fillMaxWidth()
+                                                .height(15.dp)
+                                        )
+                                    }
 
 
                                     //end radio
@@ -708,8 +779,152 @@ fun AccountComp(navController: NavController) {
         }
     }
 
-    if (payPopup){
+    if (payPopup) {
         PayComp()
+    }
+
+    @Composable
+    fun CoponComp() {
+        Popup(
+            alignment = Alignment.Center,
+            onDismissRequest = { popupCopon = false },
+            properties = PopupProperties(securePolicy = SecureFlagPolicy.SecureOn)
+        ) {
+            Box(contentAlignment = Alignment.Center) {
+                Box(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .background(popupCoponBGCalpha)
+                )
+                Column(
+                    modifier = Modifier
+                        .fillMaxWidth(0.85f)
+                        .fillMaxHeight(0.42f)
+                        .background(popupPaymentColor)
+                    , horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+
+                    Box(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .fillMaxHeight(0.2f)
+                            .background(
+                                Brush.horizontalGradient(
+                                    colors = listOf(navBrush1, navBrush2)
+                                )
+                            ), contentAlignment = Alignment.Center
+                    ) {
+                        Text(
+                            text = "Coupon Code",
+                            fontWeight = FontWeight(400),
+                            fontSize = 25.sp,
+                            color = mainFontColor
+                        )
+                    }
+
+                    Text(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(top = 15.dp),
+                        text = "Enter your coupon code",
+                        fontWeight = FontWeight(400),
+                        fontSize = 19.sp,
+                        textAlign = TextAlign.Center,
+                        color = mainFontColor
+                    )
+
+                    var enteredText by remember {
+                        mutableStateOf("")
+                    }
+                    TextField(
+                        value = enteredText,
+                        onValueChange = { new -> enteredText = new },
+                        label = {
+                            Text(
+                                text = "Coupon Code"
+                            )
+                        },
+                        maxLines = 1,
+                        singleLine = true,
+                        colors = TextFieldDefaults.colors(
+                            unfocusedContainerColor = Color.Transparent,
+                            focusedContainerColor = popupInnerSectionColor,
+                            unfocusedLabelColor = mainFontColor,
+                            focusedLabelColor = mainFontColor,
+                            unfocusedTextColor = redFontColor,
+                            focusedTextColor = redFontColor,
+                            focusedIndicatorColor = mainFontColor,
+                            cursorColor = mainFontColor
+                        ),
+                        modifier = Modifier
+                            .fillMaxWidth(0.9f)
+                            .padding(top = 10.dp),
+                    )
+
+                    Row (modifier = Modifier
+                        .fillMaxWidth()
+                        .fillMaxHeight()
+                        .padding(top = 15.dp), verticalAlignment = Alignment.CenterVertically, horizontalArrangement=Arrangement.Center){
+
+                        Button(
+                            onClick = { popupCopon = false },
+                            modifier = Modifier
+                                .width(90.dp)
+                                .clip(shape = RoundedCornerShape(4.dp))
+                                .background(
+                                    Brush.horizontalGradient(
+                                        colors = listOf(navBrush1, navBrush2)
+                                    )
+                                )
+                                .height(40.dp),
+                            shape = RoundedCornerShape(6.dp),
+                            contentPadding = PaddingValues(0.dp,0.dp,0.dp,0.dp),
+                            colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent)
+                        ) {
+                            Text(
+                                text = "CANCEL", textAlign = TextAlign.Center,
+                                color = mainFontColor,
+                                fontSize = 16.sp,
+                                fontWeight = FontWeight(600)
+                            )
+                        }
+                            
+                        Spacer(modifier = Modifier.width(10.dp))
+
+                        Button(
+                            onClick = {},
+                            modifier = Modifier
+                                .width(90.dp)
+                                .clip(shape = RoundedCornerShape(4.dp))
+                                .background(
+                                    Brush.horizontalGradient(
+                                        colors = listOf(navBrush1, navBrush2)
+                                    )
+                                )
+                                .height(40.dp),
+                            shape = RoundedCornerShape(6.dp),
+                            contentPadding = PaddingValues(0.dp,0.dp,0.dp,0.dp),
+                            colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent)
+                        ) {
+                            Text(
+                                text = "SUBMIT", textAlign = TextAlign.Center,
+                                color = mainFontColor,
+                                fontSize = 16.sp,
+                                fontWeight = FontWeight(600)
+                            )
+                        }
+
+                    }
+
+
+                }
+            }
+
+        }
+    }
+
+    if (popupCopon) {
+        CoponComp()
     }
     //now acc comp
     if (screenWidth < 400) {

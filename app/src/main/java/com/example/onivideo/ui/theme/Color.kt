@@ -34,6 +34,7 @@ val popupSectionColor= Color(0xFF1E212B)
 val popupInnerSectionColor= Color(0xFF263139)
 val radioButtonColor= Color(0xFFFE1A63)
 val popupPaymentColor= Color(0xFF15161B)
+val popupCoponBGCalpha= Color(0x5915161B)
 
 
 val seperatorColor = Color(0xFF2C2E33)
