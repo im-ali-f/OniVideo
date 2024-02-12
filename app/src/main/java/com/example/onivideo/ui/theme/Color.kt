@@ -29,3 +29,6 @@ val accSectionsOuterColor= Color(0xFF282C38)
 val accSectionsInnerColor= Color(0xFF1E212B)
 
 
+val seperatorColor = Color(0xFF2C2E33)
+val switchTrackColor=Color(0xFF541028)
+val switchThumbColor=Color(0xFFF91961)

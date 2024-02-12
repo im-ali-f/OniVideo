@@ -1,5 +1,6 @@
 package com.example.onivideo
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -40,6 +41,7 @@ import com.example.onivideo.ui.theme.bottombarBGC
 import com.example.onivideo.ui.theme.bottombarContent
 import com.example.onivideo.ui.theme.bottombarContentSelected
 
+@SuppressLint("SuspiciousIndentation")
 @Composable
 fun BottombarComp(navController: NavController){
 
@@ -144,7 +146,9 @@ fun BottombarComp(navController: NavController){
                 btn1Color= bottombarContent
                 btn2Color= bottombarContent
                 btn3Color= bottombarContent
-                                 /*ToDo inja bayad navigate she*/},
+                                 /*ToDo inja bayad navigate she*/
+                                 navController.navigate("settingPage")
+                                 },
                 Modifier
                     .fillMaxHeight()
                     .width(80.dp)) {

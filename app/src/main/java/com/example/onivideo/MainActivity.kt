@@ -63,7 +63,7 @@ class MainActivity : ComponentActivity() {
                     // nav
                     NavHost(
                         navController = navState,
-                        startDestination = "accountPage",
+                        startDestination = "settingPage",
                         //popEnterTransition ={ fadeIn(animationSpec = tween(8700)) } ,
                         //popExitTransition = { fadeOut(animationSpec = tween(8700)) }
                         ) {
@@ -91,6 +91,13 @@ class MainActivity : ComponentActivity() {
                             )
                             title = "account"
                             AccountComp(navController = navState)
+                        }
+                        composable(route = "settingPage") {
+                            access = mapOf<String, Boolean>(
+                                "bar" to true, "menu" to true, "search" to true
+                            )
+                            title = "Settings"
+                            SettingComp(navController = navState)
                         }
                     }
 
