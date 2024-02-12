@@ -29,8 +29,10 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.twotone.Close
+import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.RadioButton
@@ -60,6 +62,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -96,6 +99,7 @@ import kotlinx.coroutines.selects.select
 import java.nio.file.WatchEvent
 
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AccountComp(navController: NavController) {
 
@@ -105,15 +109,15 @@ fun AccountComp(navController: NavController) {
 
     //pop up
     var popup by remember {
-        mutableStateOf(true)
+        mutableStateOf(false)
     }
 
     var payPopup by remember {
-        mutableStateOf(true)
+        mutableStateOf(false)
     }
 
     var popupCopon by remember {
-        mutableStateOf(true)
+        mutableStateOf(false)
     }
 
 
@@ -785,29 +789,23 @@ fun AccountComp(navController: NavController) {
 
     @Composable
     fun CoponComp() {
-        Popup(
-            alignment = Alignment.Center,
+        AlertDialog(
             onDismissRequest = { popupCopon = false },
-            properties = PopupProperties(securePolicy = SecureFlagPolicy.SecureOn)
         ) {
             Box(contentAlignment = Alignment.Center) {
-                Box(
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .background(popupCoponBGCalpha)
-                )
+                var height = if(screenWidth<400)0.42f else 0.3f
                 Column(
                     modifier = Modifier
-                        .fillMaxWidth(0.85f)
-                        .fillMaxHeight(0.42f)
-                        .background(popupPaymentColor)
+                        .fillMaxWidth()
+                        .fillMaxHeight(height)
+                        .background(accSectionsOuterColor)
                     , horizontalAlignment = Alignment.CenterHorizontally
                 ) {
 
                     Box(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .fillMaxHeight(0.2f)
+                            .fillMaxHeight(0.23f)
                             .background(
                                 Brush.horizontalGradient(
                                     colors = listOf(navBrush1, navBrush2)
@@ -864,7 +862,7 @@ fun AccountComp(navController: NavController) {
                     Row (modifier = Modifier
                         .fillMaxWidth()
                         .fillMaxHeight()
-                        .padding(top = 15.dp), verticalAlignment = Alignment.CenterVertically, horizontalArrangement=Arrangement.Center){
+                        .padding(top = 10.dp), verticalAlignment = Alignment.CenterVertically, horizontalArrangement=Arrangement.Center){
 
                         Button(
                             onClick = { popupCopon = false },
