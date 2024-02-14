@@ -27,6 +27,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
@@ -41,6 +42,7 @@ import com.example.onivideo.ui.theme.navBrush1
 import com.example.onivideo.ui.theme.navBrush2
 import com.example.onivideo.ui.theme.redFontColor
 import com.example.onivideo.ui.theme.scaffoldHeadalphaColor
+import com.example.onivideo.ui.theme.secondaryFontColor
 import com.example.onivideo.ui.theme.seperatorColor
 import com.example.onivideo.ui.theme.seperatorColor2
 
@@ -53,523 +55,1049 @@ fun DashboardComp(navController: NavController) {
             .background(mainBGC)
             .verticalScroll(scrollState)
     ) {
+        val screenWidth = LocalConfiguration.current.screenWidthDp
+        val screenHeight = LocalConfiguration.current.screenHeightDp
+        if (screenWidth < 400) {
+            //sec 1
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(145.dp)//change
+                    .padding(15.dp, 5.dp, 15.dp, 5.dp)
 
-        //sec 1
-        Box(
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(145.dp)//change
-                .padding(15.dp, 5.dp, 15.dp, 5.dp)
 
-
-        ) {
-            Column(
-                Modifier
-                    .fillMaxSize()
-                    .clip(RoundedCornerShape(10.dp))
             ) {
-                Box(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .fillMaxHeight(0.27f)
-                        .background(accSectionsOuterColor), contentAlignment = Alignment.Center
+                Column(
+                    Modifier
+                        .fillMaxSize()
+                        .clip(RoundedCornerShape(10.dp))
                 ) {
-                    Text(
-                        text = "User Profile", fontSize = 13.sp,
-                        color = mainFontColor,
-                        fontWeight = FontWeight(500)
-                    )
-
-                }
-                Spacer(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(1.dp)
-                )
-                Box(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .fillMaxHeight()
-                        .background(accSectionsInnerColor)
-                ) {
-
-                    Row(
-                        Modifier
-                            .fillMaxSize()
-                            .padding(10.dp), horizontalArrangement = Arrangement.SpaceEvenly,
-                        verticalAlignment = Alignment.CenterVertically
+                    Box(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .fillMaxHeight(0.27f)
+                            .background(accSectionsOuterColor), contentAlignment = Alignment.Center
                     ) {
-                        //prof img
-                        Box(
-                            contentAlignment = Alignment.Center,
-                            modifier = Modifier.fillMaxHeight()
-                        ) {
-                            Box(
-                                modifier = Modifier
-                                    .clip(shape = RoundedCornerShape(100))
-                                    .background(
-                                        Color.Black
-                                    )
-                                    .size(68.dp)
-                            )
-                            Box(
-                                modifier = Modifier
-                                    .clip(shape = RoundedCornerShape(100))
-                                    .background(
-                                        Color.White
-                                    )
-                                    .size(63.dp)
-                            )
-
-                        }
-                        //name and email
-                        Column(
-                            modifier = Modifier
-                                .padding(start = 5.dp)
-                                .width(180.dp)
-
-                                .fillMaxHeight(), verticalArrangement = Arrangement.Center
-                        ) {
-                            Text(
-                                text = "Ali",
-                                fontSize = 16.sp,
-                                fontWeight = FontWeight(500),
-                                color = Color.White
-                            )
-                            Spacer(modifier = Modifier.height(3.dp))
-                            Text(
-                                text = "alifarhad.work@gmail.com",
-                                maxLines = 1,
-                                overflow = TextOverflow.Ellipsis,
-                                fontSize = 12.sp,
-                                fontWeight = FontWeight(400),
-                                color = mainFontColor
-                            )
-                        }
-
-
-                        //edit btn
-
-                        Button(
-                            onClick = {},
-                            modifier = Modifier
-                                .clip(shape = RoundedCornerShape(100))
-                                .background(
-                                    Brush.horizontalGradient(
-                                        colors = listOf(navBrush1, navBrush2)
-                                    )
-                                )
-                                .height(28.dp)
-                                .width(45.dp),
-                            shape = RoundedCornerShape(100),
-                            colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent),
-                            contentPadding = PaddingValues(0.dp)
-                        ) {
-                            Text(
-                                text = "Edit", textAlign = TextAlign.Center,
-                                color = mainFontColor,
-                                fontSize = 11.sp,
-                                fontWeight = FontWeight(600)
-                            )
-                        }
-
+                        Text(
+                            text = "User Profile", fontSize = 13.sp,
+                            color = mainFontColor,
+                            fontWeight = FontWeight(500)
+                        )
 
                     }
-
-                }
-            }
-
-        }
-
-
-        //sec 2
-        Box(
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(165.dp)
-                .padding(15.dp, 5.dp, 15.dp, 5.dp)
-
-        ) {
-            Column(
-                Modifier
-                    .fillMaxSize()
-                    .clip(RoundedCornerShape(10.dp))
-            ) {
-                Box(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .fillMaxHeight(0.27f)
-                        .background(accSectionsOuterColor), contentAlignment = Alignment.Center
-                ) {
-                    Text(
-                        text = "My Subscription", fontSize = 13.sp,
-                        color = mainFontColor,
-                        fontWeight = FontWeight(500)
+                    Spacer(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(1.dp)
                     )
-
-                }
-                Spacer(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(1.dp)
-                )
-                Box(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .fillMaxHeight()
-                        .background(accSectionsInnerColor)
-                ) {
-
-                    Column(
-                        Modifier
-                            .fillMaxSize()
-                            .padding(10.dp), verticalArrangement = Arrangement.SpaceBetween
+                    Box(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .fillMaxHeight()
+                            .background(accSectionsInnerColor)
                     ) {
 
-                        //row 1
                         Row(
                             Modifier
-                                .fillMaxWidth(),
+                                .fillMaxSize()
+                                .padding(10.dp), horizontalArrangement = Arrangement.SpaceEvenly,
                             verticalAlignment = Alignment.CenterVertically
                         ) {
-                            Text(
-                                text = "Current Plan : ", fontSize = 15.sp,
-                                color = mainFontColor,
-                                fontWeight = FontWeight.Bold
-                            )
+                            //prof img
                             Box(
+                                contentAlignment = Alignment.Center,
+                                modifier = Modifier.fillMaxHeight()
+                            ) {
+                                Box(
+                                    modifier = Modifier
+                                        .clip(shape = RoundedCornerShape(100))
+                                        .background(
+                                            Color.Black
+                                        )
+                                        .size(68.dp)
+                                )
+                                Box(
+                                    modifier = Modifier
+                                        .clip(shape = RoundedCornerShape(100))
+                                        .background(
+                                            Color.White
+                                        )
+                                        .size(63.dp)
+                                )
+
+                            }
+                            //name and email
+                            Column(
                                 modifier = Modifier
-                                    .size(70.dp, 27.dp)
-                                    .clip(RoundedCornerShape(4.dp))
-                                    .background(accSectionsOuterColor),
-                                contentAlignment = Alignment.Center
+                                    .padding(start = 5.dp)
+                                    .width(180.dp)
+
+                                    .fillMaxHeight(), verticalArrangement = Arrangement.Center
                             ) {
                                 Text(
-                                    text = "Free Plan", fontSize = 13.sp,
-                                    textAlign = TextAlign.Center,
+                                    text = "Ali",
+                                    fontSize = 16.sp,
+                                    fontWeight = FontWeight(500),
+                                    color = Color.White
+                                )
+                                Spacer(modifier = Modifier.height(3.dp))
+                                Text(
+                                    text = "alifarhad.work@gmail.com",
+                                    maxLines = 1,
+                                    overflow = TextOverflow.Ellipsis,
+                                    fontSize = 12.sp,
+                                    fontWeight = FontWeight(400),
+                                    color = mainFontColor
+                                )
+                            }
+
+
+                            //edit btn
+
+                            Button(
+                                onClick = {},
+                                modifier = Modifier
+                                    .clip(shape = RoundedCornerShape(100))
+                                    .background(
+                                        Brush.horizontalGradient(
+                                            colors = listOf(navBrush1, navBrush2)
+                                        )
+                                    )
+                                    .height(28.dp)
+                                    .width(45.dp),
+                                shape = RoundedCornerShape(100),
+                                colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent),
+                                contentPadding = PaddingValues(0.dp)
+                            ) {
+                                Text(
+                                    text = "Edit", textAlign = TextAlign.Center,
                                     color = mainFontColor,
+                                    fontSize = 11.sp,
                                     fontWeight = FontWeight(600)
                                 )
                             }
-                        }
-                        //row2
 
+
+                        }
+
+                    }
+                }
+
+            }
+
+
+            //sec 2
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(165.dp)
+                    .padding(15.dp, 5.dp, 15.dp, 5.dp)
+
+            ) {
+                Column(
+                    Modifier
+                        .fillMaxSize()
+                        .clip(RoundedCornerShape(10.dp))
+                ) {
+                    Box(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .fillMaxHeight(0.27f)
+                            .background(accSectionsOuterColor), contentAlignment = Alignment.Center
+                    ) {
                         Text(
-                            modifier = Modifier.fillMaxWidth(),
-                            text = "Subscription expires on january,  20 , 2024",
-                            fontSize = 14.sp,
+                            text = "My Subscription", fontSize = 13.sp,
                             color = mainFontColor,
-                            letterSpacing = 1.sp,
-                            fontWeight = FontWeight(300)
+                            fontWeight = FontWeight(500)
                         )
 
+                    }
+                    Spacer(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(1.dp)
+                    )
+                    Box(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .fillMaxHeight()
+                            .background(accSectionsInnerColor)
+                    ) {
 
-                        //row 3
-                        Button(
-                            onClick = {},
-                            modifier = Modifier
-                                .fillMaxWidth(0.35f)
-                                .clip(shape = RoundedCornerShape(100))
-                                .background(
-                                    Brush.horizontalGradient(
-                                        colors = listOf(navBrush1, navBrush2)
+                        Column(
+                            Modifier
+                                .fillMaxSize()
+                                .padding(10.dp), verticalArrangement = Arrangement.SpaceBetween
+                        ) {
+
+                            //row 1
+                            Row(
+                                Modifier
+                                    .fillMaxWidth(),
+                                verticalAlignment = Alignment.CenterVertically
+                            ) {
+                                Text(
+                                    text = "Current Plan : ", fontSize = 15.sp,
+                                    color = mainFontColor,
+                                    fontWeight = FontWeight.Bold
+                                )
+                                Box(
+                                    modifier = Modifier
+                                        .size(70.dp, 27.dp)
+                                        .clip(RoundedCornerShape(4.dp))
+                                        .background(accSectionsOuterColor),
+                                    contentAlignment = Alignment.Center
+                                ) {
+                                    Text(
+                                        text = "Free Plan", fontSize = 13.sp,
+                                        textAlign = TextAlign.Center,
+                                        color = mainFontColor,
+                                        fontWeight = FontWeight(600)
                                     )
-                                )
-                                .height(30.dp),
-                            shape = RoundedCornerShape(100),
-                            colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent),
-                            contentPadding = PaddingValues(0.dp)
-                        ) {
+                                }
+                            }
+                            //row2
+
                             Text(
-                                text = "Upgrade Plan", textAlign = TextAlign.Center,
+                                modifier = Modifier.fillMaxWidth(),
+                                text = "Subscription expires on january,  20 , 2024",
+                                fontSize = 14.sp,
                                 color = mainFontColor,
-                                fontSize = 15.sp,
-                                fontWeight = FontWeight(400)
+                                letterSpacing = 1.sp,
+                                fontWeight = FontWeight(300)
                             )
+
+
+                            //row 3
+                            Button(
+                                onClick = {},
+                                modifier = Modifier
+                                    .fillMaxWidth(0.35f)
+                                    .clip(shape = RoundedCornerShape(100))
+                                    .background(
+                                        Brush.horizontalGradient(
+                                            colors = listOf(navBrush1, navBrush2)
+                                        )
+                                    )
+                                    .height(30.dp),
+                                shape = RoundedCornerShape(100),
+                                colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent),
+                                contentPadding = PaddingValues(0.dp)
+                            ) {
+                                Text(
+                                    text = "Upgrade Plan", textAlign = TextAlign.Center,
+                                    color = mainFontColor,
+                                    fontSize = 15.sp,
+                                    fontWeight = FontWeight(400)
+                                )
+                            }
+
                         }
 
                     }
-
                 }
+
             }
 
-        }
+            //sec 3
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(160.dp)//change
+                    .padding(15.dp, 5.dp, 15.dp, 5.dp)
 
-        //sec 3
-        Box(
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(160.dp)//change
-                .padding(15.dp, 5.dp, 15.dp, 5.dp)
-
-        ) {
-            Column(
-                Modifier
-                    .fillMaxSize()
-                    .clip(RoundedCornerShape(10.dp))
             ) {
-                Box(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .fillMaxHeight(0.27f)
-                        .background(accSectionsOuterColor), contentAlignment = Alignment.Center
+                Column(
+                    Modifier
+                        .fillMaxSize()
+                        .clip(RoundedCornerShape(10.dp))
                 ) {
-                    Text(
-                        text = "Last Invoice", fontSize = 13.sp,
-                        color = mainFontColor,
-                        fontWeight = FontWeight(500)
+                    Box(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .fillMaxHeight(0.27f)
+                            .background(accSectionsOuterColor), contentAlignment = Alignment.Center
+                    ) {
+                        Text(
+                            text = "Last Invoice", fontSize = 13.sp,
+                            color = mainFontColor,
+                            fontWeight = FontWeight(500)
+                        )
+
+                    }
+                    Spacer(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(1.dp)
                     )
-
-                }
-                Spacer(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(1.dp)
-                )
-                Box(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .fillMaxHeight()
-                        .background(accSectionsInnerColor)
-                ) {
-
-                    Column(
-                        Modifier
-                            .fillMaxSize()
-                            .padding(10.dp), verticalArrangement = Arrangement.SpaceBetween
+                    Box(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .fillMaxHeight()
+                            .background(accSectionsInnerColor)
                     ) {
 
-                        //row 1
-                        Row(
+                        Column(
                             Modifier
-                                .fillMaxWidth(),
-                            verticalAlignment = Alignment.CenterVertically
+                                .fillMaxSize()
+                                .padding(10.dp), verticalArrangement = Arrangement.SpaceBetween
                         ) {
-                            Text(
-                                text = "Date : ", fontSize = 13.sp,
-                                color = mainFontColor,
-                                fontWeight = FontWeight(500)
-                            )
-                            Box(
-                                modifier = Modifier
-                                    .height(25.dp)
-                                    .width(120.dp)
-                                    .clip(RoundedCornerShape(4.dp))
-                                    .background(accSectionsOuterColor),
-                                contentAlignment = Alignment.Center
+
+                            //row 1
+                            Row(
+                                Modifier
+                                    .fillMaxWidth(),
+                                verticalAlignment = Alignment.CenterVertically
                             ) {
                                 Text(
-                                    text = "January, 19, 2024", fontSize = 13.sp,
-                                    textAlign = TextAlign.Center,
+                                    text = "Date : ", fontSize = 13.sp,
                                     color = mainFontColor,
-                                    fontWeight = FontWeight(400)
+                                    fontWeight = FontWeight(500)
                                 )
+                                Box(
+                                    modifier = Modifier
+                                        .height(25.dp)
+                                        .width(120.dp)
+                                        .clip(RoundedCornerShape(4.dp))
+                                        .background(accSectionsOuterColor),
+                                    contentAlignment = Alignment.Center
+                                ) {
+                                    Text(
+                                        text = "January, 19, 2024", fontSize = 13.sp,
+                                        textAlign = TextAlign.Center,
+                                        color = mainFontColor,
+                                        fontWeight = FontWeight(400)
+                                    )
+                                }
                             }
-                        }
-                        //row2
-                        Row(
-                            Modifier
-                                .fillMaxWidth(),
-                            verticalAlignment = Alignment.CenterVertically
-                        ) {
-                            Text(
-                                text = "Plan : ", fontSize = 13.sp,
-                                color = mainFontColor,
-                                fontWeight = FontWeight(500)
-                            )
-                            Box(
-                                modifier = Modifier
-                                    .height(25.dp)
-                                    .width(70.dp)
-                                    .clip(RoundedCornerShape(4.dp))
-                                    .background(accSectionsOuterColor),
-                                contentAlignment = Alignment.Center
+                            //row2
+                            Row(
+                                Modifier
+                                    .fillMaxWidth(),
+                                verticalAlignment = Alignment.CenterVertically
                             ) {
                                 Text(
-                                    text = "Free Plan", fontSize = 13.sp,
-                                    textAlign = TextAlign.Center,
+                                    text = "Plan : ", fontSize = 13.sp,
                                     color = mainFontColor,
-                                    fontWeight = FontWeight(400)
+                                    fontWeight = FontWeight(500)
                                 )
+                                Box(
+                                    modifier = Modifier
+                                        .height(25.dp)
+                                        .width(70.dp)
+                                        .clip(RoundedCornerShape(4.dp))
+                                        .background(accSectionsOuterColor),
+                                    contentAlignment = Alignment.Center
+                                ) {
+                                    Text(
+                                        text = "Free Plan", fontSize = 13.sp,
+                                        textAlign = TextAlign.Center,
+                                        color = mainFontColor,
+                                        fontWeight = FontWeight(400)
+                                    )
+                                }
                             }
-                        }
 
 
-                        //row 3
-                        Row(
-                            Modifier
-                                .fillMaxWidth(),
-                            verticalAlignment = Alignment.CenterVertically
-                        ) {
-                            Text(
-                                text = "Amount : ", fontSize = 13.sp,
-                                color = mainFontColor,
-                                fontWeight = FontWeight(500)
-                            )
-                            Box(
-                                modifier = Modifier
-                                    .height(25.dp)
-                                    .width(45.dp)
-                                    .clip(RoundedCornerShape(4.dp))
-                                    .background(accSectionsOuterColor),
-                                contentAlignment = Alignment.Center
+                            //row 3
+                            Row(
+                                Modifier
+                                    .fillMaxWidth(),
+                                verticalAlignment = Alignment.CenterVertically
                             ) {
                                 Text(
-                                    text = "0.00", fontSize = 13.sp,
-                                    textAlign = TextAlign.Center,
+                                    text = "Amount : ", fontSize = 13.sp,
                                     color = mainFontColor,
-                                    fontWeight = FontWeight(400)
+                                    fontWeight = FontWeight(500)
                                 )
+                                Box(
+                                    modifier = Modifier
+                                        .height(25.dp)
+                                        .width(45.dp)
+                                        .clip(RoundedCornerShape(4.dp))
+                                        .background(accSectionsOuterColor),
+                                    contentAlignment = Alignment.Center
+                                ) {
+                                    Text(
+                                        text = "0.00", fontSize = 13.sp,
+                                        textAlign = TextAlign.Center,
+                                        color = mainFontColor,
+                                        fontWeight = FontWeight(400)
+                                    )
+                                }
                             }
+
+                            //end part 3
+
+
                         }
-
-                        //end part 3
-
 
                     }
+
 
                 }
 
 
             }
-
-
-        }
-        //sec 4 Text
-        Box(modifier = Modifier
-            .fillMaxWidth()
-            .padding(15.dp, 5.dp, 15.dp, 5.dp)) {
-            Text(
-                text = "User Transactions",
-                fontWeight = FontWeight(400),
-                fontSize = 13.sp,
-                color = mainFontColor
-            )
-        }
-        // sec 4
-        Box(
-            modifier = Modifier
+            //sec 4 Text
+            Box(modifier = Modifier
                 .fillMaxWidth()
-                .height(125.dp)//change
-                .padding(15.dp, 5.dp, 15.dp, 5.dp)
+                .padding(15.dp, 5.dp, 15.dp, 5.dp)) {
+                Text(
+                    text = "User Transactions",
+                    fontWeight = FontWeight(400),
+                    fontSize = 13.sp,
+                    color = mainFontColor
+                )
+            }
+            // sec 4
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(125.dp)//change
+                    .padding(15.dp, 5.dp, 15.dp, 5.dp)
 
-        ) {
-            Column(
-                Modifier
-                    .fillMaxSize()
-                    .clip(RoundedCornerShape(10.dp))
             ) {
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .fillMaxHeight(0.27f)
-                        .background(accSectionsInnerColor)
-                        .padding(10.dp,5.dp,5.dp,5.dp)
+                Column(
+                    Modifier
+                        .fillMaxSize()
+                        .clip(RoundedCornerShape(10.dp))
+                ) {
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .fillMaxHeight(0.27f)
+                            .background(accSectionsInnerColor)
+                            .padding(10.dp,5.dp,5.dp,5.dp)
                         , verticalAlignment = Alignment.CenterVertically
-                ) {
-                    Text(
-                        text = "Free Plan", fontSize = 12.sp,
-                        color = mainFontColor,
-                        fontWeight = FontWeight(600)
-                    )
-
-                }
-                Box(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(1.5.dp)
-                        .background(seperatorColor2)
-                )
-                Box(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .fillMaxHeight()
-                        .background(accSectionsInnerColor)
-                ) {
-
-                    Column(
-                        Modifier
-                            .fillMaxSize()
-                            .padding(10.dp), verticalArrangement = Arrangement.SpaceBetween
                     ) {
-
-                        //row 1
-                        Row(
-                            Modifier
-                                .fillMaxWidth(),
-                            verticalAlignment = Alignment.CenterVertically,
-                            horizontalArrangement = Arrangement.SpaceBetween
-                        ) {
-                            Text(
-                                text = "Payment Date ", fontSize = 12.sp,
-                                color = mainFontColor,
-                                fontWeight = FontWeight(500)
-                            )
-
-                            Text(
-                                text = "Jan 19 2024 05:55 AM", fontSize = 12.sp,
-                                textAlign = TextAlign.Center,
-                                color = mainFontColor,
-                                fontWeight = FontWeight(500)
-                            )
-
-                        }
-                        //row2
-                        Row(
-                            Modifier
-                                .fillMaxWidth(),
-                            verticalAlignment = Alignment.CenterVertically,
-                            horizontalArrangement = Arrangement.SpaceBetween
-                        ) {
-                            Text(
-                                text = "Amount ", fontSize = 12.sp,
-                                color = mainFontColor,
-                                fontWeight = FontWeight(500)
-                            )
-
-                            Text(
-                                text = "0.00 USD", fontSize = 12.sp,
-                                textAlign = TextAlign.Center,
-                                color = redFontColor,
-                                fontWeight = FontWeight(500)
-                            )
-
-                        }
-
-                        //row 3
-                        Row(
-                            Modifier
-                                .fillMaxWidth(),
-                            verticalAlignment = Alignment.CenterVertically,
-                            horizontalArrangement = Arrangement.SpaceBetween
-                        ) {
-                            Text(
-                                text = "Total Amount", fontSize = 12.sp,
-                                color = mainFontColor,
-                                fontWeight = FontWeight(500)
-                            )
-
-                            Text(
-                                text = "29.35 USD", fontSize = 12.sp,
-                                textAlign = TextAlign.Center,
-                                color = redFontColor,
-                                fontWeight = FontWeight(500)
-                            )
-
-                        }
-
-                        //end part 3
-
+                        Text(
+                            text = "Free Plan", fontSize = 12.sp,
+                            color = mainFontColor,
+                            fontWeight = FontWeight(600)
+                        )
 
                     }
+                    Box(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(1.5.dp)
+                            .background(seperatorColor2)
+                    )
+                    Box(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .fillMaxHeight()
+                            .background(accSectionsInnerColor)
+                    ) {
+
+                        Column(
+                            Modifier
+                                .fillMaxSize()
+                                .padding(10.dp), verticalArrangement = Arrangement.SpaceBetween
+                        ) {
+
+                            //row 1
+                            Row(
+                                Modifier
+                                    .fillMaxWidth(),
+                                verticalAlignment = Alignment.CenterVertically,
+                                horizontalArrangement = Arrangement.SpaceBetween
+                            ) {
+                                Text(
+                                    text = "Payment Date ", fontSize = 12.sp,
+                                    color = mainFontColor,
+                                    fontWeight = FontWeight(500)
+                                )
+
+                                Text(
+                                    text = "Jan 19 2024 05:55 AM", fontSize = 12.sp,
+                                    textAlign = TextAlign.Center,
+                                    color = mainFontColor,
+                                    fontWeight = FontWeight(500)
+                                )
+
+                            }
+                            //row2
+                            Row(
+                                Modifier
+                                    .fillMaxWidth(),
+                                verticalAlignment = Alignment.CenterVertically,
+                                horizontalArrangement = Arrangement.SpaceBetween
+                            ) {
+                                Text(
+                                    text = "Amount ", fontSize = 12.sp,
+                                    color = mainFontColor,
+                                    fontWeight = FontWeight(500)
+                                )
+
+                                Text(
+                                    text = "0.00 USD", fontSize = 12.sp,
+                                    textAlign = TextAlign.Center,
+                                    color = redFontColor,
+                                    fontWeight = FontWeight(500)
+                                )
+
+                            }
+
+                            //row 3
+                            Row(
+                                Modifier
+                                    .fillMaxWidth(),
+                                verticalAlignment = Alignment.CenterVertically,
+                                horizontalArrangement = Arrangement.SpaceBetween
+                            ) {
+                                Text(
+                                    text = "Total Amount", fontSize = 12.sp,
+                                    color = mainFontColor,
+                                    fontWeight = FontWeight(500)
+                                )
+
+                                Text(
+                                    text = "29.35 USD", fontSize = 12.sp,
+                                    textAlign = TextAlign.Center,
+                                    color = redFontColor,
+                                    fontWeight = FontWeight(500)
+                                )
+
+                            }
+
+                            //end part 3
+
+
+                        }
+
+                    }
+
 
                 }
 
 
             }
 
+        }
+
+
+        if (screenWidth > 400) {
+            //sec 1
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(155.dp)//change
+                    .padding(15.dp, 5.dp, 15.dp, 5.dp)
+
+
+            ) {
+                Column(
+                    Modifier
+                        .fillMaxSize()
+                        .clip(RoundedCornerShape(10.dp))
+                ) {
+                    Box(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .fillMaxHeight(0.28f)
+                            .background(accSectionsOuterColor), contentAlignment = Alignment.Center
+                    ) {
+                        Text(
+                            text = "User Profile", fontSize = 15.sp,
+                            color = mainFontColor,
+                            fontWeight = FontWeight(500)
+                        )
+
+                    }
+                    Spacer(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(1.dp)
+                    )
+                    Box(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .fillMaxHeight()
+                            .background(accSectionsInnerColor)
+                    ) {
+
+                        Row(
+                            Modifier
+                                .fillMaxSize()
+                                .padding(10.dp), horizontalArrangement = Arrangement.SpaceEvenly,
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+                            //prof img
+                            Box(
+                                contentAlignment = Alignment.Center,
+                                modifier = Modifier.fillMaxHeight()
+                            ) {
+                                Box(
+                                    modifier = Modifier
+                                        .clip(shape = RoundedCornerShape(100))
+                                        .background(
+                                            Color.Black
+                                        )
+                                        .size(72.dp)
+                                )
+                                Box(
+                                    modifier = Modifier
+                                        .clip(shape = RoundedCornerShape(100))
+                                        .background(
+                                            Color.White
+                                        )
+                                        .size(67.dp)
+                                )
+
+                            }
+                            //name and email
+                            Column(
+                                modifier = Modifier
+                                    .padding(start = 5.dp)
+                                    .width(205.dp)
+
+                                    .fillMaxHeight(), verticalArrangement = Arrangement.Center
+                            ) {
+                                Text(
+                                    text = "Ali",
+                                    fontSize = 17.sp,
+                                    fontWeight = FontWeight(500),
+                                    color = Color.White
+                                )
+                                Spacer(modifier = Modifier.height(5.dp))
+                                Text(
+                                    text = "alifarhad.work@gmail.com",
+                                    maxLines = 1,
+                                    overflow = TextOverflow.Ellipsis,
+                                    fontSize = 14.sp,
+                                    fontWeight = FontWeight(400),
+                                    color = mainFontColor
+                                )
+                            }
+
+
+                            //edit btn
+
+                            Button(
+                                onClick = {},
+                                modifier = Modifier
+                                    .clip(shape = RoundedCornerShape(100))
+                                    .background(
+                                        Brush.horizontalGradient(
+                                            colors = listOf(navBrush1, navBrush2)
+                                        )
+                                    )
+                                    .height(35.dp)
+                                    .width(57.dp),
+                                shape = RoundedCornerShape(100),
+                                colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent),
+                                contentPadding = PaddingValues(0.dp)
+                            ) {
+                                Text(
+                                    text = "Edit", textAlign = TextAlign.Center,
+                                    color = mainFontColor,
+                                    fontSize = 16.sp,
+                                    fontWeight = FontWeight(400)
+                                )
+                            }
+
+
+                        }
+
+                    }
+                }
+
+            }
+
+
+            //sec 2
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(185.dp)
+                    .padding(15.dp, 5.dp, 15.dp, 5.dp)
+
+            ) {
+                Column(
+                    Modifier
+                        .fillMaxSize()
+                        .clip(RoundedCornerShape(10.dp))
+                ) {
+                    Box(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .fillMaxHeight(0.26f)
+                            .background(accSectionsOuterColor), contentAlignment = Alignment.Center
+                    ) {
+                        Text(
+                            text = "My Subscription", fontSize = 15.sp,
+                            color = mainFontColor,
+                            fontWeight = FontWeight(500)
+                        )
+
+                    }
+                    Spacer(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(1.dp)
+                    )
+                    Box(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .fillMaxHeight()
+                            .background(accSectionsInnerColor)
+                    ) {
+
+                        Column(
+                            Modifier
+                                .fillMaxSize()
+                                .padding(10.dp), verticalArrangement = Arrangement.SpaceBetween
+                        ) {
+
+                            //row 1
+                            Row(
+                                Modifier
+                                    .fillMaxWidth(),
+                                verticalAlignment = Alignment.CenterVertically
+                            ) {
+                                Text(
+                                    text = "Current Plan : ", fontSize = 17.sp,
+                                    color = mainFontColor,
+                                    fontWeight = FontWeight.Bold
+                                )
+                                Box(
+                                    modifier = Modifier
+                                        .size(80.dp, 30.dp)
+                                        .clip(RoundedCornerShape(4.dp))
+                                        .background(accSectionsOuterColor),
+                                    contentAlignment = Alignment.Center
+                                ) {
+                                    Text(
+                                        text = "Free Plan", fontSize = 15.sp,
+                                        textAlign = TextAlign.Center,
+                                        color = mainFontColor,
+                                        fontWeight = FontWeight(700)
+                                    )
+                                }
+                            }
+                            //row2
+
+                            Text(
+                                modifier = Modifier.fillMaxWidth(),
+                                text = "Subscription expires on january,  20 , 2024",
+                                fontSize = 15.sp,
+                                color = secondaryFontColor,
+                                letterSpacing = 1.sp,
+                                fontWeight = FontWeight(500)
+                            )
+
+
+                            //row 3
+                            Button(
+                                onClick = {},
+                                modifier = Modifier
+                                    .fillMaxWidth(0.35f)
+                                    .clip(shape = RoundedCornerShape(100))
+                                    .background(
+                                        Brush.horizontalGradient(
+                                            colors = listOf(navBrush1, navBrush2)
+                                        )
+                                    )
+                                    .height(35.dp),
+                                shape = RoundedCornerShape(100),
+                                colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent),
+                                contentPadding = PaddingValues(0.dp)
+                            ) {
+                                Text(
+                                    text = "Upgrade Plan", textAlign = TextAlign.Center,
+                                    color = mainFontColor,
+                                    fontSize = 15.sp,
+                                    fontWeight = FontWeight(400)
+                                )
+                            }
+
+                        }
+
+                    }
+                }
+
+            }
+
+            //sec 3
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(180.dp)//change
+                    .padding(15.dp, 5.dp, 15.dp, 5.dp)
+
+            ) {
+                Column(
+                    Modifier
+                        .fillMaxSize()
+                        .clip(RoundedCornerShape(10.dp))
+                ) {
+                    Box(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .fillMaxHeight(0.26f)
+                            .background(accSectionsOuterColor), contentAlignment = Alignment.Center
+                    ) {
+                        Text(
+                            text = "Last Invoice", fontSize = 15.sp,
+                            color = mainFontColor,
+                            fontWeight = FontWeight(500)
+                        )
+
+                    }
+                    Spacer(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(1.dp)
+                    )
+                    Box(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .fillMaxHeight()
+                            .background(accSectionsInnerColor)
+                    ) {
+
+                        Column(
+                            Modifier
+                                .fillMaxSize()
+                                .padding(10.dp), verticalArrangement = Arrangement.SpaceBetween
+                        ) {
+
+                            //row 1
+                            Row(
+                                Modifier
+                                    .fillMaxWidth(),
+                                verticalAlignment = Alignment.CenterVertically
+                            ) {
+                                Text(
+                                    text = "Date : ", fontSize = 15.sp,
+                                    color = mainFontColor,
+                                    fontWeight = FontWeight(500)
+                                )
+                                Box(
+                                    modifier = Modifier
+                                        .height(32.dp)
+                                        .width(140.dp)
+                                        .clip(RoundedCornerShape(4.dp))
+                                        .background(accSectionsOuterColor),
+                                    contentAlignment = Alignment.Center
+                                ) {
+                                    Text(
+                                        text = "January, 19, 2024", fontSize = 15.sp,
+                                        textAlign = TextAlign.Center,
+                                        color = mainFontColor,
+                                        fontWeight = FontWeight(400)
+                                    )
+                                }
+                            }
+                            //row2
+                            Row(
+                                Modifier
+                                    .fillMaxWidth(),
+                                verticalAlignment = Alignment.CenterVertically
+                            ) {
+                                Text(
+                                    text = "Plan : ", fontSize = 15.sp,
+                                    color = mainFontColor,
+                                    fontWeight = FontWeight(500)
+                                )
+                                Box(
+                                    modifier = Modifier
+                                        .height(32.dp)
+                                        .width(90.dp)
+                                        .clip(RoundedCornerShape(4.dp))
+                                        .background(accSectionsOuterColor),
+                                    contentAlignment = Alignment.Center
+                                ) {
+                                    Text(
+                                        text = "Free Plan", fontSize = 15.sp,
+                                        textAlign = TextAlign.Center,
+                                        color = mainFontColor,
+                                        fontWeight = FontWeight(400)
+                                    )
+                                }
+                            }
+
+
+                            //row 3
+                            Row(
+                                Modifier
+                                    .fillMaxWidth(),
+                                verticalAlignment = Alignment.CenterVertically
+                            ) {
+                                Text(
+                                    text = "Amount : ", fontSize = 15.sp,
+                                    color = mainFontColor,
+                                    fontWeight = FontWeight(500)
+                                )
+                                Box(
+                                    modifier = Modifier
+                                        .height(32.dp)
+                                        .width(65.dp)
+                                        .clip(RoundedCornerShape(4.dp))
+                                        .background(accSectionsOuterColor),
+                                    contentAlignment = Alignment.Center
+                                ) {
+                                    Text(
+                                        text = "0.00", fontSize = 15.sp,
+                                        textAlign = TextAlign.Center,
+                                        color = mainFontColor,
+                                        fontWeight = FontWeight(400)
+                                    )
+                                }
+                            }
+
+                            //end part 3
+
+
+                        }
+
+                    }
+
+
+                }
+
+
+            }
+            //sec 4 Text
+            Box(modifier = Modifier
+                .fillMaxWidth()
+                .padding(15.dp, 5.dp, 15.dp, 5.dp)) {
+                Text(
+                    text = "User Transactions",
+                    fontWeight = FontWeight(500),
+                    fontSize = 15.sp,
+                    color = mainFontColor
+                )
+            }
+            // sec 4
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(155.dp)//change
+                    .padding(15.dp, 5.dp, 15.dp, 5.dp)
+
+            ) {
+                Column(
+                    Modifier
+                        .fillMaxSize()
+                        .clip(RoundedCornerShape(10.dp))
+                ) {
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .fillMaxHeight(0.28f)
+                            .background(accSectionsInnerColor)
+                            .padding(10.dp,5.dp,5.dp,5.dp)
+                        , verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Text(
+                            text = "Free Plan", fontSize = 14.sp,
+                            color = mainFontColor,
+                            fontWeight = FontWeight(600)
+                        )
+
+                    }
+                    Box(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(1.5.dp)
+                            .background(seperatorColor2)
+                    )
+                    Box(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .fillMaxHeight()
+                            .background(accSectionsInnerColor)
+                    ) {
+
+                        Column(
+                            Modifier
+                                .fillMaxSize()
+                                .padding(10.dp), verticalArrangement = Arrangement.SpaceBetween
+                        ) {
+
+                            //row 1
+                            Row(
+                                Modifier
+                                    .fillMaxWidth(),
+                                verticalAlignment = Alignment.CenterVertically,
+                                horizontalArrangement = Arrangement.SpaceBetween
+                            ) {
+                                Text(
+                                    text = "Payment Date ", fontSize = 14.sp,
+                                    color = mainFontColor,
+                                    fontWeight = FontWeight(500)
+                                )
+
+                                Text(
+                                    text = "Jan 19 2024 05:55 AM", fontSize = 14.sp,
+                                    textAlign = TextAlign.Center,
+                                    color = mainFontColor,
+                                    fontWeight = FontWeight(500)
+                                )
+
+                            }
+                            //row2
+                            Row(
+                                Modifier
+                                    .fillMaxWidth(),
+                                verticalAlignment = Alignment.CenterVertically,
+                                horizontalArrangement = Arrangement.SpaceBetween
+                            ) {
+                                Text(
+                                    text = "Amount ", fontSize = 14.sp,
+                                    color = mainFontColor,
+                                    fontWeight = FontWeight(500)
+                                )
+
+                                Text(
+                                    text = "0.00 USD", fontSize = 14.sp,
+                                    textAlign = TextAlign.Center,
+                                    color = redFontColor,
+                                    fontWeight = FontWeight(500)
+                                )
+
+                            }
+
+                            //row 3
+                            Row(
+                                Modifier
+                                    .fillMaxWidth(),
+                                verticalAlignment = Alignment.CenterVertically,
+                                horizontalArrangement = Arrangement.SpaceBetween
+                            ) {
+                                Text(
+                                    text = "Total Amount", fontSize = 14.sp,
+                                    color = mainFontColor,
+                                    fontWeight = FontWeight(500)
+                                )
+
+                                Text(
+                                    text = "29.35 USD", fontSize = 14.sp,
+                                    textAlign = TextAlign.Center,
+                                    color = redFontColor,
+                                    fontWeight = FontWeight(500)
+                                )
+
+                            }
+
+                            //end part 3
+
+
+                        }
+
+                    }
+
+
+                }
+
+
+            }
 
         }
+
 
     }
 
