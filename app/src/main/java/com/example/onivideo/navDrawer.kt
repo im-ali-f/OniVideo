@@ -16,6 +16,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.ScaffoldState
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.KeyboardArrowRight
 import androidx.compose.material.icons.outlined.Home
@@ -32,6 +33,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
@@ -42,6 +44,8 @@ import com.example.onivideo.ui.theme.mainFontColor
 import com.example.onivideo.ui.theme.scaffoldHeadalphaColor
 import com.example.onivideo.ui.theme.scaffoldSelectedBGCColor
 import com.example.onivideo.ui.theme.scaffoldSelectedColor
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.launch
 
 @Composable
 fun DrawerHeader() {
@@ -115,7 +119,7 @@ fun DrawerHeader() {
 }
 
 @Composable
-fun DrawerBody(navController: NavController, active: String) {
+fun DrawerBody(navController: NavController, scaffoldState: ScaffoldState,scope : CoroutineScope) {
     val BTNlist = listOf<String>(
         "Home",
         "TV Shows",
@@ -128,13 +132,37 @@ fun DrawerBody(navController: NavController, active: String) {
         "Settings",
         "Logout"
     )
+    val helperMap= mapOf(
+        "Home" to "mainPage",
+        "TV Shows" to "mainPage",//change
+        "Movies" to "mainPage",//change
+        "Sports" to "mainPage",//change
+        "Live TV" to "mainPage",//change
+        "My Watchlist" to "watchlistPage",
+        "Dashboard" to "mainPage",//change
+        "Profile" to "accountPage",
+        "Settings" to "settingPage",
+        "Logout" to "mainPage"//change
+    )
+    val helperMapIcon= mapOf<String,Int>(
+        "Home" to R.drawable.mainpage,
+        "TV Shows" to R.drawable.tvpage,//change
+        "Movies" to R.drawable.moviepage,//change
+        "Sports" to R.drawable.sportpage,//change
+        "Live TV" to R.drawable.livepage,//change
+        "My Watchlist" to R.drawable.list,
+        "Dashboard" to R.drawable.dashboardpage,//change
+        "Profile" to R.drawable.profilepage,
+        "Settings" to R.drawable.settingpage,
+        "Logout" to R.drawable.logout//change
+    )
     var activeBTN by remember {
         mutableStateOf("Home")
     }
 
     var scrollState = rememberScrollState()
     Column(modifier = Modifier
-       // .background(Color.Red)
+        // .background(Color.Red)
         .padding(top = 10.dp)
         .fillMaxHeight()
         .verticalScroll(scrollState)
@@ -143,6 +171,8 @@ fun DrawerBody(navController: NavController, active: String) {
         BTNlist.forEach(){
             BTN->
             var BGCColor = if (activeBTN == BTN) scaffoldSelectedBGCColor else mainBGC
+            val nav= ""+helperMap[BTN]
+            var icon = helperMapIcon[BTN]
             Row(
                 Modifier
                     .fillMaxWidth()
@@ -151,15 +181,20 @@ fun DrawerBody(navController: NavController, active: String) {
                     .clip(RoundedCornerShape(100, 0, 0, 100))
                     .background(BGCColor)
                     .clickable {
-                        navController.navigate("mainPage")
+                        navController.navigate(nav)
                         activeBTN = BTN
+                        //mishe ino hazf kard
+                        scope.launch {
+                            scaffoldState.drawerState.close()
+                        }
+
                     }, verticalAlignment = Alignment.CenterVertically
             )
             {
                 var IconColor = if (activeBTN == BTN) scaffoldSelectedColor else Color.White
                 Icon(
                     modifier = Modifier.padding(start = 10.dp),
-                    imageVector = Icons.Outlined.Home,
+                    painter = painterResource(icon as Int),
                     contentDescription = null,
                     tint = IconColor
                 )

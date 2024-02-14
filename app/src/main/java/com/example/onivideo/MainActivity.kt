@@ -109,7 +109,7 @@ class MainActivity : ComponentActivity() {
                     },
                     drawerContent = {
                         DrawerHeader()
-                        DrawerBody(navController = navState, active = "home")
+                        DrawerBody(navController = navState,scaffoldState=scaffoldState,scope)
                     },
                     drawerBackgroundColor = mainBGC,
                     drawerShape = customShape()
