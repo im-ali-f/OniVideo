@@ -1,5 +1,6 @@
 package com.example.onivideo
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -14,14 +15,17 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.material.BottomNavigation
+import androidx.compose.material.rememberScaffoldState
 import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -33,8 +37,10 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.onivideo.ui.theme.OniVideoTheme
 import com.example.onivideo.ui.theme.mainBGC
+import kotlinx.coroutines.launch
 
 class MainActivity : ComponentActivity() {
+    @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -55,69 +61,96 @@ class MainActivity : ComponentActivity() {
                 var title by remember {
                     mutableStateOf("Home")
                 }
+                val scaffoldState = rememberScaffoldState()
+                val scope= rememberCoroutineScope()
+                androidx.compose.material.Scaffold(
+                    scaffoldState=scaffoldState,
+                    topBar = {
+                        NavbarComp(navController = navState, title = title, accessMap = access, onNavigationIconClick ={
+                            scope.launch {
+                                scaffoldState.drawerState.open()
+                            }
 
-                Column(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .fillMaxHeight(0.9f),
-                ) {
-                    NavbarComp(navController = navState, title = title, accessMap = access)
+                        } )
+                    },
+                    bottomBar = {
+                        if(bottomBar){
+                            BottombarComp(navController = navState)
+                        }
+                    },
+                    drawerContent = {
+                        DrawerHeader()
+                        DrawerBody()
+                    },
 
-                    // nav
-                    NavHost(
-                        navController = navState,
-                        startDestination = "accountPage",
-                        //popEnterTransition ={ fadeIn(animationSpec = tween(8700)) } ,
-                        //popExitTransition = { fadeOut(animationSpec = tween(8700)) }
+                    ) {
+
+                    Column(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .fillMaxHeight(0.9f),
+                    ) {
+
+                        // nav
+                        NavHost(
+                            navController = navState,
+                            startDestination = "mainPage",
+                            //popEnterTransition ={ fadeIn(animationSpec = tween(8700)) } ,
+                            //popExitTransition = { fadeOut(animationSpec = tween(8700)) }
                         ) {
 
-                        composable(route = "mainPage") {
-                            access = mapOf<String, Boolean>(
-                                "bar" to true, "menu" to true, "search" to true
-                            )
-                            title = "Home"
-                            bottomBar=true
-                            MainComp(navController = navState)
+                            composable(route = "mainPage") {
+                                access = mapOf<String, Boolean>(
+                                    "bar" to true, "menu" to true, "search" to true
+                                )
+                                title = "Home"
+                                bottomBar=true
+                                MainComp(navController = navState)
+                            }
+
+
+                            composable(route = "watchlistPage") {
+                                access = mapOf<String, Boolean>(
+                                    "bar" to true, "menu" to true, "search" to true
+                                )
+                                title = "My Watchlist"
+                                bottomBar=true
+                                WatchListComp(navController = navState)
+                            }
+
+                            composable(route = "accountPage") {
+                                access = mapOf<String, Boolean>(
+                                    "bar" to false, "menu" to false, "search" to false
+                                )
+                                title = "account"
+                                bottomBar=true
+                                AccountComp(navController = navState)
+                            }
+                            composable(route = "settingPage") {
+                                access = mapOf<String, Boolean>(
+                                    "bar" to true, "menu" to true, "search" to true
+                                )
+                                title = "Settings"
+                                bottomBar=true
+                                SettingComp(navController = navState)
+                            }
+
+
+
+
                         }
-
-
-                        composable(route = "watchlistPage") {
-                            access = mapOf<String, Boolean>(
-                                "bar" to true, "menu" to true, "search" to true
-                            )
-                            title = "My Watchlist"
-                            bottomBar=true
-                            WatchListComp(navController = navState)
-                        }
-
-                        composable(route = "accountPage") {
-                            access = mapOf<String, Boolean>(
-                                "bar" to false, "menu" to false, "search" to false
-                            )
-                            title = "account"
-                            bottomBar=true
-                            AccountComp(navController = navState)
-                        }
-                        composable(route = "settingPage") {
-                            access = mapOf<String, Boolean>(
-                                "bar" to true, "menu" to true, "search" to true
-                            )
-                            title = "Settings"
-                            bottomBar=true
-                            SettingComp(navController = navState)
-                        }
-
-
 
 
                     }
 
 
+
+
+
                 }
 
-                if(bottomBar){
-                    BottombarComp(navController = navState)
-                }
+
+
 
             }
 
