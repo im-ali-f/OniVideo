@@ -25,6 +25,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -43,7 +44,7 @@ import com.example.onivideo.ui.theme.bottombarContentSelected
 
 @SuppressLint("SuspiciousIndentation")
 @Composable
-fun BottombarComp(navController: NavController){
+fun BottombarComp(navController: NavController,active:MutableState<String>){
 
     BottomAppBar(modifier = Modifier
         .fillMaxWidth()
@@ -52,6 +53,7 @@ fun BottombarComp(navController: NavController){
 
 
         Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceEvenly){
+
 
             // color for chosen menu
             var btn1Color by remember {
@@ -65,6 +67,36 @@ fun BottombarComp(navController: NavController){
             }
             var btn4Color by remember {
                 mutableStateOf(bottombarContent)
+            }
+            if(active.value == "Home"){
+                btn4Color= bottombarContent
+                btn1Color= bottombarContentSelected
+                btn2Color= bottombarContent
+                btn3Color= bottombarContent
+            }
+            else if(active.value == "Watchlist"){
+                btn4Color= bottombarContent
+                btn1Color= bottombarContent
+                btn2Color= bottombarContentSelected
+                btn3Color= bottombarContent
+            }
+            else if(active.value == "Account"){
+                btn4Color= bottombarContent
+                btn1Color= bottombarContent
+                btn2Color= bottombarContent
+                btn3Color= bottombarContentSelected
+            }
+            else if(active.value == "Settings"){
+                btn4Color= bottombarContentSelected
+                btn1Color= bottombarContent
+                btn2Color= bottombarContent
+                btn3Color= bottombarContent
+            }
+            else{
+                btn4Color= bottombarContent
+                btn1Color= bottombarContent
+                btn2Color= bottombarContent
+                btn3Color= bottombarContent
             }
 
             IconButton(onClick = {

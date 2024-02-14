@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.Share
@@ -19,6 +20,7 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -37,7 +39,7 @@ import com.example.onivideo.ui.theme.navBrush1
 import com.example.onivideo.ui.theme.navBrush2
 
 @Composable
-fun NavbarComp(navController: NavController,title:String,accessMap:Map<String,Boolean>, onNavigationIconClick:()->Unit){
+fun NavbarComp(navController: NavController,title:String,accessMap:Map<String,Boolean>, onNavigationIconClick:()->Unit,active : MutableState<String>){
     if(accessMap["bar"] == true) {
         Row(
             modifier = Modifier
@@ -65,6 +67,18 @@ fun NavbarComp(navController: NavController,title:String,accessMap:Map<String,Bo
                     IconButton(onClick = onNavigationIconClick) {
                         Icon(
                             imageVector = Icons.Filled.Menu,
+                            contentDescription = null,
+                            modifier = Modifier.fillMaxSize(),
+                            tint = Color.White
+                        )
+                    }
+                }
+                if (accessMap["back"] == true) {
+                    IconButton(onClick = {
+                        active.value = "Home"
+                        navController.navigate("mainPage")}) {
+                        Icon(
+                            imageVector = Icons.Filled.ArrowBack,
                             contentDescription = null,
                             modifier = Modifier.fillMaxSize(),
                             tint = Color.White

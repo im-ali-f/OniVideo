@@ -25,6 +25,7 @@ import androidx.compose.material.icons.twotone.Home
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -119,7 +120,7 @@ fun DrawerHeader() {
 }
 
 @Composable
-fun DrawerBody(navController: NavController, scaffoldState: ScaffoldState,scope : CoroutineScope) {
+fun DrawerBody(navController: NavController, scaffoldState: ScaffoldState,scope : CoroutineScope,active:MutableState<String>) {
     val BTNlist = listOf<String>(
         "Home",
         "TV Shows",
@@ -139,7 +140,7 @@ fun DrawerBody(navController: NavController, scaffoldState: ScaffoldState,scope 
         "Sports" to "mainPage",//change
         "Live TV" to "mainPage",//change
         "My Watchlist" to "watchlistPage",
-        "Dashboard" to "mainPage",//change
+        "Dashboard" to "dashboardPage",//change
         "Profile" to "accountPage",
         "Settings" to "settingPage",
         "Logout" to "mainPage"//change
@@ -156,9 +157,7 @@ fun DrawerBody(navController: NavController, scaffoldState: ScaffoldState,scope 
         "Settings" to R.drawable.settingpage,
         "Logout" to R.drawable.logout//change
     )
-    var activeBTN by remember {
-        mutableStateOf("Home")
-    }
+    var activeBTN =active
 
     var scrollState = rememberScrollState()
     Column(modifier = Modifier
@@ -170,7 +169,7 @@ fun DrawerBody(navController: NavController, scaffoldState: ScaffoldState,scope 
 
         BTNlist.forEach(){
             BTN->
-            var BGCColor = if (activeBTN == BTN) scaffoldSelectedBGCColor else mainBGC
+            var BGCColor = if (activeBTN.value == BTN) scaffoldSelectedBGCColor else mainBGC
             val nav= ""+helperMap[BTN]
             var icon = helperMapIcon[BTN]
             Row(
@@ -182,7 +181,7 @@ fun DrawerBody(navController: NavController, scaffoldState: ScaffoldState,scope 
                     .background(BGCColor)
                     .clickable {
                         navController.navigate(nav)
-                        activeBTN = BTN
+                        activeBTN.value = BTN
                         //mishe ino hazf kard
                         scope.launch {
                             scaffoldState.drawerState.close()
@@ -191,7 +190,7 @@ fun DrawerBody(navController: NavController, scaffoldState: ScaffoldState,scope 
                     }, verticalAlignment = Alignment.CenterVertically
             )
             {
-                var IconColor = if (activeBTN == BTN) scaffoldSelectedColor else Color.White
+                var IconColor = if (activeBTN.value == BTN) scaffoldSelectedColor else Color.White
                 Icon(
                     modifier = Modifier.padding(start = 10.dp),
                     painter = painterResource(icon as Int),

@@ -64,7 +64,7 @@ class MainActivity : ComponentActivity() {
                 verticalArrangement = Arrangement.SpaceBetween
             ) {
                 var access by remember {
-                    mutableStateOf(mapOf<String, Boolean>("menu" to true, "search" to true))
+                    mutableStateOf(mapOf<String, Boolean>("bar" to true, "menu" to true, "search" to true,"back" to false))
                 }
                 var title by remember {
                     mutableStateOf("Home")
@@ -90,12 +90,15 @@ class MainActivity : ComponentActivity() {
                     }
                 }
 
+                var active = remember {
+                    mutableStateOf("Home")
+                }
 
                 androidx.compose.material.Scaffold(
                     modifier = Modifier.background(mainBGC),
                     scaffoldState=scaffoldState,
                     topBar = {
-                        NavbarComp(navController = navState, title = title, accessMap = access, onNavigationIconClick ={
+                        NavbarComp(navController = navState, title = title, accessMap = access, active = active, onNavigationIconClick ={
                             scope.launch {
                                 scaffoldState.drawerState.open()
                             }
@@ -104,12 +107,12 @@ class MainActivity : ComponentActivity() {
                     },
                     bottomBar = {
                         if(bottomBar){
-                            BottombarComp(navController = navState)
+                            BottombarComp(navController = navState, active)
                         }
                     },
                     drawerContent = {
                         DrawerHeader()
-                        DrawerBody(navController = navState,scaffoldState=scaffoldState,scope)
+                        DrawerBody(navController = navState,scaffoldState=scaffoldState,scope, active = active)
                     },
                     drawerBackgroundColor = mainBGC,
                     drawerShape = customShape()
@@ -131,38 +134,51 @@ class MainActivity : ComponentActivity() {
 
                             composable(route = "mainPage") {
                                 access = mapOf<String, Boolean>(
-                                    "bar" to true, "menu" to true, "search" to true
+                                    "bar" to true, "menu" to true, "search" to true,"back" to false
                                 )
                                 title = "Home"
                                 bottomBar=true
+                                active.value = "Home"
                                 MainComp(navController = navState)
                             }
 
 
                             composable(route = "watchlistPage") {
                                 access = mapOf<String, Boolean>(
-                                    "bar" to true, "menu" to true, "search" to true
+                                    "bar" to true, "menu" to true, "search" to true,"back" to false
                                 )
                                 title = "My Watchlist"
                                 bottomBar=true
+                                active.value = "Watchlist"
                                 WatchListComp(navController = navState)
                             }
 
                             composable(route = "accountPage") {
                                 access = mapOf<String, Boolean>(
-                                    "bar" to false, "menu" to false, "search" to false
+                                    "bar" to false, "menu" to false, "search" to false,"back" to false
                                 )
                                 title = "account"
                                 bottomBar=true
+                                active.value = "Account"
                                 AccountComp(navController = navState)
                             }
                             composable(route = "settingPage") {
                                 access = mapOf<String, Boolean>(
-                                    "bar" to true, "menu" to true, "search" to true
+                                    "bar" to true, "menu" to true, "search" to true,"back" to false
                                 )
                                 title = "Settings"
                                 bottomBar=true
+                                active.value = "Settings"
                                 SettingComp(navController = navState)
+                            }
+
+                            composable(route = "dashboardPage") {
+                                access = mapOf<String, Boolean>(
+                                    "bar" to true, "menu" to false, "search" to false,"back" to true
+                                )
+                                title = "Dashboard"
+                                bottomBar=false
+                                DashboardComp(navController = navState)
                             }
 
 
