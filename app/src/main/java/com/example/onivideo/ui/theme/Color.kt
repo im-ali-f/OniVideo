@@ -38,6 +38,8 @@ val popupCoponBGCalpha= Color(0x8015161B)
 
 
 val seperatorColor = Color(0xFF2C2E33)
+val seperatorColor2= Color(0xFF323749)
+
 val switchTrackColor=Color(0xFF541028)
 val switchThumbColor=Color(0xFFF91961)
 
