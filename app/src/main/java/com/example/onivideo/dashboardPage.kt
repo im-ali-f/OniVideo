@@ -14,7 +14,9 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
@@ -41,16 +43,18 @@ import com.example.onivideo.ui.theme.scaffoldHeadalphaColor
 
 @Composable
 fun DashboardComp(navController: NavController) {
+    var scrollState= rememberScrollState()
     Column(modifier = Modifier
-        .fillMaxSize(6f)
-        .background(mainBGC)) {
+        .fillMaxSize()
+        .background(mainBGC)
+        .verticalScroll(scrollState)) {
 
         //sec 1
         Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(160.dp)//change
-                .padding(15.dp),
+                .height(145.dp)//change
+                .padding(15.dp, 5.dp, 15.dp, 5.dp)
 
 
         ) {
@@ -66,9 +70,9 @@ fun DashboardComp(navController: NavController) {
                         .background(accSectionsOuterColor), contentAlignment = Alignment.Center
                 ) {
                     Text(
-                        text = "User Profile", fontSize = 16.sp,
+                        text = "User Profile", fontSize = 13.sp,
                         color = mainFontColor,
-                        fontWeight = FontWeight.Bold
+                        fontWeight = FontWeight(500)
                     )
 
                 }
@@ -177,8 +181,8 @@ fun DashboardComp(navController: NavController) {
         Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(190.dp)//change
-                .padding(15.dp)
+                .height(165.dp)
+                .padding(15.dp, 5.dp, 15.dp, 5.dp)
 
         ) {
             Column(
@@ -193,9 +197,9 @@ fun DashboardComp(navController: NavController) {
                         .background(accSectionsOuterColor), contentAlignment = Alignment.Center
                 ) {
                     Text(
-                        text = "Member Ship", fontSize = 16.sp,
+                        text = "My Subscription", fontSize = 13.sp,
                         color = mainFontColor,
-                        fontWeight = FontWeight.Bold
+                        fontWeight = FontWeight(500)
                     )
 
                 }
@@ -216,7 +220,7 @@ fun DashboardComp(navController: NavController) {
                             .fillMaxSize()
                             .padding(10.dp), verticalArrangement = Arrangement.SpaceBetween
                     ) {
-                        Column {
+
                             //row 1
                             Row(
                                 Modifier
@@ -251,31 +255,32 @@ fun DashboardComp(navController: NavController) {
                                 fontSize = 14.sp,
                                 color = mainFontColor,
                                 letterSpacing = 1.sp,
-                                fontWeight = FontWeight(400)
+                                fontWeight = FontWeight(300)
                             )
-                        }
+
 
 
                         //row 3
                         Button(
                             onClick = {},
                             modifier = Modifier
-                                .fillMaxWidth()
-                                .clip(shape = RoundedCornerShape(4.dp))
+                                .fillMaxWidth(0.35f)
+                                .clip(shape = RoundedCornerShape(100))
                                 .background(
                                     Brush.horizontalGradient(
                                         colors = listOf(navBrush1, navBrush2)
                                     )
                                 )
-                                .height(35.dp),
-                            shape = RoundedCornerShape(6.dp),
-                            colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent)
+                                .height(30.dp),
+                            shape = RoundedCornerShape(100),
+                            colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent),
+                            contentPadding = PaddingValues(0.dp)
                         ) {
                             Text(
                                 text = "Upgrade Plan", textAlign = TextAlign.Center,
                                 color = mainFontColor,
-                                fontSize = 13.sp,
-                                fontWeight = FontWeight(900)
+                                fontSize = 15.sp,
+                                fontWeight = FontWeight(400)
                             )
                         }
 
@@ -287,9 +292,160 @@ fun DashboardComp(navController: NavController) {
         }
 
         //sec 3
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(160.dp)//change
+                .padding(15.dp, 5.dp, 15.dp, 5.dp)
+
+        ) {
+            Column(
+                Modifier
+                    .fillMaxSize()
+                    .clip(RoundedCornerShape(10.dp))
+            ) {
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .fillMaxHeight(0.27f)
+                        .background(accSectionsOuterColor), contentAlignment = Alignment.Center
+                ) {
+                    Text(
+                        text = "Last Invoice", fontSize = 13.sp,
+                        color = mainFontColor,
+                        fontWeight = FontWeight(500)
+                    )
+
+                }
+                Spacer(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(1.dp)
+                )
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .fillMaxHeight()
+                        .background(accSectionsInnerColor)
+                ) {
+
+                    Column(
+                        Modifier
+                            .fillMaxSize()
+                            .padding(10.dp), verticalArrangement = Arrangement.SpaceBetween
+                    ) {
+
+                        //row 1
+                        Row(
+                            Modifier
+                                .fillMaxWidth(),
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+                            Text(
+                                text = "Date : ", fontSize = 13.sp,
+                                color = mainFontColor,
+                                fontWeight = FontWeight(500)
+                            )
+                            Box(
+                                modifier = Modifier
+                                    .height(25.dp)
+                                    .width(120.dp)
+                                    .clip(RoundedCornerShape(4.dp))
+                                    .background(accSectionsOuterColor),
+                                contentAlignment = Alignment.Center
+                            ) {
+                                Text(
+                                    text = "January, 19, 2024", fontSize = 13.sp,
+                                    textAlign = TextAlign.Center,
+                                    color = mainFontColor,
+                                    fontWeight = FontWeight(400)
+                                )
+                            }
+                        }
+                        //row2
+                        Row(
+                            Modifier
+                                .fillMaxWidth(),
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+                            Text(
+                                text = "Plan : ", fontSize = 13.sp,
+                                color = mainFontColor,
+                                fontWeight = FontWeight(500)
+                            )
+                            Box(
+                                modifier = Modifier
+                                    .height(25.dp)
+                                    .width(70.dp)
+                                    .clip(RoundedCornerShape(4.dp))
+                                    .background(accSectionsOuterColor),
+                                contentAlignment = Alignment.Center
+                            ) {
+                                Text(
+                                    text = "Free Plan", fontSize = 13.sp,
+                                    textAlign = TextAlign.Center,
+                                    color = mainFontColor,
+                                    fontWeight = FontWeight(400)
+                                )
+                            }
+                        }
 
 
-        //sec 4
+
+
+                        //row 3
+                        Row(
+                            Modifier
+                                .fillMaxWidth(),
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+                            Text(
+                                text = "Amount : ", fontSize = 13.sp,
+                                color = mainFontColor,
+                                fontWeight = FontWeight(500)
+                            )
+                            Box(
+                                modifier = Modifier
+                                    .height(25.dp)
+                                    .width(45.dp)
+                                    .clip(RoundedCornerShape(4.dp))
+                                    .background(accSectionsOuterColor),
+                                contentAlignment = Alignment.Center
+                            ) {
+                                Text(
+                                    text = "0.00", fontSize = 13.sp,
+                                    textAlign = TextAlign.Center,
+                                    color = mainFontColor,
+                                    fontWeight = FontWeight(400)
+                                )
+                            }
+                        }
+
+                        //end part 3
+
+
+                    }
+
+                }
+
+
+
+        }
+
+
+
+
+
+    }
+        //sec 4 Text
+        Box(modifier = Modifier.fillMaxWidth().padding(15.dp, 5.dp, 15.dp, 5.dp)){
+            Text(text ="User Transactions", fontWeight = FontWeight(400), fontSize = 13.sp,color= mainFontColor)
+        }
+        // sec 4
+
+
+
+
     }
 
 }
