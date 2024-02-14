@@ -1110,7 +1110,7 @@ fun AccountComp(navController: NavController) {
                     Box(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .fillMaxHeight(0.14f)
+                            .fillMaxHeight(0.20f)
                             .background(accSectionsOuterColor), contentAlignment = Alignment.Center
                     ) {
                         Text(
@@ -1152,7 +1152,8 @@ fun AccountComp(navController: NavController) {
                                         .fillMaxWidth()
                                         .clip(shape = RoundedCornerShape(4.dp))
                                         .background(accSectionsOuterColor)
-                                        .height(35.dp),
+                                        .height(32.dp)
+                                        ,
                                     shape = RoundedCornerShape(6.dp),
                                     colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent),
                                     contentPadding = PaddingValues(start = 10.dp)
@@ -1174,7 +1175,7 @@ fun AccountComp(navController: NavController) {
                                         .fillMaxWidth()
                                         .clip(shape = RoundedCornerShape(4.dp))
                                         .background(accSectionsOuterColor)
-                                        .height(35.dp),
+                                        .height(32.dp),
                                     shape = RoundedCornerShape(6.dp),
                                     colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent),
                                     contentPadding = PaddingValues(start = 10.dp)
@@ -1196,7 +1197,7 @@ fun AccountComp(navController: NavController) {
                                         .fillMaxWidth()
                                         .clip(shape = RoundedCornerShape(4.dp))
                                         .background(accSectionsOuterColor)
-                                        .height(35.dp),
+                                        .height(32.dp),
                                     shape = RoundedCornerShape(6.dp),
                                     colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent),
                                     contentPadding = PaddingValues(start = 10.dp)
@@ -1225,9 +1226,10 @@ fun AccountComp(navController: NavController) {
                                             colors = listOf(navBrush1, navBrush2)
                                         )
                                     )
-                                    .height(35.dp),
+                                    .height(40.dp),
                                 shape = RoundedCornerShape(6.dp),
-                                colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent)
+                                colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent),
+                                contentPadding = PaddingValues(top= 0.dp)
                             ) {
                                 Text(
                                     text = "Logout", textAlign = TextAlign.Center,

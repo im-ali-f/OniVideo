@@ -127,7 +127,7 @@ fun DrawerBody(navController: NavController, scaffoldState: ScaffoldState,scope 
         "Movies",
         "Sports",
         "Live TV",
-        "My Watchlist",
+        "Watchlist",
         "Dashboard",
         "Profile",
         "Settings",
@@ -139,7 +139,7 @@ fun DrawerBody(navController: NavController, scaffoldState: ScaffoldState,scope 
         "Movies" to "mainPage",//change
         "Sports" to "mainPage",//change
         "Live TV" to "mainPage",//change
-        "My Watchlist" to "watchlistPage",
+        "Watchlist" to "watchlistPage",
         "Dashboard" to "dashboardPage",//change
         "Profile" to "accountPage",
         "Settings" to "settingPage",
@@ -151,7 +151,7 @@ fun DrawerBody(navController: NavController, scaffoldState: ScaffoldState,scope 
         "Movies" to R.drawable.moviepage,//change
         "Sports" to R.drawable.sportpage,//change
         "Live TV" to R.drawable.livepage,//change
-        "My Watchlist" to R.drawable.list,
+        "Watchlist" to R.drawable.list,
         "Dashboard" to R.drawable.dashboardpage,//change
         "Profile" to R.drawable.profilepage,
         "Settings" to R.drawable.settingpage,

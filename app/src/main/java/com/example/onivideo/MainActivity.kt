@@ -117,17 +117,17 @@ class MainActivity : ComponentActivity() {
                     drawerBackgroundColor = mainBGC,
                     drawerShape = customShape()
                     ) {
-
+                    var height =if(bottomBar)0.9f else 1f
                     Column(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .fillMaxHeight(0.9f),
+                            .fillMaxHeight(height),
                     ) {
 
                         // nav
                         NavHost(
                             navController = navState,
-                            startDestination = "mainPage",
+                            startDestination = "dashboardPage",
                             //popEnterTransition ={ fadeIn(animationSpec = tween(8700)) } ,
                             //popExitTransition = { fadeOut(animationSpec = tween(8700)) }
                         ) {

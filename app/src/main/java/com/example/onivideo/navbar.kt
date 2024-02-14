@@ -75,8 +75,8 @@ fun NavbarComp(navController: NavController,title:String,accessMap:Map<String,Bo
                 }
                 if (accessMap["back"] == true) {
                     IconButton(onClick = {
-                        active.value = "Home"
-                        navController.navigate("mainPage")}) {
+                        //active.value = "Home"
+                        navController.popBackStack()}) {
                         Icon(
                             imageVector = Icons.Filled.ArrowBack,
                             contentDescription = null,
