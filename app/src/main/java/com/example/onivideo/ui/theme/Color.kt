@@ -41,4 +41,6 @@ val seperatorColor = Color(0xFF2C2E33)
 val switchTrackColor=Color(0xFF541028)
 val switchThumbColor=Color(0xFFF91961)
 
-
+val scaffoldHeadalphaColor= Color(0x75C7CAD1)
+val scaffoldSelectedColor= Color(0xFFFF1A6C)
+val scaffoldSelectedBGCColor= Color(0xFF1B1C20)

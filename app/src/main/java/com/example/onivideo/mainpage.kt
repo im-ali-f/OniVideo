@@ -43,6 +43,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.onivideo.ui.theme.brush1
 import com.example.onivideo.ui.theme.brush2
+import com.example.onivideo.ui.theme.mainBGC
 import com.example.onivideo.ui.theme.mainFontColor
 import com.example.onivideo.ui.theme.navBrush1
 import com.example.onivideo.ui.theme.navBrush2
@@ -170,6 +171,7 @@ fun MainComp(navController: NavController) {
             Modifier
                 .fillMaxWidth()
                 .fillMaxHeight()
+                .background(mainBGC)
         ) {
             //row aval
             item() {
@@ -446,6 +448,7 @@ fun MainComp(navController: NavController) {
                 Modifier
                     .fillMaxWidth()
                     .fillMaxHeight()
+                    .background(mainBGC)
             ) {
 
                 //row aval
@@ -722,6 +725,7 @@ fun MainComp(navController: NavController) {
             Modifier
                 .fillMaxWidth()
                 .fillMaxHeight()
+                .background(mainBGC)
         ) {
 
             //row aval

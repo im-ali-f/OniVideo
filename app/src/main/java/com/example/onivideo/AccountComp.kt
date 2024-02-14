@@ -924,6 +924,8 @@ fun AccountComp(navController: NavController) {
     if (popupCopon) {
         CoponComp()
     }
+
+
     //now acc comp
     if (screenWidth < 400) {
         val scrollState = rememberScrollState()
@@ -931,7 +933,8 @@ fun AccountComp(navController: NavController) {
             modifier = Modifier
                 .fillMaxWidth()
                 .fillMaxHeight()
-                .verticalScroll(scrollState),
+                .verticalScroll(scrollState)
+                .background(mainBGC),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Box(
@@ -1251,7 +1254,8 @@ fun AccountComp(navController: NavController) {
             modifier = Modifier
                 .fillMaxWidth()
                 .fillMaxHeight()
-                .verticalScroll(scrollState),
+                .verticalScroll(scrollState)
+                .background(mainBGC),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Box(

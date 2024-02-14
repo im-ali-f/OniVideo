@@ -30,6 +30,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.example.onivideo.ui.theme.mainBGC
 import com.example.onivideo.ui.theme.mainFontColor
 import com.example.onivideo.ui.theme.seperatorColor
 import com.example.onivideo.ui.theme.switchThumbColor
@@ -40,7 +41,7 @@ fun SettingComp(navController: NavController){
     val screenWidth = LocalConfiguration.current.screenWidthDp
     val screenHeight = LocalConfiguration.current.screenHeightDp
     if(screenWidth<400){
-        Column(modifier = Modifier.fillMaxSize()) {
+        Column(modifier = Modifier.fillMaxSize().background(mainBGC)) {
 
             Spacer(modifier = Modifier.height(15.dp))
             Box(modifier = Modifier
@@ -151,7 +152,7 @@ fun SettingComp(navController: NavController){
         }
     }
     else{
-        Column(modifier = Modifier.fillMaxSize()) {
+        Column(modifier = Modifier.fillMaxSize().background(mainBGC)) {
 
             Spacer(modifier = Modifier.height(20.dp))
             Box(modifier = Modifier

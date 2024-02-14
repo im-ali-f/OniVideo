@@ -47,7 +47,7 @@ fun BottombarComp(navController: NavController){
 
     BottomAppBar(modifier = Modifier
         .fillMaxWidth()
-        .height(70.dp), containerColor = bottombarBGC, contentColor = bottombarContent,
+        .fillMaxHeight(0.1f), containerColor = bottombarBGC, contentColor = bottombarContent,
     ) {
 
 

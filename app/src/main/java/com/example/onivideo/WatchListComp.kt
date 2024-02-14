@@ -37,6 +37,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.onivideo.ui.theme.brush1
 import com.example.onivideo.ui.theme.brush2
+import com.example.onivideo.ui.theme.mainBGC
 import com.example.onivideo.ui.theme.mainFontColor
 import com.example.onivideo.ui.theme.navBrush1
 import com.example.onivideo.ui.theme.navBrush2
@@ -158,7 +159,8 @@ fun WatchListComp(navController: NavController){
         LazyVerticalStaggeredGrid(
             modifier = Modifier
                 .fillMaxWidth()
-                .fillMaxHeight(),
+                .fillMaxHeight()
+                .background(mainBGC),
 
             columns = StaggeredGridCells.Fixed(2),
             content = {
