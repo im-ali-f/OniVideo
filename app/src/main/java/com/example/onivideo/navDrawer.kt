@@ -143,7 +143,7 @@ fun DrawerBody(navController: NavController, scaffoldState: ScaffoldState,scope 
         "Dashboard" to "dashboardPage",//change
         "Profile" to "accountPage",
         "Settings" to "settingPage",
-        "Logout" to "mainPage"//change
+        "Logout" to "loginSignupPage"//change
     )
     val helperMapIcon= mapOf<String,Int>(
         "Home" to R.drawable.mainpage,

@@ -26,6 +26,17 @@ val secondaryFontColor= Color(0xFF909091)
 val redFontColor= Color(0xFFE51A62)
 
 
+val textFieldUnFocused= Color(0xFF373D51)
+val faceBookColorDarker= Color(0xFF)
+val faceBookColorLighter= Color(0xFF)
+val googleColorDarker= Color(0xFF)
+val googleColorlighter= Color(0xFF)
+val radioSelectedColor= Color(0xFF)
+
+
+
+
+
 val accCircleTempColor=Color(0xFF489FFA)
 val accSectionsOuterColor= Color(0xFF282C38)
 val accSectionsInnerColor= Color(0xFF1E212B)
@@ -46,3 +57,6 @@ val switchThumbColor=Color(0xFFF91961)
 val scaffoldHeadalphaColor= Color(0x75C7CAD1)
 val scaffoldSelectedColor= Color(0xFFFF1A6C)
 val scaffoldSelectedBGCColor= Color(0xFF1B1C20)
+
+
+

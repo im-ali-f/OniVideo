@@ -127,7 +127,7 @@ class MainActivity : ComponentActivity() {
                         // nav
                         NavHost(
                             navController = navState,
-                            startDestination = "dashboardPage",
+                            startDestination = "loginSignupPage",
                             //popEnterTransition ={ fadeIn(animationSpec = tween(8700)) } ,
                             //popExitTransition = { fadeOut(animationSpec = tween(8700)) }
                         ) {
@@ -179,6 +179,15 @@ class MainActivity : ComponentActivity() {
                                 title = "Dashboard"
                                 bottomBar=false
                                 DashboardComp(navController = navState)
+                            }
+
+                            composable(route = "loginSignupPage") {
+                                access = mapOf<String, Boolean>(
+                                    "bar" to false, "menu" to false, "search" to false,"back" to false
+                                )
+                                title = "login sign up"
+                                bottomBar=false
+                                LoginSignupComp(navController = navState)
                             }
 
 

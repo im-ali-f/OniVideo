@@ -1147,7 +1147,7 @@ fun AccountComp(navController: NavController) {
                             ) {
                                 //button
                                 Button(
-                                    onClick = { /*TODO: */ },
+                                    onClick = { navController.navigate("dashboardPage")},
                                     modifier = Modifier
                                         .fillMaxWidth()
                                         .clip(shape = RoundedCornerShape(4.dp))
@@ -1217,7 +1217,7 @@ fun AccountComp(navController: NavController) {
 
                             //last btn
                             Button(
-                                onClick = { /*TODO: nav to upgrade */ },
+                                onClick = { navController.navigate("loginSignupPage") },
                                 modifier = Modifier
                                     .fillMaxWidth()
                                     .clip(shape = RoundedCornerShape(4.dp))
@@ -1471,7 +1471,7 @@ fun AccountComp(navController: NavController) {
                             ) {
                                 //button
                                 Button(
-                                    onClick = { /*TODO: */ },
+                                    onClick = { navController.navigate("dashboardPage") },
                                     modifier = Modifier
                                         .fillMaxWidth()
                                         .clip(shape = RoundedCornerShape(4.dp))
@@ -1540,7 +1540,7 @@ fun AccountComp(navController: NavController) {
 
                             //last btn
                             Button(
-                                onClick = { /*TODO: nav to upgrade */ },
+                                onClick = {  navController.navigate("loginSignupPage")  },
                                 modifier = Modifier
                                     .fillMaxWidth()
                                     .clip(shape = RoundedCornerShape(4.dp))
