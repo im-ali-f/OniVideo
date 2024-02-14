@@ -13,7 +13,9 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.KeyboardArrowRight
 import androidx.compose.material.icons.outlined.Home
@@ -130,40 +132,55 @@ fun DrawerBody(navController: NavController, active: String) {
         mutableStateOf("Home")
     }
 
+    var scrollState = rememberScrollState()
     Column(modifier = Modifier
-        .background(Color.Red)
-        .padding(top = 10.dp)) {
+       // .background(Color.Red)
+        .padding(top = 10.dp)
+        .fillMaxHeight()
+        .verticalScroll(scrollState)
+    ) {
 
-        var BGCColor = if (activeBTN == "Home") scaffoldSelectedBGCColor else mainBGC
-        Row(
-            Modifier
-                .fillMaxWidth()
-                .height(40.dp)
-                .padding(start = 10.dp)
-                .clip(RoundedCornerShape(100, 0, 0, 100))
-                .background(BGCColor)
-                .clickable {
-                    navController.navigate("mainPage")
-                    activeBTN = "Home"
-                }, verticalAlignment = Alignment.CenterVertically
-        )
-        {
-            var IconColor = if (activeBTN == "Home") scaffoldSelectedColor else Color.White
-            Icon(
-                modifier = Modifier.padding(start = 10.dp),
-                imageVector = Icons.Outlined.Home,
-                contentDescription = null,
-                tint = IconColor
+        BTNlist.forEach(){
+            BTN->
+            var BGCColor = if (activeBTN == BTN) scaffoldSelectedBGCColor else mainBGC
+            Row(
+                Modifier
+                    .fillMaxWidth()
+                    .height(40.dp)
+                    .padding(start = 10.dp)
+                    .clip(RoundedCornerShape(100, 0, 0, 100))
+                    .background(BGCColor)
+                    .clickable {
+                        navController.navigate("mainPage")
+                        activeBTN = BTN
+                    }, verticalAlignment = Alignment.CenterVertically
             )
-            Spacer(modifier = Modifier.width(13.dp))
-            Text(
-                text = "Home",
-                modifier = Modifier.weight(1f),
-                fontSize = 14.sp,
-                fontWeight = FontWeight(700),
-                color = IconColor
-            )
+            {
+                var IconColor = if (activeBTN == BTN) scaffoldSelectedColor else Color.White
+                Icon(
+                    modifier = Modifier.padding(start = 10.dp),
+                    imageVector = Icons.Outlined.Home,
+                    contentDescription = null,
+                    tint = IconColor
+                )
+                Spacer(modifier = Modifier.width(13.dp))
+                Text(
+                    text = BTN,
+                    modifier = Modifier.weight(1f),
+                    fontSize = 14.sp,
+                    fontWeight = FontWeight(700),
+                    color = IconColor
+                )
+            }
+            Spacer(modifier = Modifier.height(5.dp))
         }
+
+
+
+
+
+
+
     }
 
 }
