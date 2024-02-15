@@ -45,7 +45,7 @@ import com.example.onivideo.ui.theme.navBrush2
 fun SearchComp(navController: NavController) {
     val screenWidth = LocalConfiguration.current.screenWidthDp
     val screenHeight = LocalConfiguration.current.screenHeightDp
-    if(screenWidth<400){
+    if (screenWidth < 400) {
         LazyColumn(
             Modifier
                 .fillMaxWidth()
@@ -58,7 +58,7 @@ fun SearchComp(navController: NavController) {
             item {
                 Column(modifier = Modifier.fillMaxWidth()) {
                     Text(
-                        modifier = Modifier.padding(top=5.dp, start = 10.dp),
+                        modifier = Modifier.padding(top = 5.dp, start = 10.dp),
                         text = "Movies",
                         fontSize = 17.sp,
                         fontWeight = FontWeight.Bold,
@@ -122,19 +122,11 @@ fun SearchComp(navController: NavController) {
             }
 
 
-
-
-
-
-
-
-
-
             //row 2
             item() {
                 Column(modifier = Modifier.fillMaxWidth()) {
                     Text(
-                        modifier = Modifier.padding(top=5.dp, start = 10.dp),
+                        modifier = Modifier.padding(top = 5.dp, start = 10.dp),
                         text = "TV Shows",
                         fontSize = 17.sp,
                         fontWeight = FontWeight.Bold,
@@ -146,7 +138,7 @@ fun SearchComp(navController: NavController) {
                             .fillParentMaxHeight(0.23f)
                             .padding(top = 10.dp)
                     ) {
-                        item{
+                        item {
                             Spacer(modifier = Modifier.width(10.dp))
                         }
                         items(videoList) {
@@ -211,7 +203,7 @@ fun SearchComp(navController: NavController) {
             item() {
                 Column(modifier = Modifier.fillMaxWidth()) {
                     Text(
-                        modifier = Modifier.padding(top=5.dp, start = 10.dp),
+                        modifier = Modifier.padding(top = 5.dp, start = 10.dp),
                         text = "Sports",
                         fontSize = 17.sp,
                         fontWeight = FontWeight.Bold,
@@ -223,12 +215,12 @@ fun SearchComp(navController: NavController) {
                             .fillParentMaxHeight(0.3f)
                             .padding(top = 10.dp)
                     ) {
-                        item{
+                        item {
                             Spacer(modifier = Modifier.width(10.dp))
                         }
                         items(watchList) {
                             var name = it["name"] as String
-                            Column (modifier = Modifier.padding(end=10.dp)){
+                            Column(modifier = Modifier.padding(end = 10.dp)) {
                                 Box(modifier = Modifier
                                     .width(160.dp)
                                     .height(100.dp)
@@ -272,7 +264,15 @@ fun SearchComp(navController: NavController) {
 
                                     //Image(contentScale = ContentScale.Fit,painter = painterResource(id = img[0] ) , contentDescription =null )
                                 }
-                                Text(maxLines = 1, overflow = TextOverflow.Ellipsis,modifier = Modifier.padding(top=10.dp), text = "$name", fontSize = 14.sp, color = mainFontColor, fontWeight = FontWeight(600))
+                                Text(
+                                    maxLines = 1,
+                                    overflow = TextOverflow.Ellipsis,
+                                    modifier = Modifier.padding(top = 10.dp),
+                                    text = "$name",
+                                    fontSize = 14.sp,
+                                    color = mainFontColor,
+                                    fontWeight = FontWeight(600)
+                                )
                             }
 
                         }
@@ -285,7 +285,7 @@ fun SearchComp(navController: NavController) {
             item() {
                 Column(modifier = Modifier.fillMaxWidth()) {
                     Text(
-                        modifier = Modifier.padding(top=5.dp, start = 10.dp),
+                        modifier = Modifier.padding(top = 5.dp, start = 10.dp),
                         text = "Live TV",
                         fontSize = 17.sp,
                         fontWeight = FontWeight.Bold,
@@ -297,12 +297,12 @@ fun SearchComp(navController: NavController) {
                             .fillParentMaxHeight(0.3f)
                             .padding(top = 10.dp)
                     ) {
-                        item{
+                        item {
                             Spacer(modifier = Modifier.width(10.dp))
                         }
                         items(watchList) {
                             var name = it["name"] as String
-                            Column (modifier = Modifier.padding(end=10.dp)){
+                            Column(modifier = Modifier.padding(end = 10.dp)) {
                                 Box(modifier = Modifier
                                     .width(160.dp)
                                     .height(100.dp)
@@ -346,7 +346,15 @@ fun SearchComp(navController: NavController) {
 
                                     //Image(contentScale = ContentScale.Fit,painter = painterResource(id = img[0] ) , contentDescription =null )
                                 }
-                                Text(maxLines = 1, overflow = TextOverflow.Ellipsis,modifier = Modifier.padding(top=10.dp), text = "$name", fontSize = 14.sp, color = mainFontColor, fontWeight = FontWeight(600))
+                                Text(
+                                    maxLines = 1,
+                                    overflow = TextOverflow.Ellipsis,
+                                    modifier = Modifier.padding(top = 10.dp),
+                                    text = "$name",
+                                    fontSize = 14.sp,
+                                    color = mainFontColor,
+                                    fontWeight = FontWeight(600)
+                                )
                             }
 
                         }
@@ -355,9 +363,329 @@ fun SearchComp(navController: NavController) {
             }
 
 
-
             //row x
 
+
+        }
+    }
+
+    if (screenWidth > 400) {
+        LazyColumn(
+            Modifier
+                .fillMaxWidth()
+                .fillMaxHeight()
+                .background(mainBGC)
+        ) {
+
+
+            //row 1
+            item {
+                Column(modifier = Modifier.fillMaxWidth()) {
+                    Text(
+                        modifier = Modifier.padding(top = 5.dp, start = 10.dp),
+                        text = "Movies",
+                        fontSize = 17.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = mainFontColor
+                    )
+                    LazyRow(
+                        Modifier
+                            .fillMaxWidth()
+                            .fillParentMaxHeight(0.23f)
+                    ) {
+                        item {
+                            Spacer(modifier = Modifier.fillParentMaxWidth(0.015f))
+                        }
+                        items(videoList) {
+                            Surface(
+                                shape = RoundedCornerShape(8.dp), modifier = Modifier
+                                    .fillMaxHeight()
+                                    .fillParentMaxWidth(0.320f)
+                                    .padding(5.dp)
+                            ) {
+                                Box(modifier = Modifier
+                                    .fillMaxSize()
+                                    .background(
+                                        Brush.horizontalGradient(
+                                            colors = listOf(brush2, brush1)
+                                        )
+                                    )
+                                    .clickable { /*ToDo:navigate with id to specific videopage*/ }) {
+                                    var img = it["img"] as Array<Int>
+                                    var premume = it["premume"] as Boolean
+
+
+                                    if (premume) {
+                                        Box(
+                                            modifier = Modifier
+                                                .align(Alignment.TopEnd)
+                                                .padding(9.dp)
+                                                .size(22.dp)
+                                                .clip(shape = RoundedCornerShape(100.dp))
+                                                .background(
+                                                    Brush.horizontalGradient(
+                                                        colors = listOf(navBrush1, navBrush2)
+                                                    )
+                                                ), contentAlignment = Alignment.Center
+                                        ) {
+
+                                            Icon(
+                                                painterResource(id = R.drawable.premume15),
+                                                "Small floating action button.",
+                                                tint = mainFontColor
+                                            )
+
+                                        }
+                                    }
+                                    // Image(modifier = Modifier.padding(5.dp), contentScale = ContentScale.Fit,painter = painterResource(id = img[0] ) , contentDescription =null )
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+
+            //row 2
+            item() {
+                Column(modifier = Modifier.fillMaxWidth()) {
+                    Text(
+                        modifier = Modifier.padding(top = 5.dp, start = 10.dp),
+                        text = "TV Shows",
+                        fontSize = 17.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = mainFontColor
+                    )
+                    LazyRow(
+                        Modifier
+                            .fillMaxWidth()
+                            .fillParentMaxHeight(0.17f)
+                            .padding(top = 10.dp)
+                    ) {
+                        item {
+                            Spacer(modifier = Modifier.width(10.dp))
+                        }
+                        items(videoList) {
+
+                            if (it["release"] as String != "") {
+                                Surface(
+                                    shape = RoundedCornerShape(8.dp), modifier = Modifier
+                                        .fillMaxHeight()
+                                        .fillParentMaxWidth(0.48f)
+                                        .padding(end = 10.dp)
+                                ) {
+                                    Box(modifier = Modifier
+                                        .fillMaxSize()
+                                        .background(
+                                            Brush.horizontalGradient(
+                                                colors = listOf(brush1, brush2)
+                                            )
+                                        )
+                                        .clickable {
+                                            /*ToDo:navigate with id to specific videopage*/
+                                        }) {
+                                        var img = it["img"] as Array<Int>
+                                        var premume = it["premume"] as Boolean
+
+
+                                        if (premume) {
+                                            Box(
+                                                modifier = Modifier
+                                                    .align(Alignment.TopEnd)
+                                                    .padding(9.dp)
+                                                    .size(30.dp)
+                                                    .clip(shape = RoundedCornerShape(100.dp))
+                                                    .background(
+                                                        Brush.horizontalGradient(
+                                                            colors = listOf(navBrush1, navBrush2)
+                                                        )
+                                                    ), contentAlignment = Alignment.Center
+                                            ) {
+
+                                                Icon(
+                                                    painterResource(id = R.drawable.premume),
+                                                    "Small floating action button.",
+                                                    tint = mainFontColor
+                                                )
+
+                                            }
+                                        }
+
+
+                                        //Image(contentScale = ContentScale.Fit,painter = painterResource(id = img[0] ) , contentDescription =null )
+                                    }
+                                }
+
+                            }
+                        }
+                    }
+                }
+            }
+
+            //row 3
+
+            item() {
+                Column(modifier = Modifier.fillMaxWidth()) {
+                    Text(
+                        modifier = Modifier.padding(top = 5.dp, start = 10.dp),
+                        text = "Sports",
+                        fontSize = 17.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = mainFontColor
+                    )
+                    LazyRow(
+                        Modifier
+                            .fillMaxWidth()
+                            .padding(top = 10.dp)
+                    ) {
+                        item {
+                            Spacer(modifier = Modifier.width(10.dp))
+                        }
+                        items(watchList) {
+                            var name = it["name"] as String
+                            Column(modifier = Modifier.padding(end = 10.dp)) {
+                                Box(modifier = Modifier
+                                    .width(187.dp)
+                                    .height(100.dp)
+
+                                    .clip(shape = RoundedCornerShape(8.dp))
+                                    .background(
+                                        Brush.horizontalGradient(
+                                            colors = listOf(brush1, brush2)
+                                        )
+                                    )
+                                    .clickable {
+                                        /*ToDo:navigate with id to specific videopage*/
+                                    }) {
+
+                                    var premume = it["premume"] as Boolean
+
+
+                                    if (premume) {
+                                        Box(
+                                            modifier = Modifier
+                                                .align(Alignment.TopEnd)
+                                                .padding(9.dp)
+                                                .size(22.dp)
+                                                .clip(shape = RoundedCornerShape(100.dp))
+                                                .background(
+                                                    Brush.horizontalGradient(
+                                                        colors = listOf(navBrush1, navBrush2)
+                                                    )
+                                                ), contentAlignment = Alignment.Center
+                                        ) {
+
+                                            Icon(
+                                                painterResource(id = R.drawable.premume15),
+                                                "Small floating action button.",
+                                                tint = mainFontColor
+                                            )
+
+                                        }
+                                    }
+
+
+                                    //Image(contentScale = ContentScale.Fit,painter = painterResource(id = img[0] ) , contentDescription =null )
+                                }
+                                Text(
+                                    maxLines = 1,
+                                    overflow = TextOverflow.Ellipsis,
+                                    modifier = Modifier.padding(top = 10.dp),
+                                    text = "$name",
+                                    fontSize = 14.sp,
+                                    color = mainFontColor,
+                                    fontWeight = FontWeight(600)
+                                )
+                            }
+
+                        }
+                    }
+                }
+            }
+
+            //row 4
+
+            item() {
+                Column(modifier = Modifier.fillMaxWidth()) {
+                    Text(
+                        modifier = Modifier.padding(top = 5.dp, start = 10.dp),
+                        text = "Live TV",
+                        fontSize = 17.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = mainFontColor
+                    )
+                    LazyRow(
+                        Modifier
+                            .fillMaxWidth()
+                            .padding(top = 10.dp)
+                    ) {
+                        item {
+                            Spacer(modifier = Modifier.width(10.dp))
+                        }
+                        items(watchList) {
+                            var name = it["name"] as String
+                            Column(modifier = Modifier.padding(end = 10.dp)) {
+                                Box(modifier = Modifier
+                                    .width(187.dp)
+                                    .height(100.dp)
+
+                                    .clip(shape = RoundedCornerShape(8.dp))
+                                    .background(
+                                        Brush.horizontalGradient(
+                                            colors = listOf(brush1, brush2)
+                                        )
+                                    )
+                                    .clickable {
+                                        /*ToDo:navigate with id to specific videopage*/
+                                    }) {
+
+                                    var premume = it["premume"] as Boolean
+
+
+                                    if (premume) {
+                                        Box(
+                                            modifier = Modifier
+                                                .align(Alignment.TopEnd)
+                                                .padding(9.dp)
+                                                .size(22.dp)
+                                                .clip(shape = RoundedCornerShape(100.dp))
+                                                .background(
+                                                    Brush.horizontalGradient(
+                                                        colors = listOf(navBrush1, navBrush2)
+                                                    )
+                                                ), contentAlignment = Alignment.Center
+                                        ) {
+
+                                            Icon(
+                                                painterResource(id = R.drawable.premume15),
+                                                "Small floating action button.",
+                                                tint = mainFontColor
+                                            )
+
+                                        }
+                                    }
+
+
+                                    //Image(contentScale = ContentScale.Fit,painter = painterResource(id = img[0] ) , contentDescription =null )
+                                }
+                                Text(
+                                    maxLines = 1,
+                                    overflow = TextOverflow.Ellipsis,
+                                    modifier = Modifier.padding(top = 10.dp),
+                                    text = "$name",
+                                    fontSize = 14.sp,
+                                    color = mainFontColor,
+                                    fontWeight = FontWeight(600)
+                                )
+                            }
+
+                        }
+                    }
+                }
+            }
+
+
+            //row x
 
 
         }
