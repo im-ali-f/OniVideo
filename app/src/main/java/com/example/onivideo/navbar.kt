@@ -97,7 +97,7 @@ fun NavbarComp(navController: NavController,title:String,accessMap:Map<String,Bo
                 )
             }
             if (accessMap["search"] == true) {
-                IconButton(onClick = { /* TODO */ }) {
+                IconButton(onClick = { navController.navigate("searchPage") }) {
                     Icon(
                         imageVector = Icons.Filled.Search,
                         contentDescription = null,
