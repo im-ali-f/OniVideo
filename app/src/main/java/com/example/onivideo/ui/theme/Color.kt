@@ -33,6 +33,16 @@ val googleColorDarker= Color(0xFFD0362A)
 val googleColorlighter= Color(0xFFF14336)
 
 
+val sec1BGCColor= Color(0xFF1C1E27)
+val sec1UnselectedColor= Color(0xFF2C2F3B)
+val sec2BGCColor= Color(0xFF2B2D39)
+val sec2SelectedUnder= Color(0xFF4A575E)
+val sec2Hindi= Color(0xFFD35B84)
+val sec2English= Color(0xFF368CD1)
+val sec2Spanish= Color(0xFF9059F1)
+val sec2Persian= Color(0xFFFE800C)
+
+
 
 
 

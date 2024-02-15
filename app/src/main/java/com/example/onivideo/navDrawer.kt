@@ -135,27 +135,27 @@ fun DrawerBody(navController: NavController, scaffoldState: ScaffoldState,scope 
     )
     val helperMap= mapOf(
         "Home" to "mainPage",
-        "TV Shows" to "mainPage",//change
+        "TV Shows" to "TVShowsPage",
         "Movies" to "mainPage",//change
         "Sports" to "mainPage",//change
         "Live TV" to "mainPage",//change
         "Watchlist" to "watchlistPage",
-        "Dashboard" to "dashboardPage",//change
+        "Dashboard" to "dashboardPage",
         "Profile" to "accountPage",
         "Settings" to "settingPage",
-        "Logout" to "loginSignupPage"//change
+        "Logout" to "loginSignupPage"
     )
     val helperMapIcon= mapOf<String,Int>(
         "Home" to R.drawable.mainpage,
-        "TV Shows" to R.drawable.tvpage,//change
-        "Movies" to R.drawable.moviepage,//change
-        "Sports" to R.drawable.sportpage,//change
-        "Live TV" to R.drawable.livepage,//change
+        "TV Shows" to R.drawable.tvpage,
+        "Movies" to R.drawable.moviepage,
+        "Sports" to R.drawable.sportpage,
+        "Live TV" to R.drawable.livepage,
         "Watchlist" to R.drawable.list,
-        "Dashboard" to R.drawable.dashboardpage,//change
+        "Dashboard" to R.drawable.dashboardpage,
         "Profile" to R.drawable.profilepage,
         "Settings" to R.drawable.settingpage,
-        "Logout" to R.drawable.logout//change
+        "Logout" to R.drawable.logout
     )
     var activeBTN =active
 
