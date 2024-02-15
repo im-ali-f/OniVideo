@@ -127,7 +127,7 @@ class MainActivity : ComponentActivity() {
                         // nav
                         NavHost(
                             navController = navState,
-                            startDestination = "TVShowsPage",
+                            startDestination = "moviesPage",
                             //popEnterTransition ={ fadeIn(animationSpec = tween(8700)) } ,
                             //popExitTransition = { fadeOut(animationSpec = tween(8700)) }
                         ) {
@@ -198,6 +198,16 @@ class MainActivity : ComponentActivity() {
                                 bottomBar=true
                                 active.value = "TV Shows"
                                 TVShowsComp(navController = navState)
+                            }
+
+                            composable(route = "moviesPage") {
+                                access = mapOf<String, Boolean>(
+                                    "bar" to true, "menu" to true, "search" to true,"back" to false
+                                )
+                                title = "Movies"
+                                bottomBar=true
+                                active.value = "Movies"
+                                MoviesComp(navController = navState)
                             }
 
 

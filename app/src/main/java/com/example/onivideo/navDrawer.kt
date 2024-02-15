@@ -136,7 +136,7 @@ fun DrawerBody(navController: NavController, scaffoldState: ScaffoldState,scope 
     val helperMap= mapOf(
         "Home" to "mainPage",
         "TV Shows" to "TVShowsPage",
-        "Movies" to "mainPage",//change
+        "Movies" to "moviesPage",
         "Sports" to "mainPage",//change
         "Live TV" to "mainPage",//change
         "Watchlist" to "watchlistPage",
