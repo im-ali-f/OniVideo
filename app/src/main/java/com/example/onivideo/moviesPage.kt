@@ -550,4 +550,492 @@ fun MoviesComp(navController: NavController) {
         }
     }
 
+    if(screenWidth>400){
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(mainBGC)
+                .padding(10.dp)
+        ) {
+            //sec1
+            val selected = Brush.horizontalGradient(
+                colors = listOf(navBrush1, navBrush2)
+            )
+            val unselected = Brush.horizontalGradient(
+                colors = listOf(sec1UnselectedColor, sec1UnselectedColor)
+            )
+
+            var language by remember {
+                mutableStateOf(true)
+            }
+            var genre by remember {
+                mutableStateOf(false)
+            }
+            if (language) genre = false
+            else genre = true
+
+            var languageColor = if (language) selected else unselected
+            var genreColor = if (genre) selected else unselected
+
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .clip(RoundedCornerShape(100))
+                    .background(sec1BGCColor)
+                    .padding(10.dp),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.SpaceBetween
+            ) {
+                Button(
+                    onClick = {
+                        language = true
+                        genre = false
+                    },
+                    modifier = Modifier
+                        .fillMaxWidth(0.47f)
+                        .clip(shape = RoundedCornerShape(100))
+                        .background(
+                            languageColor
+                        )
+                        .height(50.dp),
+                    shape = RoundedCornerShape(100),
+                    colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent),
+                    contentPadding = PaddingValues(0.dp)
+                ) {
+                    Text(
+                        text = "Language", textAlign = TextAlign.Center,
+                        color = mainFontColor,
+                        fontSize = 19.sp,
+                        fontWeight = FontWeight(600)
+                    )
+                }
+
+
+                Button(
+                    onClick = {
+                        genre = true
+                        language = false
+                    },
+                    modifier = Modifier
+                        .fillMaxWidth(0.93f)
+                        .clip(shape = RoundedCornerShape(100))
+                        .background(
+                            genreColor
+                        )
+                        .height(50.dp),
+                    shape = RoundedCornerShape(100),
+                    colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent),
+                    contentPadding = PaddingValues(0.dp)
+                ) {
+                    Text(
+                        text = "Genre", textAlign = TextAlign.Center,
+                        color = mainFontColor,
+                        fontSize = 19.sp,
+                        fontWeight = FontWeight(600)
+                    )
+                }
+
+
+            }
+            //sec2
+            var selectedLang by remember {
+                mutableStateOf("Hindi")
+            }
+            var selectedGenre by remember {
+                mutableStateOf("Action")
+            }
+            Spacer(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(10.dp)
+            )
+            var scrollState = rememberScrollState()
+            Row(
+                Modifier
+                    .fillMaxWidth()
+                    .clip(RoundedCornerShape(6.dp))
+                    .background(sec2BGCColor)
+                    .padding(0.dp, 10.dp, 0.dp, 10.dp)
+                    .horizontalScroll(scrollState),// in bayad verical bemone ?
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.SpaceBetween
+
+            ) {
+                if (language) {
+
+                    Spacer(modifier = Modifier.width(10.dp))
+                    //hindi
+                    Box(contentAlignment = Alignment.Center) {
+                        Box(modifier = Modifier
+                            .width(135.dp)
+                            .height(49.dp)
+                            .clip(RoundedCornerShape(100))
+                            .clickable { selectedLang = "Hindi" }
+                            .background(
+                                if (selectedLang == "Hindi") sec2SelectedUnder else Color.Transparent
+                            ))
+                        Box(
+                            modifier = Modifier
+                                .width(127.dp)
+                                .height(41.dp)
+                                .clip(RoundedCornerShape(100))
+                                .background(
+                                    sec2Hindi
+                                ), contentAlignment = Alignment.Center
+                        )
+                        {
+                            Text(
+                                text = "Hindi",
+                                fontSize = 14.sp,
+                                fontWeight = FontWeight(400),
+                                color = mainFontColor
+                            )
+                        }
+                    }
+
+                    //english
+                    Box(contentAlignment = Alignment.Center) {
+                        Box(modifier = Modifier
+                            .width(135.dp)
+                            .height(49.dp)
+                            .clip(RoundedCornerShape(100))
+                            .clickable { selectedLang = "English" }
+                            .background(
+                                if (selectedLang == "English") sec2SelectedUnder else Color.Transparent
+                            ))
+                        Box(
+                            modifier = Modifier
+                                .width(127.dp)
+                                .height(41.dp)
+                                .clip(RoundedCornerShape(100))
+                                .background(
+                                    sec2English
+                                ), contentAlignment = Alignment.Center
+                        )
+                        {
+                            Text(
+                                text = "English",
+                                fontSize = 14.sp,
+                                fontWeight = FontWeight(400),
+                                color = mainFontColor
+                            )
+                        }
+                    }
+
+                    //Spanish
+                    Box(contentAlignment = Alignment.Center) {
+                        Box(modifier = Modifier
+                            .width(135.dp)
+                            .height(49.dp)
+                            .clip(RoundedCornerShape(100))
+                            .clickable { selectedLang = "Spanish" }
+                            .background(
+                                if (selectedLang == "Spanish") sec2SelectedUnder else Color.Transparent
+                            ))
+                        Box(
+                            modifier = Modifier
+                                .width(127.dp)
+                                .height(41.dp)
+                                .clip(RoundedCornerShape(100))
+                                .background(
+                                    sec2Spanish
+                                ), contentAlignment = Alignment.Center
+                        )
+                        {
+                            Text(
+                                text = "Spanish",
+                                fontSize = 14.sp,
+                                fontWeight = FontWeight(400),
+                                color = mainFontColor
+                            )
+                        }
+                    }
+
+                    //Persian
+                    Box(contentAlignment = Alignment.Center) {
+                        Box(modifier = Modifier
+                            .width(135.dp)
+                            .height(49.dp)
+                            .clip(RoundedCornerShape(100))
+                            .clickable { selectedLang = "Persian" }
+                            .background(
+                                if (selectedLang == "Persian") sec2SelectedUnder else Color.Transparent
+                            ))
+                        Box(
+                            modifier = Modifier
+                                .width(127.dp)
+                                .height(41.dp)
+                                .clip(RoundedCornerShape(100))
+                                .background(
+                                    sec2Persian
+                                ), contentAlignment = Alignment.Center
+                        )
+                        {
+                            Text(
+                                text = "Persian",
+                                fontSize = 14.sp,
+                                fontWeight = FontWeight(400),
+                                color = mainFontColor
+                            )
+                        }
+                    }
+
+
+                }
+                else{
+
+                    Spacer(modifier = Modifier.width(10.dp))
+                    //Action
+                    Box(contentAlignment = Alignment.Center) {
+                        Box(modifier = Modifier
+                            .width(135.dp)
+                            .height(49.dp)
+                            .clip(RoundedCornerShape(100))
+                            .clickable { selectedGenre = "Action" }
+                            .background(
+                                if (selectedGenre == "Action") sec2SelectedUnder else Color.Transparent
+                            ))
+                        Box(
+                            modifier = Modifier
+                                .width(127.dp)
+                                .height(41.dp)
+                                .clip(RoundedCornerShape(100))
+                                .background(
+                                    sec2Hindi
+                                ), contentAlignment = Alignment.Center
+                        )
+                        {
+                            Text(
+                                text = "Action",
+                                fontSize = 16.sp,
+                                fontWeight = FontWeight(400),
+                                color = mainFontColor
+                            )
+                        }
+                    }
+
+                    //Comedy
+                    Box(contentAlignment = Alignment.Center) {
+                        Box(modifier = Modifier
+                            .width(135.dp)
+                            .height(49.dp)
+                            .clip(RoundedCornerShape(100))
+                            .clickable { selectedGenre = "Comedy" }
+                            .background(
+                                if (selectedGenre == "Comedy") sec2SelectedUnder else Color.Transparent
+                            ))
+                        Box(
+                            modifier = Modifier
+                                .width(127.dp)
+                                .height(41.dp)
+                                .clip(RoundedCornerShape(100))
+                                .background(
+                                    sec2English
+                                ), contentAlignment = Alignment.Center
+                        )
+                        {
+                            Text(
+                                text = "Comedy",
+                                fontSize = 16.sp,
+                                fontWeight = FontWeight(400),
+                                color = mainFontColor
+                            )
+                        }
+                    }
+
+                    //Western
+                    Box(contentAlignment = Alignment.Center) {
+                        Box(modifier = Modifier
+                            .width(135.dp)
+                            .height(49.dp)
+                            .clip(RoundedCornerShape(100))
+                            .clickable { selectedGenre = "Western" }
+                            .background(
+                                if (selectedGenre == "Western") sec2SelectedUnder else Color.Transparent
+                            ))
+                        Box(
+                            modifier = Modifier
+                                .width(127.dp)
+                                .height(41.dp)
+                                .clip(RoundedCornerShape(100))
+                                .background(
+                                    sec2Spanish
+                                ), contentAlignment = Alignment.Center
+                        )
+                        {
+                            Text(
+                                text = "Western",
+                                fontSize = 16.sp,
+                                fontWeight = FontWeight(400),
+                                color = mainFontColor
+                            )
+                        }
+                    }
+
+                    //Horror
+                    Box(contentAlignment = Alignment.Center) {
+                        Box(modifier = Modifier
+                            .width(135.dp)
+                            .height(49.dp)
+                            .clip(RoundedCornerShape(100))
+                            .clickable { selectedGenre = "Horror" }
+                            .background(
+                                if (selectedGenre == "Horror") sec2SelectedUnder else Color.Transparent
+                            ))
+                        Box(
+                            modifier = Modifier
+                                .width(127.dp)
+                                .height(41.dp)
+                                .clip(RoundedCornerShape(100))
+                                .background(
+                                    sec2Persian
+                                ), contentAlignment = Alignment.Center
+                        )
+                        {
+                            Text(
+                                text = "Horror",
+                                fontSize = 16.sp,
+                                fontWeight = FontWeight(400),
+                                color = mainFontColor
+                            )
+                        }
+                    }
+
+
+                }
+            }
+            //sec3
+            if(language){
+                LazyVerticalStaggeredGrid(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .fillMaxHeight()
+                        .background(mainBGC)
+                        .padding(top = 5.dp),
+                    columns = StaggeredGridCells.Fixed(3),
+                    content = {
+                        items(TVShowsList) {
+                            if(it["language"] as String == selectedLang){
+                                Column (modifier = Modifier.padding(4.dp)){
+                                    Box(modifier = Modifier
+                                        .fillMaxWidth()
+                                        .height(170.dp)
+
+                                        .clip(shape = RoundedCornerShape(8.dp))
+                                        .background(
+                                            Brush.horizontalGradient(
+                                                colors = listOf(brush1, brush2)
+                                            )
+                                        )
+                                        .clickable {
+                                            /*ToDo:navigate with id to specific videopage*/
+                                        }) {
+                                        var img = it["img"] as Array<Int>
+                                        var premume = it["premume"] as Boolean
+
+
+                                        if (premume) {
+                                            Box(
+                                                modifier = Modifier
+                                                    .align(Alignment.TopEnd)
+                                                    .padding(5.dp)
+                                                    .size(30.dp)
+                                                    .clip(shape = RoundedCornerShape(100.dp))
+                                                    .background(
+                                                        Brush.horizontalGradient(
+                                                            colors = listOf(navBrush1, navBrush2)
+                                                        )
+                                                    ), contentAlignment = Alignment.Center
+                                            ) {
+
+                                                Icon(
+                                                    painterResource(id = R.drawable.premume),
+                                                    "Small floating action button.",
+                                                    tint = mainFontColor
+                                                )
+
+                                            }
+                                        }
+
+
+                                        //Image(contentScale = ContentScale.Fit,painter = painterResource(id = img[0] ) , contentDescription =null )
+                                    }
+                                }
+                            }
+
+
+                        }
+                    }
+                )
+            }
+            else{
+                LazyVerticalStaggeredGrid(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .fillMaxHeight()
+                        .background(mainBGC)
+                        .padding(top = 5.dp),
+                    columns = StaggeredGridCells.Fixed(3),
+                    content = {
+                        items(TVShowsList) {
+                            var array=it["genre"] as Array<String>
+                            if(array.contains(selectedGenre)){
+                                Column (modifier = Modifier.padding(4.dp)){
+                                    Box(modifier = Modifier
+                                        .fillMaxWidth()
+                                        .height(170.dp)
+
+                                        .clip(shape = RoundedCornerShape(8.dp))
+                                        .background(
+                                            Brush.horizontalGradient(
+                                                colors = listOf(brush1, brush2)
+                                            )
+                                        )
+                                        .clickable {
+                                            /*ToDo:navigate with id to specific videopage*/
+                                        }) {
+                                        var img = it["img"] as Array<Int>
+                                        var premume = it["premume"] as Boolean
+
+
+                                        if (premume) {
+                                            Box(
+                                                modifier = Modifier
+                                                    .align(Alignment.TopEnd)
+                                                    .padding(5.dp)
+                                                    .size(30.dp)
+                                                    .clip(shape = RoundedCornerShape(100.dp))
+                                                    .background(
+                                                        Brush.horizontalGradient(
+                                                            colors = listOf(navBrush1, navBrush2)
+                                                        )
+                                                    ), contentAlignment = Alignment.Center
+                                            ) {
+
+                                                Icon(
+                                                    painterResource(id = R.drawable.premume),
+                                                    "Small floating action button.",
+                                                    tint = mainFontColor
+                                                )
+
+                                            }
+                                        }
+
+
+                                        //Image(contentScale = ContentScale.Fit,painter = painterResource(id = img[0] ) , contentDescription =null )
+                                    }
+                                }
+                            }
+
+
+                        }
+                    }
+                )
+            }
+
+
+            //eof
+        }
+    }
+
 }
