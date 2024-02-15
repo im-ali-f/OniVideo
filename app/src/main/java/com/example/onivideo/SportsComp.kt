@@ -76,7 +76,7 @@ val sportList = arrayOf<Map<String, Any>>(
         ),
     mapOf(
         "id" to 2,
-        "name" to "The Archery abcd efg 222",
+        "name" to "The Archery abcd fefefgee 222",
         "poster" to R.drawable.poster,
         "img" to arrayOf(R.drawable.mimg, R.drawable.mimg, R.drawable.mimg, R.drawable.mimg),
         "sport" to "Archery",
@@ -484,4 +484,224 @@ fun SportsComp(navController: NavController) {
             //eof
         }
     }
+
+    if (screenWidth > 400) {
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(mainBGC)
+                .padding(10.dp)
+        ) {
+            //sec1
+            var selectedSport by remember {
+                mutableStateOf("Archery")
+            }
+            Spacer(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(5.dp)
+            )
+            var scrollState = rememberScrollState()
+            Row(
+                Modifier
+                    .fillMaxWidth()
+                    .clip(RoundedCornerShape(6.dp))
+                    .background(sec2BGCColor)
+                    .padding(0.dp, 10.dp, 0.dp, 10.dp)
+                    .horizontalScroll(scrollState),// in bayad verical bemone ?
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.SpaceBetween
+
+            ) {
+
+
+                Spacer(modifier = Modifier.width(10.dp))
+                //archery
+                Box(contentAlignment = Alignment.Center) {
+                    Box(modifier = Modifier
+                        .width(122.dp)
+                        .height(45.dp)
+                        .clip(RoundedCornerShape(100))
+                        .clickable { selectedSport = "Archery" }
+                        .background(
+                            if (selectedSport == "Archery") sec2SelectedUnder else Color.Transparent
+                        ))
+                    Box(
+                        modifier = Modifier
+                            .width(114.dp)
+                            .height(37.dp)
+                            .clip(RoundedCornerShape(100))
+                            .background(
+                                sec2Hindi
+                            ), contentAlignment = Alignment.Center
+                    )
+                    {
+                        Text(
+                            text = "Archery",
+                            fontSize = 14.sp,
+                            fontWeight = FontWeight(400),
+                            color = mainFontColor
+                        )
+                    }
+                }
+                Spacer(modifier = Modifier.width(5.dp))
+                //Badminton
+                Box(contentAlignment = Alignment.Center) {
+                    Box(modifier = Modifier
+                        .width(122.dp)
+                        .height(49.dp)
+                        .clip(RoundedCornerShape(100))
+                        .clickable { selectedSport = "Badminton" }
+                        .background(
+                            if (selectedSport == "Badminton") sec2SelectedUnder else Color.Transparent
+                        ))
+                    Box(
+                        modifier = Modifier
+                            .width(114.dp)
+                            .height(41.dp)
+                            .clip(RoundedCornerShape(100))
+                            .background(
+                                sec2English
+                            ), contentAlignment = Alignment.Center
+                    )
+                    {
+                        Text(
+                            text = "Badminton",
+                            fontSize = 14.sp,
+                            fontWeight = FontWeight(400),
+                            color = mainFontColor
+                        )
+                    }
+                }
+                Spacer(modifier = Modifier.width(5.dp))
+
+                //Cricket
+                Box(contentAlignment = Alignment.Center) {
+                    Box(modifier = Modifier
+                        .width(122.dp)
+                        .height(49.dp)
+                        .clip(RoundedCornerShape(100))
+                        .clickable { selectedSport = "Cricket" }
+                        .background(
+                            if (selectedSport == "Cricket") sec2SelectedUnder else Color.Transparent
+                        ))
+                    Box(
+                        modifier = Modifier
+                            .width(114.dp)
+                            .height(41.dp)
+                            .clip(RoundedCornerShape(100))
+                            .background(
+                                sec2Spanish
+                            ), contentAlignment = Alignment.Center
+                    )
+                    {
+                        Text(
+                            text = "Cricket",
+                            fontSize = 14.sp,
+                            fontWeight = FontWeight(400),
+                            color = mainFontColor
+                        )
+                    }
+                }
+                Spacer(modifier = Modifier.width(5.dp))
+                //BasketBall
+                Box(contentAlignment = Alignment.Center) {
+                    Box(modifier = Modifier
+                        .width(122.dp)
+                        .height(49.dp)
+                        .clip(RoundedCornerShape(100))
+                        .clickable { selectedSport = "BasketBall" }
+                        .background(
+                            if (selectedSport == "BasketBall") sec2SelectedUnder else Color.Transparent
+                        ))
+                    Box(
+                        modifier = Modifier
+                            .width(114.dp)
+                            .height(41.dp)
+                            .clip(RoundedCornerShape(100))
+                            .background(
+                                sec2Persian
+                            ), contentAlignment = Alignment.Center
+                    )
+                    {
+                        Text(
+                            text = "BasketBall",
+                            fontSize = 14.sp,
+                            fontWeight = FontWeight(400),
+                            color = mainFontColor
+                        )
+                    }
+                }
+
+            }
+            //sec2
+            Spacer(modifier = Modifier.height(5.dp))
+            LazyVerticalStaggeredGrid(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .fillMaxHeight()
+                    .background(mainBGC),
+
+                columns = StaggeredGridCells.Fixed(2),
+                content = {
+                    items(sportList) {
+                        if(it["sport"] as String == selectedSport){
+                            var name = it["name"] as String
+                            Column (modifier = Modifier.padding(5.dp)){
+                                Box(modifier = Modifier
+                                    .fillMaxWidth()
+                                    .height(110.dp)
+
+                                    .clip(shape = RoundedCornerShape(8.dp))
+                                    .background(
+                                        Brush.horizontalGradient(
+                                            colors = listOf(brush1, brush2)
+                                        )
+                                    )
+                                    .clickable {
+                                        /*ToDo:navigate with id to specific videopage*/
+                                    }) {
+
+                                    var premume = it["premume"] as Boolean
+
+                                    if (premume) {
+                                        Box(
+                                            modifier = Modifier
+                                                .align(Alignment.TopEnd)
+                                                .padding(5.dp)
+                                                .size(28.dp)
+                                                .clip(shape = RoundedCornerShape(100.dp))
+                                                .background(
+                                                    Brush.horizontalGradient(
+                                                        colors = listOf(navBrush1, navBrush2)
+                                                    )
+                                                ), contentAlignment = Alignment.Center
+                                        ) {
+
+                                            Icon(
+                                                painterResource(id = R.drawable.premume),
+                                                "Small floating action button.",
+                                                tint = mainFontColor
+                                            )
+
+                                        }
+                                    }
+
+
+                                    //Image(contentScale = ContentScale.Fit,painter = painterResource(id = img[0] ) , contentDescription =null )
+                                }
+                                Text(maxLines = 1, overflow = TextOverflow.Ellipsis,modifier = Modifier.padding(top=10.dp), text = "$name", fontSize = 15.sp, color = mainFontColor, fontWeight = FontWeight(750))
+                            }
+
+                        }
+
+
+                    }
+                }
+            )
+
+            //eof
+        }
+    }
+
 }
