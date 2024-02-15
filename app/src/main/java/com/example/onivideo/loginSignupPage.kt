@@ -188,7 +188,7 @@ fun LoginSignupComp(navController: NavController) {
                     ) {
                         Box(
                             modifier = Modifier
-                                .size(17.dp)
+                                .size(20.dp)
                                 .background(if (isCheck.value) redFontColor else mainBGC)
                                 .clickable {
                                     isCheck.value = !isCheck.value
@@ -209,7 +209,7 @@ fun LoginSignupComp(navController: NavController) {
                             .padding(start = 7.dp),
                         text = "Remember Me",
                         letterSpacing = 0.7.sp,
-                        fontSize = 12.sp, fontWeight = FontWeight(400), color = mainFontColor
+                        fontSize = 14.sp, fontWeight = FontWeight(400), color = mainFontColor
                     )
                 }
 
@@ -218,69 +218,88 @@ fun LoginSignupComp(navController: NavController) {
                 modifier = Modifier.clickable { },
                 text = "Forgot Password?",
                 letterSpacing = 0.7.sp,
-                fontSize = 12.sp, fontWeight = FontWeight(800), color = mainFontColor
+                fontSize = 14.sp, fontWeight = FontWeight(800), color = mainFontColor
             )
         }
 
-    Row(modifier = Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
-        var checkBoxStat by remember {
-            mutableStateOf(false)
-        }
-        Box(modifier = Modifier.width(40.dp).padding(0.dp).background(Color.Blue), contentAlignment = Alignment.CenterStart){
-            Checkbox(checked = checkBoxStat, onCheckedChange ={checkBoxStat= if(checkBoxStat)false else true}, modifier = Modifier.padding(0.dp).size(15.dp) )
-        }
-        Box(modifier = Modifier.fillMaxWidth(0.9f), contentAlignment = Alignment.Center){
-            Text(
-                text = buildAnnotatedString {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(top = 15.dp), verticalAlignment = Alignment.CenterVertically
+        ) {
+            var checkBoxStat by remember {
+                mutableStateOf(false)
+            }
+            Box(
+                modifier = Modifier
+                    .width(20.dp)
+                    .padding(0.dp), contentAlignment = Alignment.CenterStart
+            ) {
+                Checkbox(colors = CheckboxDefaults.colors(
+                    checkedColor = redFontColor,
+                    checkmarkColor = mainFontColor,
+                    uncheckedColor = mainFontColor
+                ),
+                    modifier = Modifier.size(24.dp),
+                    checked = checkBoxStat,
+                    onCheckedChange = { checkBoxStat = if (checkBoxStat) false else true })
+            }
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth(0.9f)
+                    .padding(start = 5.dp), contentAlignment = Alignment.Center
+            ) {
+                Text(
+                    text = buildAnnotatedString {
 
-                    withStyle(
-                        style = SpanStyle(
-                            fontSize = 13.sp,
-                            fontWeight = FontWeight(400),
-                            letterSpacing = 1.sp,
-                            color = mainFontColor
-                        )
-                    ) {
-                        append("By Signing in you accept ")
-                    }
+                        withStyle(
+                            style = SpanStyle(
+                                fontSize = 13.sp,
+                                fontWeight = FontWeight(400),
+                                letterSpacing = 1.sp,
+                                color = mainFontColor
+                            )
+                        ) {
+                            append("By Signing in you accept ")
+                        }
 
-                    withStyle(
-                        style = SpanStyle(
-                            fontSize = 13.sp,
-                            letterSpacing = 1.sp,
-                            fontWeight = FontWeight(400),
-                            color = redFontColor
-                        )
-                    ) {
-                        append("Terms ")
-                    }
+                        withStyle(
+                            style = SpanStyle(
+                                fontSize = 13.sp,
+                                letterSpacing = 1.sp,
+                                fontWeight = FontWeight(400),
+                                color = redFontColor
+                            )
+                        ) {
+                            append("Terms ")
+                        }
 
-                    withStyle(
+                        withStyle(
                             style = SpanStyle(
                                 letterSpacing = 1.sp,
                                 fontSize = 13.sp,
                                 fontWeight = FontWeight(400),
                                 color = mainFontColor
                             )
-                            ) {
-                        append("and ")
-                    }
+                        ) {
+                            append("and ")
+                        }
 
-                    withStyle(
-                        style = SpanStyle(
-                            letterSpacing = 1.sp,
-                            fontSize = 13.sp,
-                            fontWeight = FontWeight(400),
-                            color = redFontColor
-                        )
-                    ) {
-                        append("Privacy Policy")
-                    }
+                        withStyle(
+                            style = SpanStyle(
+                                letterSpacing = 1.sp,
+                                fontSize = 13.sp,
+                                fontWeight = FontWeight(400),
+                                color = redFontColor
+                            )
+                        ) {
+                            append("Privacy Policy")
+                        }
 
 
-                },
-            )
+                    },
+                )
+            }
         }
     }
-}
 }
