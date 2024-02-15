@@ -127,7 +127,7 @@ class MainActivity : ComponentActivity() {
                         // nav
                         NavHost(
                             navController = navState,
-                            startDestination = "sportsPage",
+                            startDestination = "liveTVPage",
                             //popEnterTransition ={ fadeIn(animationSpec = tween(8700)) } ,
                             //popExitTransition = { fadeOut(animationSpec = tween(8700)) }
                         ) {
@@ -220,6 +220,16 @@ class MainActivity : ComponentActivity() {
                                 SportsComp(navController = navState)
                             }
 
+
+                            composable(route = "liveTVPage") {
+                                access = mapOf<String, Boolean>(
+                                    "bar" to true, "menu" to true, "search" to true,"back" to false
+                                )
+                                title = "Live TV"
+                                bottomBar=true
+                                active.value = "Live TV"
+                                LiveTVComp(navController = navState)
+                            }
 
 
                         }
