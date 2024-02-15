@@ -137,7 +137,7 @@ fun DrawerBody(navController: NavController, scaffoldState: ScaffoldState,scope 
         "Home" to "mainPage",
         "TV Shows" to "TVShowsPage",
         "Movies" to "moviesPage",
-        "Sports" to "mainPage",//change
+        "Sports" to "sportsPage",
         "Live TV" to "mainPage",//change
         "Watchlist" to "watchlistPage",
         "Dashboard" to "dashboardPage",
