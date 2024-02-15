@@ -10,12 +10,12 @@
               <deviceKey>
                 <Key>
                   <type value="VIRTUAL_DEVICE_PATH" />
-                  <value value="C:\Users\Ali\.android\avd\ajor_kochik.avd" />
+                  <value value="C:\Users\Ali\.android\avd\ajor.avd" />
                 </Key>
               </deviceKey>
             </Target>
           </runningDeviceTargetSelectedWithDropDown>
-          <timeTargetWasSelectedWithDropDown value="2024-02-15T07:48:36.452560Z" />
+          <timeTargetWasSelectedWithDropDown value="2024-02-15T09:28:23.894728100Z" />
           <runningDeviceTargetsSelectedWithDialog>
             <Target>
               <type value="RUNNING_DEVICE_TARGET" />
