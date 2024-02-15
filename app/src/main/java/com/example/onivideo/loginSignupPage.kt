@@ -6,8 +6,10 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -20,6 +22,8 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.outlined.Lock
 import androidx.compose.material.icons.outlined.MailOutline
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.CheckboxDefaults
@@ -47,17 +51,21 @@ import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.example.onivideo.ui.theme.faceBookColorDarker
+import com.example.onivideo.ui.theme.faceBookColorLighter
+import com.example.onivideo.ui.theme.googleColorDarker
+import com.example.onivideo.ui.theme.googleColorlighter
 import com.example.onivideo.ui.theme.mainBGC
 import com.example.onivideo.ui.theme.mainFontColor
 import com.example.onivideo.ui.theme.navBrush1
 import com.example.onivideo.ui.theme.navBrush2
 import com.example.onivideo.ui.theme.popupInnerSectionColor
 import com.example.onivideo.ui.theme.radioButtonColor
-import com.example.onivideo.ui.theme.radioSelectedColor
 import com.example.onivideo.ui.theme.redFontColor
 import com.example.onivideo.ui.theme.switchThumbColor
 import com.example.onivideo.ui.theme.switchTrackColor
@@ -301,5 +309,117 @@ fun LoginSignupComp(navController: NavController) {
                 )
             }
         }
+        Spacer(modifier = Modifier
+            .fillMaxWidth()
+            .height(20.dp))
+        //login btn
+        Button(
+            onClick = { navController.navigate("mainPage") },
+            modifier = Modifier
+                .fillMaxWidth()
+                .clip(shape = RoundedCornerShape(4.dp))
+                .background(
+                    Brush.horizontalGradient(
+                        colors = listOf(navBrush1, navBrush2)
+                    )
+                )
+                .height(45.dp),
+            shape = RoundedCornerShape(6.dp),
+            colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent),
+            contentPadding = PaddingValues(start = 10.dp)
+        ) {
+            Text(
+                text = "LOGIN", textAlign = TextAlign.Center,
+                color = mainFontColor,
+                fontSize = 17.sp,
+                letterSpacing = 1.sp,
+                fontWeight = FontWeight(600)
+            )
+        }
+
+        // or continue
+        Box(modifier = Modifier
+            .fillMaxWidth()
+            .padding(top = 15.dp), contentAlignment = Alignment.Center){
+            Text(text = "Or Continue with", letterSpacing = 1.sp, fontSize = 16.sp, fontWeight = FontWeight(500),color= mainFontColor)
+        }
+        //f/g btns
+        Spacer(modifier = Modifier.height(20.dp))
+        Row (Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.SpaceBetween){
+            Row(modifier = Modifier
+                .fillMaxWidth(0.47f)
+                .clickable { }
+                .height(45.dp)
+                .clip(RoundedCornerShape(4.dp))){
+                Box(modifier = Modifier
+                    .fillMaxWidth(0.25f)
+                    .fillMaxHeight()
+                    .background(faceBookColorDarker), contentAlignment = Alignment.Center){
+                    Text(text = "f", fontWeight = FontWeight(1000), fontSize = 20.sp, color = mainFontColor)
+                }
+
+                Box(modifier = Modifier
+                    .fillMaxHeight()
+                    .fillMaxWidth()
+                    .background(faceBookColorLighter), contentAlignment = Alignment.Center){
+                    Text(text = "Facebook", fontWeight = FontWeight(400), fontSize = 18.sp, color = mainFontColor)
+                }
+
+            }
+
+            Row(modifier = Modifier
+                .fillMaxWidth(0.9f)
+                .clickable { }
+                .height(45.dp)
+                .clip(RoundedCornerShape(4.dp))){
+                Box(modifier = Modifier
+                    .fillMaxWidth(0.25f)
+                    .fillMaxHeight()
+                    .background(googleColorDarker), contentAlignment = Alignment.Center){
+                    Text(text = "G", fontWeight = FontWeight(1000), fontSize = 20.sp, color = mainFontColor)
+                }
+
+                Box(modifier = Modifier
+                    .fillMaxHeight()
+                    .fillMaxWidth()
+                    .background(googleColorlighter), contentAlignment = Alignment.Center){
+                    Text(text = "Google", fontWeight = FontWeight(400), fontSize = 18.sp, color = mainFontColor)
+                }
+
+            }
+
+        }
+        //dont have acc
+        Spacer(modifier = Modifier.height(40.dp))
+        Column(Modifier.fillMaxWidth(), verticalArrangement = Arrangement.Center, horizontalAlignment = Alignment.CenterHorizontally) {
+            Row (Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center, verticalAlignment = Alignment.CenterVertically){
+                Text(text = "Don't Have an Account? ", fontSize = 15.sp, fontWeight = FontWeight(700), color = mainFontColor)
+                Text(
+                    modifier = Modifier.clickable {  },
+                    text = "Sign Up",
+                    fontSize = 17.sp,
+                    fontWeight = FontWeight(700),
+                    style = TextStyle(
+                        brush = Brush.horizontalGradient(
+                            colors = listOf(navBrush1, navBrush2)
+                        )
+                    )
+                )
+
+            }
+        }
+        Spacer(modifier = Modifier.height(12.dp))
+        Row (Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.Center){
+            Box(modifier = Modifier
+                .fillMaxWidth(0.3f)
+                .height(3.dp)
+                .clip(RoundedCornerShape(100))
+                .background(
+                    Brush.horizontalGradient(
+                        colors = listOf(navBrush1, navBrush2)
+                    )
+                ))
+        }
+        //eof
     }
 }

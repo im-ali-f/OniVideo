@@ -127,7 +127,7 @@ class MainActivity : ComponentActivity() {
                         // nav
                         NavHost(
                             navController = navState,
-                            startDestination = "mainPage",
+                            startDestination = "loginSignupPage",
                             //popEnterTransition ={ fadeIn(animationSpec = tween(8700)) } ,
                             //popExitTransition = { fadeOut(animationSpec = tween(8700)) }
                         ) {

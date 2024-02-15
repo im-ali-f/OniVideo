@@ -27,11 +27,11 @@ val redFontColor= Color(0xFFE51A62)
 
 
 val textFieldUnFocused= Color(0xFF373D51)
-val faceBookColorDarker= Color(0xFF)
-val faceBookColorLighter= Color(0xFF)
-val googleColorDarker= Color(0xFF)
-val googleColorlighter= Color(0xFF)
-val radioSelectedColor= Color(0xFF)
+val faceBookColorDarker= Color(0xFF397DF3)
+val faceBookColorLighter= Color(0xFF518EF8)
+val googleColorDarker= Color(0xFFD0362A)
+val googleColorlighter= Color(0xFFF14336)
+
 
 
 
