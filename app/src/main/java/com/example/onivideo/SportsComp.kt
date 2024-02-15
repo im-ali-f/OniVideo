@@ -61,10 +61,10 @@ import com.example.onivideo.ui.theme.sec2Spanish
 val sportList = arrayOf<Map<String, Any>>(
     mapOf(
         "id" to 1,
-        "name" to "The Video 1",
+        "name" to "The Archery 1",
         "poster" to R.drawable.poster,
         "img" to arrayOf(R.drawable.mimg, R.drawable.mimg, R.drawable.mimg, R.drawable.mimg),
-        "genre" to arrayOf("Horror", "Comedy", "Action"),
+        "sport" to "Archery",
         "language" to "English",
         "release" to "1/1/2022",
         "type" to "series",
@@ -76,10 +76,10 @@ val sportList = arrayOf<Map<String, Any>>(
         ),
     mapOf(
         "id" to 2,
-        "name" to "The Video abcd efg 222",
+        "name" to "The Archery abcd efg 222",
         "poster" to R.drawable.poster,
         "img" to arrayOf(R.drawable.mimg, R.drawable.mimg, R.drawable.mimg, R.drawable.mimg),
-        "genre" to arrayOf("Horror", "Comedy", "Western"),
+        "sport" to "Archery",
         "language" to "English/US",
         "release" to "11/10/1990",
         "type" to "movie",
@@ -91,10 +91,10 @@ val sportList = arrayOf<Map<String, Any>>(
         ),
     mapOf(
         "id" to 3,
-        "name" to "The 3",
+        "name" to "Arash kamangir",
         "poster" to R.drawable.poster,
         "img" to arrayOf(R.drawable.mimg, R.drawable.mimg, R.drawable.mimg, R.drawable.mimg),
-        "genre" to arrayOf("Action", "Romantic", "Western"),
+        "sport" to "Archery",
         "language" to "English",
         "release" to "10/1/2024",
         "type" to "series",
@@ -106,10 +106,10 @@ val sportList = arrayOf<Map<String, Any>>(
         ),
     mapOf(
         "id" to 4,
-        "name" to "The Video 4",
+        "name" to "The arch",
         "poster" to R.drawable.poster,
         "img" to arrayOf(R.drawable.mimg, R.drawable.mimg, R.drawable.mimg, R.drawable.mimg),
-        "genre" to arrayOf("Horror", "Comedy", "Action"),
+        "sport" to "Archery",
         "language" to "English",
         "release" to "1/1/2011",
         "type" to "movie",
@@ -119,12 +119,44 @@ val sportList = arrayOf<Map<String, Any>>(
         "premume" to true,
 
         ),
+
     mapOf(
-        "id" to 5,
-        "name" to "The film of 5",
+        "id" to 4,
+        "name" to "The arch",
         "poster" to R.drawable.poster,
         "img" to arrayOf(R.drawable.mimg, R.drawable.mimg, R.drawable.mimg, R.drawable.mimg),
-        "genre" to arrayOf("Horror", "Comedy", "Action"),
+        "sport" to "Archery",
+        "language" to "English",
+        "release" to "1/1/2011",
+        "type" to "movie",
+        "actors" to arrayOf("ali", "mmd", "javad", "mina", "mona", "arman", "armin"),
+        "description" to "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+        "IMDB" to "9/10",
+        "premume" to true,
+
+        ),
+
+    mapOf(
+        "id" to 4,
+        "name" to "The arch",
+        "poster" to R.drawable.poster,
+        "img" to arrayOf(R.drawable.mimg, R.drawable.mimg, R.drawable.mimg, R.drawable.mimg),
+        "sport" to "Archery",
+        "language" to "English",
+        "release" to "1/1/2011",
+        "type" to "movie",
+        "actors" to arrayOf("ali", "mmd", "javad", "mina", "mona", "arman", "armin"),
+        "description" to "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+        "IMDB" to "9/10",
+        "premume" to false,
+
+        ),
+    mapOf(
+        "id" to 5,
+        "name" to "The basket of 5",
+        "poster" to R.drawable.poster,
+        "img" to arrayOf(R.drawable.mimg, R.drawable.mimg, R.drawable.mimg, R.drawable.mimg),
+        "sport" to "BasketBall",
         "language" to "English",
         "release" to "",
         "type" to "series",
@@ -136,10 +168,10 @@ val sportList = arrayOf<Map<String, Any>>(
         ),
     mapOf(
         "id" to 6,
-        "name" to "The Video 6",
+        "name" to "The basket ball nba 6",
         "poster" to R.drawable.poster,
         "img" to arrayOf(R.drawable.mimg, R.drawable.mimg, R.drawable.mimg, R.drawable.mimg),
-        "genre" to arrayOf("Horror", "Comedy", "Action"),
+        "sport" to "BasketBall",
         "language" to "English",
         "release" to "",
         "type" to "series",
@@ -151,10 +183,74 @@ val sportList = arrayOf<Map<String, Any>>(
         ),
     mapOf(
         "id" to 7,
-        "name" to "The Video 7",
+        "name" to "The badminton 7",
         "poster" to R.drawable.poster,
         "img" to arrayOf(R.drawable.mimg, R.drawable.mimg, R.drawable.mimg, R.drawable.mimg),
-        "genre" to arrayOf("Horror", "Comedy", "Action"),
+        "sport" to "Badminton",
+        "language" to "English",
+        "release" to "",
+        "type" to "series",
+        "actors" to arrayOf("ali", "mmd", "javad", "mina", "mona", "arman", "armin"),
+        "description" to "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+        "IMDB" to "n/10",
+        "premume" to false,
+
+        ),
+
+    mapOf(
+        "id" to 7,
+        "name" to "The badminton 8",
+        "poster" to R.drawable.poster,
+        "img" to arrayOf(R.drawable.mimg, R.drawable.mimg, R.drawable.mimg, R.drawable.mimg),
+        "sport" to "Badminton",
+        "language" to "English",
+        "release" to "",
+        "type" to "series",
+        "actors" to arrayOf("ali", "mmd", "javad", "mina", "mona", "arman", "armin"),
+        "description" to "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+        "IMDB" to "n/10",
+        "premume" to false,
+
+        ),
+
+    mapOf(
+        "id" to 7,
+        "name" to "cricket plays 11 ",
+        "poster" to R.drawable.poster,
+        "img" to arrayOf(R.drawable.mimg, R.drawable.mimg, R.drawable.mimg, R.drawable.mimg),
+        "sport" to "Cricket",
+        "language" to "English",
+        "release" to "",
+        "type" to "series",
+        "actors" to arrayOf("ali", "mmd", "javad", "mina", "mona", "arman", "armin"),
+        "description" to "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+        "IMDB" to "n/10",
+        "premume" to false,
+
+        ),
+
+    mapOf(
+        "id" to 7,
+        "name" to "The Sport 4",
+        "poster" to R.drawable.poster,
+        "img" to arrayOf(R.drawable.mimg, R.drawable.mimg, R.drawable.mimg, R.drawable.mimg),
+        "sport" to "Badminton",
+        "language" to "English",
+        "release" to "",
+        "type" to "series",
+        "actors" to arrayOf("ali", "mmd", "javad", "mina", "mona", "arman", "armin"),
+        "description" to "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+        "IMDB" to "n/10",
+        "premume" to false,
+
+        ),
+
+    mapOf(
+        "id" to 7,
+        "name" to "The Sport 7",
+        "poster" to R.drawable.poster,
+        "img" to arrayOf(R.drawable.mimg, R.drawable.mimg, R.drawable.mimg, R.drawable.mimg),
+        "sport" to "Badminton",
         "language" to "English",
         "release" to "",
         "type" to "series",
@@ -185,7 +281,7 @@ fun SportsComp(navController: NavController) {
             Spacer(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(10.dp)
+                    .height(5.dp)
             )
             var scrollState = rememberScrollState()
             Row(
@@ -193,7 +289,7 @@ fun SportsComp(navController: NavController) {
                     .fillMaxWidth()
                     .clip(RoundedCornerShape(6.dp))
                     .background(sec2BGCColor)
-                    .padding(0.dp, 10.dp, 0.dp, 10.dp)
+                    .padding(0.dp, 8.dp, 0.dp, 8.dp)
                     .horizontalScroll(scrollState),// in bayad verical bemone ?
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.SpaceBetween
@@ -206,7 +302,7 @@ fun SportsComp(navController: NavController) {
                 Box(contentAlignment = Alignment.Center) {
                     Box(modifier = Modifier
                         .width(135.dp)
-                        .height(49.dp)
+                        .height(45.dp)
                         .clip(RoundedCornerShape(100))
                         .clickable { selectedSport = "Archery" }
                         .background(
@@ -215,7 +311,7 @@ fun SportsComp(navController: NavController) {
                     Box(
                         modifier = Modifier
                             .width(127.dp)
-                            .height(41.dp)
+                            .height(37.dp)
                             .clip(RoundedCornerShape(100))
                             .background(
                                 sec2Hindi
@@ -319,8 +415,8 @@ fun SportsComp(navController: NavController) {
                 }
 
             }
-            //sec3
-
+            //sec2
+            Spacer(modifier = Modifier.height(5.dp))
             LazyVerticalStaggeredGrid(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -330,54 +426,56 @@ fun SportsComp(navController: NavController) {
                 columns = StaggeredGridCells.Fixed(2),
                 content = {
                     items(sportList) {
+                        if(it["sport"] as String == selectedSport){
+                            var name = it["name"] as String
+                            Column (modifier = Modifier.padding(5.dp)){
+                                Box(modifier = Modifier
+                                    .fillMaxWidth()
+                                    .height(95.dp)
 
-                        var name = it["name"] as String
-                        Column (modifier = Modifier.padding(5.dp)){
-                            Box(modifier = Modifier
-                                .fillMaxWidth()
-                                .height(100.dp)
-
-                                .clip(shape = RoundedCornerShape(8.dp))
-                                .background(
-                                    Brush.horizontalGradient(
-                                        colors = listOf(brush1, brush2)
-                                    )
-                                )
-                                .clickable {
-                                    /*ToDo:navigate with id to specific videopage*/
-                                }) {
-                                var img = it["img"] as Array<Int>
-                                var premume = it["premume"] as Boolean
-
-
-                                if (premume) {
-                                    Box(
-                                        modifier = Modifier
-                                            .align(Alignment.TopEnd)
-                                            .padding(9.dp)
-                                            .size(22.dp)
-                                            .clip(shape = RoundedCornerShape(100.dp))
-                                            .background(
-                                                Brush.horizontalGradient(
-                                                    colors = listOf(navBrush1, navBrush2)
-                                                )
-                                            ), contentAlignment = Alignment.Center
-                                    ) {
-
-                                        Icon(
-                                            painterResource(id = R.drawable.premume15),
-                                            "Small floating action button.",
-                                            tint = mainFontColor
+                                    .clip(shape = RoundedCornerShape(8.dp))
+                                    .background(
+                                        Brush.horizontalGradient(
+                                            colors = listOf(brush1, brush2)
                                         )
+                                    )
+                                    .clickable {
+                                        /*ToDo:navigate with id to specific videopage*/
+                                    }) {
 
+                                    var premume = it["premume"] as Boolean
+
+                                    if (premume) {
+                                        Box(
+                                            modifier = Modifier
+                                                .align(Alignment.TopEnd)
+                                                .padding(9.dp)
+                                                .size(22.dp)
+                                                .clip(shape = RoundedCornerShape(100.dp))
+                                                .background(
+                                                    Brush.horizontalGradient(
+                                                        colors = listOf(navBrush1, navBrush2)
+                                                    )
+                                                ), contentAlignment = Alignment.Center
+                                        ) {
+
+                                            Icon(
+                                                painterResource(id = R.drawable.premume15),
+                                                "Small floating action button.",
+                                                tint = mainFontColor
+                                            )
+
+                                        }
                                     }
+
+
+                                    //Image(contentScale = ContentScale.Fit,painter = painterResource(id = img[0] ) , contentDescription =null )
                                 }
-
-
-                                //Image(contentScale = ContentScale.Fit,painter = painterResource(id = img[0] ) , contentDescription =null )
+                                Text(maxLines = 1, overflow = TextOverflow.Ellipsis,modifier = Modifier.padding(top=10.dp), text = "$name", fontSize = 15.sp, color = mainFontColor, fontWeight = FontWeight(750))
                             }
-                            Text(maxLines = 1, overflow = TextOverflow.Ellipsis,modifier = Modifier.padding(top=10.dp), text = "$name", fontSize = 15.sp, color = mainFontColor, fontWeight = FontWeight(750))
+
                         }
+
 
                     }
                 }
