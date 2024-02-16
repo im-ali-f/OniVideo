@@ -20,6 +20,8 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
@@ -32,6 +34,7 @@ import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.FloatingActionButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -468,9 +471,19 @@ fun SpecificMovieComp(navController: NavController) {
                                             iterations = 1000
                                         )
                                 )
-                                Box(modifier =Modifier.fillMaxWidth().height(15.dp).background(Brush.horizontalGradient(
-                                    colors = listOf(mainBGC,Color.Transparent,Color.Transparent, mainBGC)
-                                )) )
+                                Box(modifier = Modifier
+                                    .fillMaxWidth()
+                                    .height(15.dp)
+                                    .background(
+                                        Brush.horizontalGradient(
+                                            colors = listOf(
+                                                mainBGC,
+                                                Color.Transparent,
+                                                Color.Transparent,
+                                                mainBGC
+                                            )
+                                        )
+                                    ) )
                             }
 
                         }
@@ -535,9 +548,19 @@ fun SpecificMovieComp(navController: NavController) {
                                             iterations = 1000
                                         )
                                 )
-                                Box(modifier =Modifier.fillMaxWidth().height(15.dp).background(Brush.horizontalGradient(
-                                    colors = listOf(mainBGC,Color.Transparent,Color.Transparent, mainBGC)
-                                )) )
+                                Box(modifier = Modifier
+                                    .fillMaxWidth()
+                                    .height(15.dp)
+                                    .background(
+                                        Brush.horizontalGradient(
+                                            colors = listOf(
+                                                mainBGC,
+                                                Color.Transparent,
+                                                Color.Transparent,
+                                                mainBGC
+                                            )
+                                        )
+                                    ) )
                             }
 
                         }
@@ -550,30 +573,87 @@ fun SpecificMovieComp(navController: NavController) {
 
             //sec 7
             Spacer(modifier = Modifier.height(15.dp))
-            //title
-            Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
-                Box(
-                    modifier = Modifier
-                        .height(20.dp)
-                        .width(1.5.dp)
-                        .background(
-                            Brush.verticalGradient(
-                                colors = listOf(navBrush1, navBrush2)
+            Column(
+                Modifier
+                    .fillMaxWidth()
+                    .padding(5.dp)
+            ) {
+                //title
+                Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
+                    Box(
+                        modifier = Modifier
+                            .height(20.dp)
+                            .width(1.5.dp)
+                            .background(
+                                Brush.verticalGradient(
+                                    colors = listOf(navBrush1, navBrush2)
+                                )
                             )
-                        )
-                )
-                Spacer(modifier = Modifier.width(5.dp))
-                Text(
-                    text = "Related Movies",
-                    fontWeight = FontWeight(700),
-                    fontSize = 12.sp,
-                    color = mainFontColor,
-                    letterSpacing = 0.6.sp
-                )
+                    )
+                    Spacer(modifier = Modifier.width(5.dp))
+                    Text(
+                        text = "Related Movies",
+                        fontWeight = FontWeight(700),
+                        fontSize = 12.sp,
+                        color = mainFontColor,
+                        letterSpacing = 0.6.sp
+                    )
+                }
+                //end title
+                Spacer(modifier = Modifier.height(10.dp))
+                LazyRow(
+                    Modifier
+                        .fillMaxWidth()
+                        .height(160.dp)
+                ) {
+
+                    items(videoList) {
+                        Surface(
+                            shape = RoundedCornerShape(8.dp), modifier = Modifier
+                                .fillMaxHeight()
+                                .fillParentMaxWidth(0.320f)
+                                .padding(0.dp,5.dp,5.dp,5.dp)
+                        ) {
+                            Box(modifier = Modifier
+                                .fillMaxSize()
+                                .background(
+                                    Brush.horizontalGradient(
+                                        colors = listOf(brush2, brush1)
+                                    )
+                                )
+                                .clickable { navController.navigate("specificMoviePage") }) {
+                                var img = it["img"] as Array<Int>
+                                var premume = it["premume"] as Boolean
+
+
+                                if (premume) {
+                                    Box(
+                                        modifier = Modifier
+                                            .align(Alignment.TopEnd)
+                                            .padding(9.dp)
+                                            .size(22.dp)
+                                            .clip(shape = RoundedCornerShape(100.dp))
+                                            .background(
+                                                Brush.horizontalGradient(
+                                                    colors = listOf(navBrush1, navBrush2)
+                                                )
+                                            ), contentAlignment = Alignment.Center
+                                    ) {
+
+                                        Icon(
+                                            painterResource(id = R.drawable.premume15),
+                                            "Small floating action button.",
+                                            tint = mainFontColor
+                                        )
+
+                                    }
+                                }
+                                // Image(modifier = Modifier.padding(5.dp), contentScale = ContentScale.Fit,painter = painterResource(id = img[0] ) , contentDescription =null )
+                            }
+                        }
+                    }
+                }
             }
-            //end title
-
-
             //sec x
 
 
