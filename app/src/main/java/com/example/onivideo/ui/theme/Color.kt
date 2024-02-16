@@ -69,4 +69,7 @@ val scaffoldSelectedColor= Color(0xFFFF1A6C)
 val scaffoldSelectedBGCColor= Color(0xFF1B1C20)
 
 
+val moviePlayUnderColor= Color(0x1DFCFCFC)
+
+
 
