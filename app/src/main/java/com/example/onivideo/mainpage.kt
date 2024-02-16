@@ -201,7 +201,7 @@ fun MainComp(navController: NavController) {
                                         )
                                     )
                                     .clickable {
-                                        /*ToDo:navigate with id to specific videopage*/
+                                        navController.navigate("specificMoviePage")
                                     }) {
                                     var img = it["img"] as Array<Int>
                                     var premume = it["premume"] as Boolean
@@ -272,7 +272,7 @@ fun MainComp(navController: NavController) {
                                             colors = listOf(brush2, brush1)
                                         )
                                     )
-                                    .clickable { /*ToDo:navigate with id to specific videopage*/ }) {
+                                    .clickable { navController.navigate("specificMoviePage") }) {
                                     var img = it["img"] as Array<Int>
                                     var premume = it["premume"] as Boolean
 
@@ -339,7 +339,7 @@ fun MainComp(navController: NavController) {
                                             colors = listOf(brush2, brush1)
                                         )
                                     )
-                                    .clickable { /*ToDo:navigate with id to specific videopage*/ }) {
+                                    .clickable { navController.navigate("specificMoviePage") }) {
                                     var img = it["img"] as Array<Int>
                                     var premume = it["premume"] as Boolean
 
@@ -407,7 +407,7 @@ fun MainComp(navController: NavController) {
                                             colors = listOf(brush2, brush1)
                                         )
                                     )
-                                    .clickable { /*ToDo:navigate with id to specific videopage*/ }) {
+                                    .clickable { navController.navigate("specificMoviePage") }) {
                                     var img = it["img"] as Array<Int>
                                     var premume = it["premume"] as Boolean
 
@@ -478,7 +478,7 @@ fun MainComp(navController: NavController) {
                                             )
                                         )
                                         .clickable {
-                                            /*ToDo:navigate with id to specific videopage*/
+                                            navController.navigate("specificMoviePage")
                                         }) {
                                         var img = it["img"] as Array<Int>
                                         var premume = it["premume"] as Boolean
@@ -548,7 +548,7 @@ fun MainComp(navController: NavController) {
                                                 colors = listOf(brush2, brush1)
                                             )
                                         )
-                                        .clickable { /*ToDo:navigate with id to specific videopage*/ }) {
+                                        .clickable { navController.navigate("specificMoviePage")}) {
                                         var img = it["img"] as Array<Int>
                                         var premume = it["premume"] as Boolean
 
@@ -615,7 +615,7 @@ fun MainComp(navController: NavController) {
                                                 colors = listOf(brush2, brush1)
                                             )
                                         )
-                                        .clickable { /*ToDo:navigate with id to specific videopage*/ }) {
+                                        .clickable { navController.navigate("specificMoviePage") }) {
                                         var img = it["img"] as Array<Int>
                                         var premume = it["premume"] as Boolean
 
@@ -683,7 +683,7 @@ fun MainComp(navController: NavController) {
                                                 colors = listOf(brush2, brush1)
                                             )
                                         )
-                                        .clickable { /*ToDo:navigate with id to specific videopage*/ }) {
+                                        .clickable { navController.navigate("specificMoviePage") }) {
                                         var img = it["img"] as Array<Int>
                                         var premume = it["premume"] as Boolean
 
@@ -755,7 +755,7 @@ fun MainComp(navController: NavController) {
                                         )
                                     )
                                     .clickable {
-                                        /*ToDo:navigate with id to specific videopage*/
+                                        navController.navigate("specificMoviePage")
                                     }) {
                                     var img = it["img"] as Array<Int>
                                     var premume = it["premume"] as Boolean
@@ -825,7 +825,7 @@ fun MainComp(navController: NavController) {
                                             colors = listOf(brush2, brush1)
                                         )
                                     )
-                                    .clickable { /*ToDo:navigate with id to specific videopage*/ }) {
+                                    .clickable { navController.navigate("specificMoviePage") }) {
                                     var img = it["img"] as Array<Int>
                                     var premume = it["premume"] as Boolean
 
@@ -892,7 +892,7 @@ fun MainComp(navController: NavController) {
                                             colors = listOf(brush2, brush1)
                                         )
                                     )
-                                    .clickable { /*ToDo:navigate with id to specific videopage*/ }) {
+                                    .clickable { navController.navigate("specificMoviePage") }) {
                                     var img = it["img"] as Array<Int>
                                     var premume = it["premume"] as Boolean
 
@@ -960,7 +960,7 @@ fun MainComp(navController: NavController) {
                                             colors = listOf(brush2, brush1)
                                         )
                                     )
-                                    .clickable { /*ToDo:navigate with id to specific videopage*/ }) {
+                                    .clickable { navController.navigate("specificMoviePage") }) {
                                     var img = it["img"] as Array<Int>
                                     var premume = it["premume"] as Boolean
 

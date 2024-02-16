@@ -440,7 +440,7 @@ fun MoviesComp(navController: NavController) {
                                             )
                                         )
                                         .clickable {
-                                            /*ToDo:navigate with id to specific videopage*/
+                                            navController.navigate("specificMoviePage")
                                         }) {
                                         var img = it["img"] as Array<Int>
                                         var premume = it["premume"] as Boolean
@@ -504,7 +504,7 @@ fun MoviesComp(navController: NavController) {
                                             )
                                         )
                                         .clickable {
-                                            /*ToDo:navigate with id to specific videopage*/
+                                            navController.navigate("specificMoviePage")
                                         }) {
                                         var img = it["img"] as Array<Int>
                                         var premume = it["premume"] as Boolean
@@ -928,7 +928,7 @@ fun MoviesComp(navController: NavController) {
                                             )
                                         )
                                         .clickable {
-                                            /*ToDo:navigate with id to specific videopage*/
+                                            navController.navigate("specificMoviePage")
                                         }) {
                                         var img = it["img"] as Array<Int>
                                         var premume = it["premume"] as Boolean
@@ -992,7 +992,7 @@ fun MoviesComp(navController: NavController) {
                                             )
                                         )
                                         .clickable {
-                                            /*ToDo:navigate with id to specific videopage*/
+                                            navController.navigate("specificMoviePage")
                                         }) {
                                         var img = it["img"] as Array<Int>
                                         var premume = it["premume"] as Boolean

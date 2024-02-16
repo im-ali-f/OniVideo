@@ -244,6 +244,15 @@ class MainActivity : ComponentActivity() {
                                 SearchComp(navController = navState)
                             }
 
+                            composable(route = "specificMoviePage") {
+                                access = mapOf<String, Boolean>(
+                                    "bar" to false, "menu" to false, "search" to false,"back" to false
+                                )
+                                title = "movie"
+                                bottomBar=false
+                                SpecificMovieComp(navController = navState)
+                            }
+
 
                         }
 

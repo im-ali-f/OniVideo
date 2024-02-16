@@ -434,7 +434,7 @@ fun LiveTVComp(navController: NavController) {
                                         )
                                     )
                                     .clickable {
-                                        /*ToDo:navigate with id to specific videopage*/
+                                        navController.navigate("specificMoviePage")
                                     }) {
 
                                     var premume = it["premume"] as Boolean
@@ -653,7 +653,7 @@ fun LiveTVComp(navController: NavController) {
                                         )
                                     )
                                     .clickable {
-                                        /*ToDo:navigate with id to specific videopage*/
+                                        navController.navigate("specificMoviePage")
                                     }) {
 
                                     var premume = it["premume"] as Boolean

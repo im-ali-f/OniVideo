@@ -440,7 +440,7 @@ fun SportsComp(navController: NavController) {
                                         )
                                     )
                                     .clickable {
-                                        /*ToDo:navigate with id to specific videopage*/
+                                        navController.navigate("specificMoviePage")
                                     }) {
 
                                     var premume = it["premume"] as Boolean
@@ -659,7 +659,7 @@ fun SportsComp(navController: NavController) {
                                         )
                                     )
                                     .clickable {
-                                        /*ToDo:navigate with id to specific videopage*/
+                                        navController.navigate("specificMoviePage")
                                     }) {
 
                                     var premume = it["premume"] as Boolean
