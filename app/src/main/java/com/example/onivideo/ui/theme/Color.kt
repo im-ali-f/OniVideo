@@ -75,3 +75,4 @@ val disabledIcon = Color(0x52FFFFFF)
 
 
 
+val seriesPageDisabledColoe = Color(0xFF282C3B)
