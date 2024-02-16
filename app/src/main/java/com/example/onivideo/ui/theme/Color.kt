@@ -70,6 +70,7 @@ val scaffoldSelectedBGCColor= Color(0xFF1B1C20)
 
 
 val moviePlayUnderColor= Color(0x1DFCFCFC)
+val IMDBContainerColor= Color(0xFF282C3B)
 
 
 
