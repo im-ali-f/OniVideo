@@ -46,6 +46,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -599,12 +600,15 @@ fun SpecificMovieComp(navController: NavController) {
                         letterSpacing = 0.6.sp
                     )
                 }
+                val screenWidth = LocalConfiguration.current.screenWidthDp
+                val screenHeight = LocalConfiguration.current.screenHeightDp
+                val height = if(screenWidth<400)160.dp else 200.dp
                 //end title
                 Spacer(modifier = Modifier.height(10.dp))
                 LazyRow(
                     Modifier
                         .fillMaxWidth()
-                        .height(160.dp)
+                        .height(height)
                 ) {
 
                     items(videoList) {

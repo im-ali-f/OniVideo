@@ -131,7 +131,7 @@ class MainActivity : ComponentActivity() {
                         // nav
                         NavHost(
                             navController = navState,
-                            startDestination = "specificMoviePage",
+                            startDestination = "actorPage",
                             //popEnterTransition ={ fadeIn(animationSpec = tween(8700)) } ,
                             //popExitTransition = { fadeOut(animationSpec = tween(8700)) }
                         ) {
@@ -251,6 +251,15 @@ class MainActivity : ComponentActivity() {
                                 title = "movie"
                                 bottomBar=false
                                 SpecificMovieComp(navController = navState)
+                            }
+
+                            composable(route = "actorPage") {
+                                access = mapOf<String, Boolean>(
+                                    "bar" to true, "menu" to false, "search" to false,"back" to true
+                                )
+                                title = "Ali Farhad"
+                                bottomBar=false
+                                ActorComp(navController = navState)
                             }
 
 
