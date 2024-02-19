@@ -193,6 +193,7 @@ fun MainComp(navController: NavController) {
                                     .fillParentMaxWidth(0.85f)
                                     .padding(10.dp)
                             ) {
+                                var premume = it["premume"] as Boolean
                                 Box(modifier = Modifier
                                     .fillMaxSize()
                                     .background(
@@ -201,10 +202,10 @@ fun MainComp(navController: NavController) {
                                         )
                                     )
                                     .clickable {
-                                        navController.navigate("specificMoviePage")
+                                        navController.navigate(if (premume) "specificPremiumMoviePage" else "specificMoviePage")
                                     }) {
                                     var img = it["img"] as Array<Int>
-                                    var premume = it["premume"] as Boolean
+
 
 
                                     if (premume) {
@@ -265,6 +266,7 @@ fun MainComp(navController: NavController) {
                                     .fillParentMaxWidth(0.480f)
                                     .padding(5.dp)
                             ) {
+                                var premume = it["premume"] as Boolean
                                 Box(modifier = Modifier
                                     .fillMaxSize()
                                     .background(
@@ -272,9 +274,9 @@ fun MainComp(navController: NavController) {
                                             colors = listOf(brush2, brush1)
                                         )
                                     )
-                                    .clickable { navController.navigate("specificMoviePage") }) {
-                                    var img = it["img"] as Array<Int>
-                                    var premume = it["premume"] as Boolean
+                                    .clickable { navController.navigate(if (premume) "specificPremiumMoviePage" else "specificMoviePage") }) {
+
+
 
 
                                     if (premume) {
@@ -332,6 +334,7 @@ fun MainComp(navController: NavController) {
                                     .fillParentMaxWidth(0.320f)
                                     .padding(5.dp)
                             ) {
+                                var premume = it["premume"] as Boolean
                                 Box(modifier = Modifier
                                     .fillMaxSize()
                                     .background(
@@ -339,9 +342,9 @@ fun MainComp(navController: NavController) {
                                             colors = listOf(brush2, brush1)
                                         )
                                     )
-                                    .clickable { navController.navigate("specificMoviePage") }) {
+                                    .clickable { navController.navigate(if (premume) "specificPremiumMoviePage" else "specificMoviePage") }) {
                                     var img = it["img"] as Array<Int>
-                                    var premume = it["premume"] as Boolean
+
 
 
                                     if (premume) {
@@ -400,6 +403,7 @@ fun MainComp(navController: NavController) {
                                     .fillParentMaxWidth(0.480f)
                                     .padding(5.dp)
                             ) {
+                                var premume = it["premume"] as Boolean
                                 Box(modifier = Modifier
                                     .fillMaxSize()
                                     .background(
@@ -407,9 +411,9 @@ fun MainComp(navController: NavController) {
                                             colors = listOf(brush2, brush1)
                                         )
                                     )
-                                    .clickable { navController.navigate("specificMoviePage") }) {
+                                    .clickable { navController.navigate(if (premume) "specificPremiumMoviePage" else "specificMoviePage") }) {
                                     var img = it["img"] as Array<Int>
-                                    var premume = it["premume"] as Boolean
+
 
 
                                     if (premume) {
@@ -470,6 +474,7 @@ fun MainComp(navController: NavController) {
                                         .fillParentMaxWidth(0.85f)
                                         .padding(10.dp, 0.dp, 10.dp, 10.dp)
                                 ) {
+                                    var premume = it["premume"] as Boolean
                                     Box(modifier = Modifier
                                         .fillMaxSize()
                                         .background(
@@ -478,10 +483,10 @@ fun MainComp(navController: NavController) {
                                             )
                                         )
                                         .clickable {
-                                            navController.navigate("specificMoviePage")
+                                            navController.navigate(if (premume) "specificPremiumMoviePage" else "specificMoviePage")
                                         }) {
                                         var img = it["img"] as Array<Int>
-                                        var premume = it["premume"] as Boolean
+
 
 
                                         if (premume) {
@@ -541,6 +546,7 @@ fun MainComp(navController: NavController) {
                                         .fillParentMaxWidth(0.480f)
                                         .padding(5.dp)
                                 ) {
+                                    var premume = it["premume"] as Boolean
                                     Box(modifier = Modifier
                                         .fillMaxSize()
                                         .background(
@@ -548,9 +554,8 @@ fun MainComp(navController: NavController) {
                                                 colors = listOf(brush2, brush1)
                                             )
                                         )
-                                        .clickable { navController.navigate("specificMoviePage")}) {
+                                        .clickable { navController.navigate(if (premume) "specificPremiumMoviePage" else "specificMoviePage") }) {
                                         var img = it["img"] as Array<Int>
-                                        var premume = it["premume"] as Boolean
 
 
                                         if (premume) {
@@ -608,6 +613,7 @@ fun MainComp(navController: NavController) {
                                         .fillParentMaxWidth(0.320f)
                                         .padding(5.dp)
                                 ) {
+                                    var premume = it["premume"] as Boolean
                                     Box(modifier = Modifier
                                         .fillMaxSize()
                                         .background(
@@ -615,9 +621,9 @@ fun MainComp(navController: NavController) {
                                                 colors = listOf(brush2, brush1)
                                             )
                                         )
-                                        .clickable { navController.navigate("specificMoviePage") }) {
+                                        .clickable { navController.navigate(if (premume) "specificPremiumMoviePage" else "specificMoviePage") }) {
                                         var img = it["img"] as Array<Int>
-                                        var premume = it["premume"] as Boolean
+
 
 
                                         if (premume) {
@@ -676,6 +682,8 @@ fun MainComp(navController: NavController) {
                                         .fillParentMaxWidth(0.480f)
                                         .padding(5.dp)
                                 ) {
+                                    var premume = it["premume"] as Boolean
+
                                     Box(modifier = Modifier
                                         .fillMaxSize()
                                         .background(
@@ -683,9 +691,8 @@ fun MainComp(navController: NavController) {
                                                 colors = listOf(brush2, brush1)
                                             )
                                         )
-                                        .clickable { navController.navigate("specificMoviePage") }) {
+                                        .clickable { navController.navigate(if (premume) "specificPremiumMoviePage" else "specificMoviePage") }) {
                                         var img = it["img"] as Array<Int>
-                                        var premume = it["premume"] as Boolean
 
 
                                         if (premume) {
@@ -747,6 +754,8 @@ fun MainComp(navController: NavController) {
                                     .fillParentMaxWidth(0.85f)
                                     .padding(10.dp, 0.dp, 10.dp, 10.dp)
                             ) {
+                                var premume = it["premume"] as Boolean
+
                                 Box(modifier = Modifier
                                     .fillMaxSize()
                                     .background(
@@ -755,10 +764,9 @@ fun MainComp(navController: NavController) {
                                         )
                                     )
                                     .clickable {
-                                        navController.navigate("specificMoviePage")
+                                        navController.navigate(if (premume) "specificPremiumMoviePage" else "specificMoviePage")
                                     }) {
                                     var img = it["img"] as Array<Int>
-                                    var premume = it["premume"] as Boolean
 
 
                                     if (premume) {
@@ -818,6 +826,7 @@ fun MainComp(navController: NavController) {
                                     .fillParentMaxWidth(0.480f)
                                     .padding(5.dp)
                             ) {
+                                var premume = it["premume"] as Boolean
                                 Box(modifier = Modifier
                                     .fillMaxSize()
                                     .background(
@@ -825,9 +834,9 @@ fun MainComp(navController: NavController) {
                                             colors = listOf(brush2, brush1)
                                         )
                                     )
-                                    .clickable { navController.navigate("specificMoviePage") }) {
+                                    .clickable { navController.navigate(if (premume) "specificPremiumMoviePage" else "specificMoviePage") }) {
                                     var img = it["img"] as Array<Int>
-                                    var premume = it["premume"] as Boolean
+
 
 
                                     if (premume) {
@@ -885,6 +894,8 @@ fun MainComp(navController: NavController) {
                                     .fillParentMaxWidth(0.320f)
                                     .padding(5.dp)
                             ) {
+                                var premume = it["premume"] as Boolean
+
                                 Box(modifier = Modifier
                                     .fillMaxSize()
                                     .background(
@@ -892,9 +903,8 @@ fun MainComp(navController: NavController) {
                                             colors = listOf(brush2, brush1)
                                         )
                                     )
-                                    .clickable { navController.navigate("specificMoviePage") }) {
+                                    .clickable { navController.navigate(if (premume) "specificPremiumMoviePage" else "specificMoviePage") }) {
                                     var img = it["img"] as Array<Int>
-                                    var premume = it["premume"] as Boolean
 
 
                                     if (premume) {
@@ -953,6 +963,8 @@ fun MainComp(navController: NavController) {
                                     .fillParentMaxWidth(0.480f)
                                     .padding(5.dp)
                             ) {
+                                var premume = it["premume"] as Boolean
+
                                 Box(modifier = Modifier
                                     .fillMaxSize()
                                     .background(
@@ -960,9 +972,8 @@ fun MainComp(navController: NavController) {
                                             colors = listOf(brush2, brush1)
                                         )
                                     )
-                                    .clickable { navController.navigate("specificMoviePage") }) {
+                                    .clickable { navController.navigate(if (premume) "specificPremiumMoviePage" else "specificMoviePage") }) {
                                     var img = it["img"] as Array<Int>
-                                    var premume = it["premume"] as Boolean
 
 
                                     if (premume) {

@@ -612,7 +612,7 @@ fun TVShowsComp(navController: NavController) {
                                             )
                                         )
                                         .clickable {
-                                            navController.navigate("specificMoviePage")
+                                            navController.navigate("specificSeriesPage")
                                         }) {
                                         var img = it["img"] as Array<Int>
                                         var premume = it["premume"] as Boolean
@@ -676,7 +676,7 @@ fun TVShowsComp(navController: NavController) {
                                             )
                                         )
                                         .clickable {
-                                            navController.navigate("specificMoviePage")
+                                            navController.navigate("specificSeriesPage")
                                         }) {
                                         var img = it["img"] as Array<Int>
                                         var premume = it["premume"] as Boolean
@@ -1100,7 +1100,7 @@ fun TVShowsComp(navController: NavController) {
                                             )
                                         )
                                         .clickable {
-                                            navController.navigate("specificMoviePage")
+                                            navController.navigate("specificSeriesPage")
                                         }) {
                                         var img = it["img"] as Array<Int>
                                         var premume = it["premume"] as Boolean
@@ -1164,7 +1164,7 @@ fun TVShowsComp(navController: NavController) {
                                             )
                                         )
                                         .clickable {
-                                            navController.navigate("specificMoviePage")
+                                            navController.navigate("specificSeriesPage")
                                         }) {
                                         var img = it["img"] as Array<Int>
                                         var premume = it["premume"] as Boolean
