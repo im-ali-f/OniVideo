@@ -11,6 +11,7 @@ import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
@@ -30,6 +31,8 @@ import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material.icons.rounded.PlayArrow
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.FloatingActionButtonDefaults
 import androidx.compose.material3.Icon
@@ -50,6 +53,7 @@ import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
@@ -67,7 +71,7 @@ import com.example.onivideo.ui.theme.seperatorColor
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun SpecificMovieComp(navController: NavController) {
+fun SpecificMovieComp(navController: NavController, premium:Boolean) {
 
     val screenWidth = LocalConfiguration.current.screenWidthDp
     val screenHeight = LocalConfiguration.current.screenHeightDp
@@ -100,30 +104,80 @@ fun SpecificMovieComp(navController: NavController) {
                                 )
                             )
                     ) {
-                        Box(
-                            modifier = Modifier
-                                .size(75.dp)
-                                .clip(RoundedCornerShape(100))
-                                .background(
-                                    moviePlayUnderColor
+                        if(premium){
+                            Column (modifier = Modifier
+                                .fillMaxSize().padding(top = 0.dp, bottom = 0.dp, end = 10.dp, start = 10.dp)
+                                ,
+                                verticalArrangement = Arrangement.SpaceEvenly,
+                                horizontalAlignment = Alignment.CenterHorizontally) {
+                                Text(
+                                    text = "Premume",
+                                    fontWeight = FontWeight(700),
+                                    fontSize = 18.sp,
+                                    color = mainFontColor,
+                                    maxLines = 1,
+                                    letterSpacing = 0.6.sp
                                 )
-                        )
-                        Box(modifier = Modifier
-                            .size(40.dp)
-                            .clip(RoundedCornerShape(100))
-                            .clickable { }
-                            .background(
-                                Brush.horizontalGradient(
-                                    colors = listOf(navBrush1, navBrush2)
+                                Text(
+                                    textAlign = TextAlign.Center,
+                                    text = "You don't have access to premume content kindly purchasesubscription to watch this content or LOGIN with premume account.",
+                                    fontWeight = FontWeight(500),
+                                    fontSize = 14.sp,
+                                    color = mainFontColor,
+                                    letterSpacing = 0.6.sp
                                 )
-                            ), contentAlignment = Alignment.Center
-                        ) {
-                            Icon(
-                                modifier = Modifier.fillMaxSize(),
-                                imageVector = Icons.Rounded.PlayArrow,
-                                contentDescription = null,
-                                tint = Color.White
+
+                                Button(
+                                    onClick = {  },
+                                    modifier = Modifier
+                                        .fillMaxWidth(0.5f)
+                                        .clip(shape = RoundedCornerShape(4.dp))
+                                        .background(
+                                            Brush.horizontalGradient(
+                                                colors = listOf(navBrush1, navBrush2)
+                                            )
+                                        )
+                                        .height(40.dp),
+                                    shape = RoundedCornerShape(6.dp),
+                                    contentPadding = PaddingValues(0.dp),
+                                    colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent)
+                                ) {
+                                    Text(
+                                        text = "SUBSCRIBE NOW", textAlign = TextAlign.Center,
+                                        color = mainFontColor,
+                                        fontSize = 17.sp,
+                                        fontWeight = FontWeight(400),
+                                        letterSpacing = 1.5.sp
+                                    )
+                                }
+                            }
+                        }
+                        else{
+                            Box(
+                                modifier = Modifier
+                                    .size(75.dp)
+                                    .clip(RoundedCornerShape(100))
+                                    .background(
+                                        moviePlayUnderColor
+                                    )
                             )
+                            Box(modifier = Modifier
+                                .size(40.dp)
+                                .clip(RoundedCornerShape(100))
+                                .clickable { }
+                                .background(
+                                    Brush.horizontalGradient(
+                                        colors = listOf(navBrush1, navBrush2)
+                                    )
+                                ), contentAlignment = Alignment.Center
+                            ) {
+                                Icon(
+                                    modifier = Modifier.fillMaxSize(),
+                                    imageVector = Icons.Rounded.PlayArrow,
+                                    contentDescription = null,
+                                    tint = Color.White
+                                )
+                            }
                         }
                     }
 
@@ -247,17 +301,17 @@ fun SpecificMovieComp(navController: NavController) {
                     Image(
                         painter = painterResource(id = R.drawable.facebook),
                         contentDescription = null,
-                        modifier = Modifier.clickable { })
+                        modifier = Modifier.clickable { }.size(25.dp))
                     Spacer(modifier = Modifier.width(5.dp))//twiter
                     Image(
                         painter = painterResource(id = R.drawable.twitter),
                         contentDescription = null,
-                        modifier = Modifier.clickable { })
+                        modifier = Modifier.clickable { }.size(25.dp))
                     Spacer(modifier = Modifier.width(5.dp))//whatsUp
                     Image(
                         painter = painterResource(id = R.drawable.whatsapp),
                         contentDescription = null,
-                        modifier = Modifier.clickable { })
+                        modifier = Modifier.clickable { }.size(25.dp))
 
                 }
 
@@ -698,31 +752,83 @@ fun SpecificMovieComp(navController: NavController) {
                                 )
                             )
                     ) {
-                        Box(
-                            modifier = Modifier
-                                .size(75.dp)
-                                .clip(RoundedCornerShape(100))
-                                .background(
-                                    moviePlayUnderColor
+
+                        if(premium){
+                            Column (modifier = Modifier
+                                .fillMaxSize().padding(top = 0.dp, bottom = 0.dp, end = 10.dp, start = 10.dp)
+                                ,
+                                verticalArrangement = Arrangement.SpaceEvenly,
+                                horizontalAlignment = Alignment.CenterHorizontally) {
+                                Text(
+                                    text = "Premume",
+                                    fontWeight = FontWeight(700),
+                                    fontSize = 18.sp,
+                                    color = mainFontColor,
+                                    maxLines = 1,
+                                    letterSpacing = 0.6.sp
                                 )
-                        )
-                        Box(modifier = Modifier
-                            .size(40.dp)
-                            .clip(RoundedCornerShape(100))
-                            .clickable { }
-                            .background(
-                                Brush.horizontalGradient(
-                                    colors = listOf(navBrush1, navBrush2)
+                                Text(
+                                    textAlign = TextAlign.Center,
+                                    text = "You don't have access to premume content kindly purchasesubscription to watch this content or LOGIN with premume account.",
+                                    fontWeight = FontWeight(500),
+                                    fontSize = 14.sp,
+                                    color = mainFontColor,
+                                    letterSpacing = 0.6.sp
                                 )
-                            ), contentAlignment = Alignment.Center
-                        ) {
-                            Icon(
-                                modifier = Modifier.fillMaxSize(),
-                                imageVector = Icons.Rounded.PlayArrow,
-                                contentDescription = null,
-                                tint = Color.White
-                            )
+
+                                Button(
+                                    onClick = {  },
+                                    modifier = Modifier
+                                        .fillMaxWidth(0.5f)
+                                        .clip(shape = RoundedCornerShape(4.dp))
+                                        .background(
+                                            Brush.horizontalGradient(
+                                                colors = listOf(navBrush1, navBrush2)
+                                            )
+                                        )
+                                        .height(40.dp),
+                                    shape = RoundedCornerShape(6.dp),
+                                    contentPadding = PaddingValues(0.dp),
+                                    colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent)
+                                ) {
+                                    Text(
+                                        text = "SUBSCRIBE NOW", textAlign = TextAlign.Center,
+                                        color = mainFontColor,
+                                        fontSize = 17.sp,
+                                        fontWeight = FontWeight(400),
+                                        letterSpacing = 1.5.sp
+                                    )
+                                }
+                            }
                         }
+                        else{
+                            Box(
+                                modifier = Modifier
+                                    .size(75.dp)
+                                    .clip(RoundedCornerShape(100))
+                                    .background(
+                                        moviePlayUnderColor
+                                    )
+                            )
+                            Box(modifier = Modifier
+                                .size(40.dp)
+                                .clip(RoundedCornerShape(100))
+                                .clickable { }
+                                .background(
+                                    Brush.horizontalGradient(
+                                        colors = listOf(navBrush1, navBrush2)
+                                    )
+                                ), contentAlignment = Alignment.Center
+                            ) {
+                                Icon(
+                                    modifier = Modifier.fillMaxSize(),
+                                    imageVector = Icons.Rounded.PlayArrow,
+                                    contentDescription = null,
+                                    tint = Color.White
+                                )
+                            }
+                        }
+
                     }
 
                 }
